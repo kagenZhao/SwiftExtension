@@ -11,20 +11,74 @@ import XCTest
 
 class SwiftExtensionsTests: XCTestCase {
     
+    
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+       
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+       
         super.tearDown()
     }
     
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+      
     }
+    
+    func testUIViewExtensions() {
+        let view = UIView(frame: CGRect(x: 200, y: 88, width: 400, height: 94))
+        check(view: view)
+        
+    }
+    
+    func check(view: UIView) {
+        if view.width != view.frame.size.width {
+            XCTFail("width error: \(view.width)")
+        }
+        
+        if view.height != view.frame.size.height {
+            XCTFail("width error: \(view.height)")
+        }
+        
+        if view.top != view.frame.origin.y {
+            XCTFail("width error: \(view.top)")
+        }
+        
+        if view.left != view.frame.origin.x {
+            XCTFail("width error: \(view.left)")
+        }
+        
+        if view.right != view.frame.size.width + view.frame.origin.x {
+            XCTFail("width error: \(view.right)")
+        }
+        
+        if view.bottom != view.frame.size.height + view.frame.origin.y {
+            XCTFail("width error: \(view.bottom)")
+        }
+        
+        view.width = 20
+        XCTAssertTrue(view.frame.size.width == 20)
+        view.height = 30
+         XCTAssertTrue(view.frame.size.height == 30)
+        view.top = 40
+        XCTAssertTrue(view.frame.origin.y == 40)
+        view.left = 50
+        XCTAssertTrue(view.frame.origin.x == 50)
+        view.right = 60
+        XCTAssertTrue(view.frame.origin.x + view.frame.size.width == 60)
+        view.bottom = 70
+        XCTAssertTrue(view.frame.origin.y + view.frame.size.height == 70)
+    }
+    
+    func testStringExtension() {
+        let str = "aksnd2lkj3b42k3j4b][/*--.LOJBLKJ˙√¬∆˚ß∑∫∂…¬åÍ Ï…Ø∑´ÓˆŒ"
+        XCTAssertTrue(str.subString(to: 5) == "aksnd")
+        XCTAssertTrue(str.subString(from: 5) == "2lkj3b42k3j4b][/*--.LOJBLKJ˙√¬∆˚ß∑∫∂…¬åÍ Ï…Ø∑´ÓˆŒ")
+    }
+    
+    
+    
     
     func testPerformanceExample() {
         // This is an example of a performance test case.

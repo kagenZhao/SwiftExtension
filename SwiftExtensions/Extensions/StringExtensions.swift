@@ -1,14 +1,14 @@
 //
-//  String+KMRExtensions.swift
-//  标题的滑动
+//  StringExtensions.swift
+//  SwiftExtensions
 //
-//  Created by zhaoguoqing on 16/6/29.
-//  Copyright © 2016年 赵国庆. All rights reserved.
+//  Created by Kagen Zhao on 16/8/4.
+//  Copyright © 2016年 kagenZhao. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
 extension String {
-    
     func subString(to index: Int) -> String {
         return self.substring(to: self.index(self.startIndex, offsetBy: index))
     }
@@ -23,6 +23,4 @@ extension String {
         let range = Range<Index>.init(uncheckedBounds: (lower: startIndex, upper: endIndex))
         return self.substring(with: range)
     }
-    
-    
 }
