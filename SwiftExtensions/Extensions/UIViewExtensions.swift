@@ -11,67 +11,67 @@ extension UIView {
     
     var left: CGFloat {
         set {
-            var frame = self.frame
-            frame.origin.x = newValue
-            self.frame = frame
+            var newFrame = frame
+            newFrame.origin.x = newValue
+            frame = newFrame
         }
         get {
-            return self.frame.origin.x
+            return frame.origin.x
         }
     }
     
     var top: CGFloat {
         set {
-            var frame = self.frame
-            frame.origin.y = newValue
-            self.frame = frame
+            var newFrame = frame
+            newFrame.origin.y = newValue
+            frame = newFrame
         }
         get {
-            return self.frame.origin.y
+            return frame.origin.y
         }
     }
     
     var width: CGFloat {
         set {
-            var frame = self.frame
-            frame.size.width = newValue
-            self.frame = frame
+            var newFrame = frame
+            newFrame.size.width = newValue
+            frame = newFrame
         }
         get {
-            return self.frame.size.width
+            return frame.size.width
         }
     }
     
     var height: CGFloat {
         set {
-            var frame = self.frame
-            frame.size.height = newValue
-            self.frame = frame
+            var newFrame = frame
+            newFrame.size.height = newValue
+            frame = newFrame
         }
         get {
-            return self.frame.size.height
+            return frame.size.height
         }
     }
     
     var right: CGFloat {
         set {
-            var frame = self.frame
-            frame.origin.x = newValue - self.width
-            self.frame = frame
+            var newFrame = frame
+            newFrame.origin.x = newValue - width
+            frame = newFrame
         }
         get {
-            return self.left + self.width
+            return left + width
         }
     }
     
     var bottom: CGFloat {
         set {
-            var frame = self.frame
-            frame.origin.y = newValue - self.height
-            self.frame = frame
+            var newFrame = frame
+            newFrame.origin.y = newValue - height
+            frame = newFrame
         }
         get {
-            return self.top + self.height
+            return top + height
         }
     }
 }

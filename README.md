@@ -1,1 +1,0 @@
-# SwiftExtension for Swift3

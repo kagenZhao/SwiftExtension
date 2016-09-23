@@ -11,54 +11,54 @@ import UIKit
 extension CGRect {
     var width: CGFloat {
         set {
-            self.size.width = newValue
+            size.width = newValue
         }
         get {
-            return self.size.width
+            return size.width
         }
     }
     
     var height: CGFloat {
         set {
-            self.size.height = newValue
+            size.height = newValue
         }
         get {
-            return self.size.height
+            return size.height
         }
     }
     
     var left: CGFloat {
         set {
-            self.origin.x = newValue
+            origin.x = newValue
         }
         get {
-            return self.origin.x
+            return origin.x
         }
     }
     
     var top: CGFloat {
         set {
-            self.origin.y = newValue
+            origin.y = newValue
         }
         get {
-            return self.origin.y
+            return origin.y
         }
     }
     var right: CGFloat {
         set {
-            self.origin.x = newValue - self.width
+            origin.x = newValue - width
         }
         get {
-            return self.left + self.width
+            return left + width
         }
     }
     
     var bottom: CGFloat {
         set {
-            self.origin.y = newValue - self.height
+            origin.y = newValue - height
         }
         get {
-            return self.top + self.height
+            return top + height
         }
     }
 }

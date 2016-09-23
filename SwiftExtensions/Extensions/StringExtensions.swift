@@ -9,18 +9,16 @@
 import UIKit
 
 extension String {
-    func subString(to index: Int) -> String {
-        return self.substring(to: self.index(self.startIndex, offsetBy: index))
+    func subString(to idx: Int) -> String {
+        return substring(to: index(startIndex, offsetBy: idx))
     }
     
-    func subString(from index: Int) -> String {
-        return self.substring(from: self.index(self.startIndex, offsetBy: index))
+    func subString(from idx: Int) -> String {
+        return substring(from: index(startIndex, offsetBy: idx))
     }
     
     func subString(withStart start: Int, end: Int) -> String {
-        let startIndex = self.index(self.startIndex, offsetBy: start)
-        let endIndex = self.index(self.startIndex, offsetBy: end)
-        let range = Range<Index>.init(uncheckedBounds: (lower: startIndex, upper: endIndex))
-        return self.substring(with: range)
+        let range = Range<Index>.init(uncheckedBounds: (lower: index(startIndex, offsetBy: start), upper: index(startIndex, offsetBy: end)))
+        return substring(with: range)
     }
 }
