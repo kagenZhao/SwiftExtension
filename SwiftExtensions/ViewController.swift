@@ -12,17 +12,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let dic = ["aaaa": "bbbbb"];
-        let b = dic.map { (key, value) -> String in
-            "aalsdnkflasdkn"
-        }
-       ["aaaa"].map { (s) -> T in
-        
-        }
-        [111].flatMap { (<#Int#>) -> ElementOfResult? in
-            <#code#>
-        }
-        
+        test()
     }
 }
 
