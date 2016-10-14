@@ -17,7 +17,7 @@ public enum UILabelVerticalAlignment: Int{
 private var kUILabelVerticalAlignmentKey: String = "kUILabelVerticalAlignmentKey";
 
 extension UILabel {
-   open  var verticalAlignment: UILabelVerticalAlignment {
+   open var verticalAlignment: UILabelVerticalAlignment {
         set {
             objc_setAssociatedObject(self, &kUILabelVerticalAlignmentKey, NSNumber.init(value: newValue.rawValue), .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             self.setNeedsDisplay()
