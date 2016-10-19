@@ -22,3 +22,12 @@ extension String {
         return substring(with: range)
     }
 }
+
+extension String {
+    static func uuid() -> String {
+        let uuidRef = CFUUIDCreate(nil)
+        let uuidStr = CFUUIDCreateString(nil, uuidRef)
+        let uuid: String = uuidStr as! String
+        return uuid
+    }
+}
