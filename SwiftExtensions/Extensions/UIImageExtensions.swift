@@ -10,16 +10,15 @@ import UIKit
 
 
 extension UIImage {
-    func getBlurImage() -> UIImage {
-        //获取滤镜，并设置（使用KVO键值输入）
+    // "CIPhotoEffectMono"
+    func getImage(with effectName: String) -> UIImage {
         let ciimage = CIImage(image: self)
-        let filter = CIFilter(name: "CIPhotoEffectMono", withInputParameters: [kCIInputImageKey:ciimage!])
+        let filter = CIFilter(name: effectName, withInputParameters: [kCIInputImageKey:ciimage!])
         filter?.setDefaults()
         let contect = CIContext(options: nil)
         let outputImage = filter?.outputImage
         let cgimage = contect.createCGImage(outputImage!, from: outputImage!.extent)
         let image = UIImage(cgImage: cgimage!)
-        //从滤镜中获取图片
         return image
     }
     
