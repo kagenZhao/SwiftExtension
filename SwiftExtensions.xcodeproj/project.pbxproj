@@ -18,6 +18,7 @@
 		04772B1E1D23D40F0036B20B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04772B1D1D23D40F0036B20B /* Assets.xcassets */; };
 		04772B211D23D40F0036B20B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04772B1F1D23D40F0036B20B /* LaunchScreen.storyboard */; };
 		04772B481D23D45F0036B20B /* Literally.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04772B471D23D45F0036B20B /* Literally.swift */; };
+		048BFF0C1DCC76FE0010AB6C /* SwiftMD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048BFF0B1DCC76FE0010AB6C /* SwiftMD5.swift */; };
 		04A906041D80121500753C56 /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A906031D80121500753C56 /* UILabelExtensions.swift */; };
 		04CCF3A71D911EB000AE5334 /* 001.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CCF3A61D911EB000AE5334 /* 001.swift */; };
 		04CCF3A91D9125B900AE5334 /* 002.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CCF3A81D9125B900AE5334 /* 002.swift */; };
@@ -42,6 +43,7 @@
 		04772B201D23D40F0036B20B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04772B221D23D40F0036B20B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04772B471D23D45F0036B20B /* Literally.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Literally.swift; sourceTree = "<group>"; };
+		048BFF0B1DCC76FE0010AB6C /* SwiftMD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftMD5.swift; sourceTree = "<group>"; };
 		04A906031D80121500753C56 /* UILabelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
 		04CCF3A61D911EB000AE5334 /* 001.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 001.swift; sourceTree = "<group>"; };
 		04CCF3A81D9125B900AE5334 /* 002.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 002.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 		04772B441D23D4450036B20B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				048BFF0B1DCC76FE0010AB6C /* SwiftMD5.swift */,
 				04772B471D23D45F0036B20B /* Literally.swift */,
 				04E860101D530D70004C1464 /* UIViewExtensions.swift */,
 				04E860121D530DCF004C1464 /* StringExtensions.swift */,
@@ -218,6 +221,7 @@
 				0458B4B01DB77D170044DE69 /* UIColorExtensions.swift in Sources */,
 				04E860171D530F36004C1464 /* NumberExtensions.swift in Sources */,
 				0458B4AE1DB77CD20044DE69 /* UIImageExtensions.swift in Sources */,
+				048BFF0C1DCC76FE0010AB6C /* SwiftMD5.swift in Sources */,
 				04CCF3C91D9131F700AE5334 /* 003.swift in Sources */,
 				044760F01D801BD800687CFE /* DispatchQueueExtensions.swift in Sources */,
 			);

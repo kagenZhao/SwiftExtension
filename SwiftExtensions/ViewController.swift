@@ -12,8 +12,31 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        test()
+        
+        
+        do {
+            let s = try test(b: false)
+            print(s)
+        } catch let error {
+            print(error)
+        }
+
     }
+    
+    func test(b: Bool) throws -> String {
+        if b {
+            return "true"
+        } else {
+            let error = NSError(domain: "error", code: 001, userInfo: nil)
+            throw error
+        }
+    }
+    
+    
+    
+    
+    
+    
 }
 
 

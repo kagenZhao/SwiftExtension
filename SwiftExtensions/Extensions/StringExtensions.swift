@@ -31,3 +31,11 @@ extension String {
         return uuid
     }
 }
+
+extension String {
+    public var md5: String {
+        let bytes = [UInt8](self.utf8)
+        let digest = kz_md5(bytes: bytes)
+        return encodeMD5Digest(digest: digest.digest)
+    }
+}
