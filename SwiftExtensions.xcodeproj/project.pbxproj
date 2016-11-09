@@ -27,6 +27,7 @@
 		04E860131D530DCF004C1464 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E860121D530DCF004C1464 /* StringExtensions.swift */; };
 		04E860151D530DFB004C1464 /* CGRectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E860141D530DFB004C1464 /* CGRectExtensions.swift */; };
 		04E860171D530F36004C1464 /* NumberExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E860161D530F36004C1464 /* NumberExtensions.swift */; };
+		04F63D5D1DD1B589004C89E2 /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F63D5C1DD1B589004C89E2 /* DataExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		04E860121D530DCF004C1464 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		04E860141D530DFB004C1464 /* CGRectExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRectExtensions.swift; sourceTree = "<group>"; };
 		04E860161D530F36004C1464 /* NumberExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberExtensions.swift; sourceTree = "<group>"; };
+		04F63D5C1DD1B589004C89E2 /* DataExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				04772B471D23D45F0036B20B /* Literally.swift */,
 				04E860101D530D70004C1464 /* UIViewExtensions.swift */,
 				04E860121D530DCF004C1464 /* StringExtensions.swift */,
+				04F63D5C1DD1B589004C89E2 /* DataExtensions.swift */,
 				04E860141D530DFB004C1464 /* CGRectExtensions.swift */,
 				04E860161D530F36004C1464 /* NumberExtensions.swift */,
 				045B5FED1D536139003B0B7B /* TimerExtension.swift */,
@@ -212,6 +215,7 @@
 				04E860111D530D70004C1464 /* UIViewExtensions.swift in Sources */,
 				043962781DB076FD00DCE2BA /* 0077.swift in Sources */,
 				04E860131D530DCF004C1464 /* StringExtensions.swift in Sources */,
+				04F63D5D1DD1B589004C89E2 /* DataExtensions.swift in Sources */,
 				04772B171D23D40F0036B20B /* AppDelegate.swift in Sources */,
 				04A906041D80121500753C56 /* UILabelExtensions.swift in Sources */,
 				04CCF3A91D9125B900AE5334 /* 002.swift in Sources */,
