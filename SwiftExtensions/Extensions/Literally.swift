@@ -8,6 +8,7 @@
 
 import Foundation
 extension URL: ExpressibleByStringLiteral {
+    
     public typealias StringLiteralType = String
     public typealias UnicodeScalarLiteralType = String
     public typealias ExtendedGraphemeClusterLiteralType = String
@@ -15,9 +16,11 @@ extension URL: ExpressibleByStringLiteral {
     public init(stringLiteral value: URL.StringLiteralType) {
         self = URL(string: value)!
     }
+    
     public init(extendedGraphemeClusterLiteral value: URL.ExtendedGraphemeClusterLiteralType) {
         self = URL(string: value)!
     }
+    
     public init(unicodeScalarLiteral value: URL.UnicodeScalarLiteralType) {
         self = URL(string: value)!
     }
@@ -25,6 +28,7 @@ extension URL: ExpressibleByStringLiteral {
 }
 
 extension TimeZone : ExpressibleByStringLiteral {
+    
     public typealias StringLiteralType = String
     public typealias UnicodeScalarLiteralType = String
     public typealias ExtendedGraphemeClusterLiteralType = String
@@ -32,9 +36,11 @@ extension TimeZone : ExpressibleByStringLiteral {
     public init(stringLiteral value: URL.StringLiteralType) {
         self = TimeZone.init(identifier: value) ?? TimeZone.init(abbreviation: value)!
     }
+    
     public init(extendedGraphemeClusterLiteral value: URL.ExtendedGraphemeClusterLiteralType) {
         self = TimeZone.init(identifier: value) ?? TimeZone.init(abbreviation: value)!
     }
+    
     public init(unicodeScalarLiteral value: URL.UnicodeScalarLiteralType) {
         self = TimeZone.init(identifier: value) ?? TimeZone.init(abbreviation: value)!
     }

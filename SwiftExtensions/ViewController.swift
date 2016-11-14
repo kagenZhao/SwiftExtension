@@ -8,37 +8,20 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
-        do {
-            let s = try test(b: false)
-            print(s)
-        } catch let error {
-            print(error)
-        }
-
-    }
-    
-    func test(b: Bool) throws -> String {
-        if b {
-            return "true"
-        } else {
-            let error = NSError(domain: "error", code: 001, userInfo: nil)
-            throw error
-        }
-    }
-    
-    
-    
-    
-    
-    
+enum MyEnum {
+    case Case1(Int,Float)
+    case Case2(Float,Int)
 }
 
+class ViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        _ = UIView(frame: [0, 0, 0, 0])
+        
+    }
+    
+}
 
 
 

@@ -7,71 +7,72 @@
 //
 
 import UIKit
-extension UIView {
+
+extension UIView: KZRectProcotol {
     
-    var left: CGFloat {
+    public var left: CGFloat {
         set {
             var newFrame = frame
-            newFrame.origin.x = newValue
+            newFrame.left = newValue
             frame = newFrame
         }
         get {
-            return frame.origin.x
+            return frame.left
         }
     }
     
-    var top: CGFloat {
+    public var top: CGFloat {
         set {
             var newFrame = frame
-            newFrame.origin.y = newValue
+            newFrame.top = newValue
             frame = newFrame
         }
         get {
-            return frame.origin.y
+            return frame.top
         }
     }
     
-    var width: CGFloat {
+    public var width: CGFloat {
         set {
             var newFrame = frame
-            newFrame.size.width = newValue
+            newFrame.width = newValue
             frame = newFrame
         }
         get {
-            return frame.size.width
+            return frame.width
         }
     }
     
-    var height: CGFloat {
+    public var height: CGFloat {
         set {
             var newFrame = frame
-            newFrame.size.height = newValue
+            newFrame.height = newValue
             frame = newFrame
         }
         get {
-            return frame.size.height
+            return frame.height
         }
     }
     
-    var right: CGFloat {
+    public var right: CGFloat {
         set {
             var newFrame = frame
-            newFrame.origin.x = newValue - width
+            newFrame.right = newValue
             frame = newFrame
         }
         get {
-            return left + width
+            return frame.right
         }
     }
     
-    var bottom: CGFloat {
+    public var bottom: CGFloat {
         set {
             var newFrame = frame
-            newFrame.origin.y = newValue - height
+            newFrame.bottom = newValue
             frame = newFrame
         }
         get {
-            return top + height
+            return frame.bottom
         }
     }
 }

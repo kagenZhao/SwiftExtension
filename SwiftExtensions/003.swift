@@ -7,3 +7,18 @@
 //
 
 import Foundation
+// Removing var from Function Parameters
+
+/*
+// before
+func test(var a: String) {
+    
+}
+ */
+// now
+func test (a: String) {
+    
+}
+
+
+

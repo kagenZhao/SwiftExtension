@@ -18,7 +18,7 @@ extension String {
     }
     
     func subString(withStart start: Int, end: Int) -> String {
-        let range = Range<Index>.init(uncheckedBounds: (lower: index(startIndex, offsetBy: start), upper: index(startIndex, offsetBy: end)))
+        let range = Range<Index>(uncheckedBounds: (lower: index(startIndex, offsetBy: start), upper: index(startIndex, offsetBy: end)))
         return substring(with: range)
     }
 }

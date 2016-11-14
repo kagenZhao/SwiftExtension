@@ -12,6 +12,7 @@
 		0458B4AE1DB77CD20044DE69 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0458B4AD1DB77CD20044DE69 /* UIImageExtensions.swift */; };
 		0458B4B01DB77D170044DE69 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0458B4AF1DB77D170044DE69 /* UIColorExtensions.swift */; };
 		045B5FEE1D536139003B0B7B /* TimerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045B5FED1D536139003B0B7B /* TimerExtension.swift */; };
+		04714DC91DD5997A009503DB /* 首页-达人印象.png in Resources */ = {isa = PBXBuildFile; fileRef = 04714DC81DD5997A009503DB /* 首页-达人印象.png */; };
 		04772B171D23D40F0036B20B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04772B161D23D40F0036B20B /* AppDelegate.swift */; };
 		04772B191D23D40F0036B20B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04772B181D23D40F0036B20B /* ViewController.swift */; };
 		04772B1C1D23D40F0036B20B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04772B1A1D23D40F0036B20B /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 		0458B4AD1DB77CD20044DE69 /* UIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		0458B4AF1DB77D170044DE69 /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		045B5FED1D536139003B0B7B /* TimerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerExtension.swift; sourceTree = "<group>"; };
+		04714DC81DD5997A009503DB /* 首页-达人印象.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页-达人印象.png"; sourceTree = "<group>"; };
 		04772B131D23D40F0036B20B /* SwiftExtensions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftExtensions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04772B161D23D40F0036B20B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04772B181D23D40F0036B20B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				04772B441D23D4450036B20B /* Extensions */,
 				04772B161D23D40F0036B20B /* AppDelegate.swift */,
 				04772B181D23D40F0036B20B /* ViewController.swift */,
+				04714DC81DD5997A009503DB /* 首页-达人印象.png */,
 				04772B1A1D23D40F0036B20B /* Main.storyboard */,
 				04772B1D1D23D40F0036B20B /* Assets.xcassets */,
 				04772B1F1D23D40F0036B20B /* LaunchScreen.storyboard */,
@@ -200,6 +203,7 @@
 				04772B211D23D40F0036B20B /* LaunchScreen.storyboard in Resources */,
 				04772B1E1D23D40F0036B20B /* Assets.xcassets in Resources */,
 				04772B1C1D23D40F0036B20B /* Main.storyboard in Resources */,
+				04714DC91DD5997A009503DB /* 首页-达人印象.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

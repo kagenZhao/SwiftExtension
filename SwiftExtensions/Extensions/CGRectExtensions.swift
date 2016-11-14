@@ -8,8 +8,29 @@
 
 import UIKit
 
-extension CGRect {
-    var width: CGFloat {
+public protocol KZRectProcotol {
+    var left: CGFloat { get set }
+    var right: CGFloat { get set }
+    var top: CGFloat { get set }
+    var bottom: CGFloat { get set }
+    var width: CGFloat { get set }
+    var height: CGFloat { get set }
+}
+
+extension CGRect: ExpressibleByArrayLiteral {
+    
+    public typealias Element = CGFloat
+    
+    public init(arrayLiteral elements: Element...) {
+        
+        guard elements.count == 4 else { self = .zero; return }
+        
+        self = .init(x: elements[0], y: elements[1], width: elements[2], height: elements[3])
+    }
+}
+
+extension CGRect: KZRectProcotol {
+    public var width: CGFloat {
         set {
             size.width = newValue
         }
@@ -18,7 +39,7 @@ extension CGRect {
         }
     }
     
-    var height: CGFloat {
+    public var height: CGFloat {
         set {
             size.height = newValue
         }
@@ -27,7 +48,7 @@ extension CGRect {
         }
     }
     
-    var left: CGFloat {
+    public var left: CGFloat {
         set {
             origin.x = newValue
         }
@@ -36,7 +57,7 @@ extension CGRect {
         }
     }
     
-    var top: CGFloat {
+    public var top: CGFloat {
         set {
             origin.y = newValue
         }
@@ -44,7 +65,7 @@ extension CGRect {
             return origin.y
         }
     }
-    var right: CGFloat {
+    public var right: CGFloat {
         set {
             origin.x = newValue - width
         }
@@ -53,7 +74,7 @@ extension CGRect {
         }
     }
     
-    var bottom: CGFloat {
+    public var bottom: CGFloat {
         set {
             origin.y = newValue - height
         }

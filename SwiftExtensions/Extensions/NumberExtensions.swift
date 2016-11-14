@@ -8,97 +8,84 @@
 
 import UIKit
 
-extension Int {
-    var cgfloat: CGFloat {
-        get {
-            return CGFloat(self)
-        }
-    }
-    var float: Float {
-        get {
-            return Float(self)
-        }
-    }
-    var double: Double {
-        get {
-            return Double(self)
-        }
-    }
+public protocol KZIntegerProtocol {
+    var ki: Int { get }
+}
+
+public protocol KZFloatProtocol {
+    var kf: Float { get }
+}
+
+public protocol KZDoubleProtocol {
+    var kd: Double { get }
+}
+
+public protocol KZCGFloatProtocol {
+    var kcf: CGFloat { get }
+}
+
+public protocol KZABSProtocol {
+    associatedtype ABSType
+    var ka: ABSType { get }
+}
+
+extension Int: KZIntegerProtocol, KZFloatProtocol, KZDoubleProtocol, KZCGFloatProtocol, KZABSProtocol {
+
+    public typealias ABSType = Int
     
-    var Abs: Int {
-        get {
-            return abs(self)
-        }
-    }
-   
-}
-
-extension Double {
-    var int: Int {
-        get {
-            return Int(self)
-        }
-    }
-    var float: Float {
-        get {
-            return Float(self)
-        }
-    }
-    var cgfloat: CGFloat {
-        get {
-            return CGFloat(self)
-        }
-    }
-    var Abs: Double {
-        get {
-            return abs(self)
-        }
-    }
+    public var ki: Int { return Int(self) }
     
+    public var kf: Float { return Float(self) }
+    
+    public var kd: Double { return Double(self) }
+    
+    public var kcf: CGFloat { return CGFloat(self) }
+    
+    public var ka: ABSType { return abs(self) }
 }
 
-extension Float {
-    var cgfloat: CGFloat {
-        get {
-            return CGFloat(self)
-        }
-    }
-    var int: Int {
-        get {
-            return Int(self)
-        }
-    }
-    var double: Double {
-        get {
-            return Double(self)
-        }
-    }
-    var Abs: Float {
-        get {
-            return abs(self)
-        }
-    }
+extension Float: KZIntegerProtocol, KZFloatProtocol, KZDoubleProtocol, KZCGFloatProtocol, KZABSProtocol {
+    
+    public typealias ABSType = Float
+    
+    public var ki: Int { return Int(self) }
+    
+    public var kf: Float { return Float(self) }
+    
+    public var kd: Double { return Double(self) }
+    
+    public var kcf: CGFloat { return CGFloat(self) }
+    
+    public var ka: ABSType { return abs(self) }
 }
 
-extension CGFloat {
-    var int: Int {
-        get {
-            return Int(self)
-        }
-    }
-    var float: Float {
-        get {
-            return Float(self)
-        }
-    }
-    var double: Double {
-        get {
-            return Double(self)
-        }
-    }
-    var Abs: CGFloat {
-        get {
-            return abs(self)
-        }
-    }
+extension Double: KZIntegerProtocol, KZFloatProtocol, KZDoubleProtocol, KZCGFloatProtocol, KZABSProtocol {
+    
+    public typealias ABSType = Double
+    
+    public var ki: Int { return Int(self) }
+    
+    public var kf: Float { return Float(self) }
+    
+    public var kd: Double { return Double(self) }
+    
+    public var kcf: CGFloat { return CGFloat(self) }
+    
+    public var ka: ABSType { return abs(self) }
 }
+
+extension CGFloat: KZIntegerProtocol, KZFloatProtocol, KZDoubleProtocol, KZCGFloatProtocol, KZABSProtocol {
+    
+    public typealias ABSType = CGFloat
+    
+    public var ki: Int { return Int(self) }
+    
+    public var kf: Float { return Float(self) }
+    
+    public var kd: Double { return Double(self) }
+    
+    public var kcf: CGFloat { return CGFloat(self) }
+    
+    public var ka: ABSType { return abs(self) }
+}
+
