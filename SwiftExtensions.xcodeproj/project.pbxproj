@@ -7,11 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04036E871DDAD92300F3E448 /* RuntimeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04036E861DDAD92300F3E448 /* RuntimeExtensions.swift */; };
 		043962781DB076FD00DCE2BA /* 0077.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043962771DB076FD00DCE2BA /* 0077.swift */; };
 		044760F01D801BD800687CFE /* DispatchQueueExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044760EF1D801BD800687CFE /* DispatchQueueExtensions.swift */; };
-		0458B4AE1DB77CD20044DE69 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0458B4AD1DB77CD20044DE69 /* UIImageExtensions.swift */; };
 		0458B4B01DB77D170044DE69 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0458B4AF1DB77D170044DE69 /* UIColorExtensions.swift */; };
-		045B5FEE1D536139003B0B7B /* TimerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045B5FED1D536139003B0B7B /* TimerExtension.swift */; };
 		04714DC91DD5997A009503DB /* 首页-达人印象.png in Resources */ = {isa = PBXBuildFile; fileRef = 04714DC81DD5997A009503DB /* 首页-达人印象.png */; };
 		04772B171D23D40F0036B20B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04772B161D23D40F0036B20B /* AppDelegate.swift */; };
 		04772B191D23D40F0036B20B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04772B181D23D40F0036B20B /* ViewController.swift */; };
@@ -32,11 +31,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04036E861DDAD92300F3E448 /* RuntimeExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RuntimeExtensions.swift; sourceTree = "<group>"; };
 		043962771DB076FD00DCE2BA /* 0077.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 0077.swift; sourceTree = "<group>"; };
 		044760EF1D801BD800687CFE /* DispatchQueueExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchQueueExtensions.swift; sourceTree = "<group>"; };
-		0458B4AD1DB77CD20044DE69 /* UIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		0458B4AF1DB77D170044DE69 /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
-		045B5FED1D536139003B0B7B /* TimerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerExtension.swift; sourceTree = "<group>"; };
 		04714DC81DD5997A009503DB /* 首页-达人印象.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页-达人印象.png"; sourceTree = "<group>"; };
 		04772B131D23D40F0036B20B /* SwiftExtensions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftExtensions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04772B161D23D40F0036B20B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -107,16 +105,15 @@
 			children = (
 				048BFF0B1DCC76FE0010AB6C /* SwiftMD5.swift */,
 				04772B471D23D45F0036B20B /* Literally.swift */,
+				04E860141D530DFB004C1464 /* CGRectExtensions.swift */,
 				04E860101D530D70004C1464 /* UIViewExtensions.swift */,
 				04E860121D530DCF004C1464 /* StringExtensions.swift */,
 				04F63D5C1DD1B589004C89E2 /* DataExtensions.swift */,
-				04E860141D530DFB004C1464 /* CGRectExtensions.swift */,
 				04E860161D530F36004C1464 /* NumberExtensions.swift */,
-				045B5FED1D536139003B0B7B /* TimerExtension.swift */,
 				04A906031D80121500753C56 /* UILabelExtensions.swift */,
 				044760EF1D801BD800687CFE /* DispatchQueueExtensions.swift */,
-				0458B4AD1DB77CD20044DE69 /* UIImageExtensions.swift */,
 				0458B4AF1DB77D170044DE69 /* UIColorExtensions.swift */,
+				04036E861DDAD92300F3E448 /* RuntimeExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -166,7 +163,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = kagenZhao;
 				TargetAttributes = {
 					04772B121D23D40F0036B20B = {
@@ -223,14 +220,13 @@
 				04772B171D23D40F0036B20B /* AppDelegate.swift in Sources */,
 				04A906041D80121500753C56 /* UILabelExtensions.swift in Sources */,
 				04CCF3A91D9125B900AE5334 /* 002.swift in Sources */,
-				045B5FEE1D536139003B0B7B /* TimerExtension.swift in Sources */,
 				04772B481D23D45F0036B20B /* Literally.swift in Sources */,
 				04CCF3A71D911EB000AE5334 /* 001.swift in Sources */,
 				0458B4B01DB77D170044DE69 /* UIColorExtensions.swift in Sources */,
 				04E860171D530F36004C1464 /* NumberExtensions.swift in Sources */,
-				0458B4AE1DB77CD20044DE69 /* UIImageExtensions.swift in Sources */,
 				048BFF0C1DCC76FE0010AB6C /* SwiftMD5.swift in Sources */,
 				04CCF3C91D9131F700AE5334 /* 003.swift in Sources */,
+				04036E871DDAD92300F3E448 /* RuntimeExtensions.swift in Sources */,
 				044760F01D801BD800687CFE /* DispatchQueueExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,8 +268,10 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -319,8 +317,10 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

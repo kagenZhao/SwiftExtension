@@ -8,111 +8,137 @@
 
 import UIKit
 
+private var kz_isNeedInitKey: Void?
+
 public extension UIColor {
-    private class KZ {
-        fileprivate var kz_red: CGFloat? = nil
-        fileprivate var kz_green: CGFloat? = nil
-        fileprivate var kz_blue: CGFloat? = nil
-        fileprivate var kz_alpha: CGFloat? = nil
-        init(r: CGFloat? = nil, g: CGFloat? = nil,  b: CGFloat? = nil, a: CGFloat? = nil) {
-            kz_red = r
-            kz_green = g
-            kz_blue = b
-            kz_alpha = a
-        }
-    }
-    private static var KZKey = "com.kagen.color.kz.key"
-    private var _kz:KZ {
+
+    private var kz_hasInitialized: Bool {
         set {
-            objc_setAssociatedObject(self, &UIColor.KZKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &kz_isNeedInitKey, newValue, .OBJC_ASSOCIATION_ASSIGN)
         }
         get {
-            return (objc_getAssociatedObject(self, &UIColor.KZKey) as? UIColor.KZ ?? KZ())!
+            let value = objc_getAssociatedObject(self, &kz_isNeedInitKey) as? Bool
+            
+            return value != nil ? value! : false
         }
     }
     
-    private convenience init(newKz: KZ) {
-        let r = (newKz.kz_red ?? 0) / 255.0
-        let g = (newKz.kz_green ?? 0) / 255.0
-        let b = (newKz.kz_blue ?? 0) / 255.0
-        let a = newKz.kz_alpha ?? 1
-        if #available(iOS 10, *) {
-            self.init(displayP3Red: r, green: g, blue: b, alpha: a)
-        } else {
-            self.init(red: r, green: g, blue: b, alpha: a)
+    private func kz_needInit() -> UIColor {
+        
+        if !self.kz_hasInitialized {
+            
+            let color = UIColor(ciColor: CIColor(red: 0, green: 0, blue: 0, alpha: 1))
+            
+            color.kz_hasInitialized = true
+            
+            return color
         }
-        self._kz = newKz
+        return self
     }
-    
-    public class var kz: UIColor { return UIColor.white }
     
     /// Green
-    ///
     /// - parameter green: 0 <= green <= 255
-    ///
-    /// - returns: KZ is UIColor
     public func green(_ green: CGFloat) -> UIColor {
-        assert(green >= 0 && green <= 255)
-        let newKz = self._kz
-        newKz.kz_green = green
-        self._kz = newKz
-        return UIColor.init(newKz: self._kz)
+        
+        let green = min(max(0, green), 255)
+        
+        var color = kz_needInit()
+        
+        let ciColor = CIColor(red:   color.ciColor.red,
+                              green: green / 255.0,
+                              blue:  color.ciColor.blue,
+                              alpha: color.ciColor.alpha)
+        
+        color = UIColor(ciColor: ciColor)
+        
+        color.kz_hasInitialized = true
+        
+        return color
     }
     
     /// Red
-    ///
     /// - parameter green: 0 <= red <= 255
-    ///
-    /// - returns:UIColor
     public func red(_ red: CGFloat) -> UIColor {
-        assert(red >= 0 && red <= 255)
-        let newKz = self._kz
-        newKz.kz_red = red
-        self._kz = newKz
-        return UIColor.init(newKz: self._kz)
+        
+        let red = min(max(0, red), 255)
+        
+        var color = kz_needInit()
+        
+        let ciColor = CIColor(red:   red / 255.0,
+                              green: color.ciColor.green,
+                              blue:  color.ciColor.blue,
+                              alpha: color.ciColor.alpha)
+        
+        color = UIColor(ciColor: ciColor)
+        
+        color.kz_hasInitialized = true
+        
+        return color
     }
     
     /// Blue
-    ///
     /// - parameter green: 0 <= blue <= 255
-    ///
-    /// - returns: KZ is UIColor
     public func blue(_ blue: CGFloat) -> UIColor {
-        assert(blue >= 0 && blue <= 255)
-        let newKz = self._kz
-        newKz.kz_blue = blue
-        self._kz = newKz
-        return UIColor.init(newKz: self._kz)
+        
+        let blue = min(max(0, blue), 255)
+        
+        var color = kz_needInit()
+        
+        let ciColor = CIColor(red:   color.ciColor.red,
+                              green: color.ciColor.green,
+                              blue:  blue / 255.0,
+                              alpha: color.ciColor.alpha)
+        
+        color = UIColor(ciColor: ciColor)
+        
+        color.kz_hasInitialized = true
+        
+        return color
     }
     
     /// Alpha
-    ///
     /// - parameter green: 0 <= alpha <= 1
-    ///
-    /// - returns: KZ is UIColor
     public func alpha(_ alpha: CGFloat) -> UIColor {
-        assert(alpha >= 0 && alpha <= 1)
-        let newKz = self._kz
-        newKz.kz_alpha = alpha
-        self._kz = newKz
-        return UIColor.init(newKz: self._kz)
+        
+        let alpha = min(max(0, alpha), 1)
+        
+        var color = kz_needInit()
+        
+        let ciColor = CIColor(red:   color.ciColor.red,
+                              green: color.ciColor.green,
+                              blue:  color.ciColor.blue,
+                              alpha: alpha)
+        
+        color = UIColor(ciColor: ciColor)
+        
+        color.kz_hasInitialized = true
+        
+        return color
     }
     
     
     /// HEX Color
-    ///
     /// - parameter hex: hex number
     /// example: 0x000000 ... 0xffffff
-    ///
-    /// - returns: KZ is UIColor
-    public func hex(_ hex: Int) -> UIColor?{
-        assert(hex >= 0x000000 && hex <= 0xffffff)
-        let newKz = self._kz
-        newKz.kz_red = CGFloat((hex >> 16) & 0xff)
-        newKz.kz_green = CGFloat((hex >> 8) & 0xff)
-        newKz.kz_blue = CGFloat(hex & 0xff)
-        self._kz = newKz
-        return UIColor.init(newKz: self._kz)
+    public func hex(_ hex: Int) -> UIColor? {
+        
+        let hex = min(max(0x000000, hex), 0xffffff)
+        
+        var color = kz_needInit()
+        
+        let ciColor = CIColor(red:   CGFloat((hex >> 16) & 0xff),
+                              green: CGFloat((hex >> 8) & 0xff),
+                              blue:  CGFloat(hex & 0xff),
+                              alpha: color.ciColor.alpha)
+        
+        color = UIColor(ciColor: ciColor)
+        
+        color.kz_hasInitialized = true
+        
+        return color
     }
+    
+    
+    
     
 }

@@ -8,20 +8,10 @@
 
 import UIKit
 
-enum MyEnum {
-    case Case1(Int,Float)
-    case Case2(Float,Int)
-}
-
+var key: Void?
 class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        _ = UIView(frame: [0, 0, 0, 0])
-        
     }
-    
 }
-
-
-

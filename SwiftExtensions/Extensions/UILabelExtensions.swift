@@ -14,34 +14,41 @@ public enum UILabelVerticalAlignment: Int{
     case bottom
 }
 
-private var kUILabelVerticalAlignmentKey: String = "kUILabelVerticalAlignmentKey";
+private var kUILabelVerticalAlignmentKey: Void?
 
 extension UILabel {
-   open var verticalAlignment: UILabelVerticalAlignment {
+    open var verticalAlignment: UILabelVerticalAlignment {
         set {
-            objc_setAssociatedObject(self, &kUILabelVerticalAlignmentKey, NSNumber.init(value: newValue.rawValue), .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-            self.setNeedsDisplay()
+            objc_setAssociatedObject(self, &kUILabelVerticalAlignmentKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            setNeedsDisplay()
         }
         get {
-            let number = (objc_getAssociatedObject(self, &kUILabelVerticalAlignmentKey) as? NSNumber)
-            return UILabelVerticalAlignment(rawValue: (number != nil) ? number!.intValue : 0)!
+            let alignment = (objc_getAssociatedObject(self, &kUILabelVerticalAlignmentKey) as? UILabelVerticalAlignment)
+            return alignment != nil ? alignment! : .middle
         }
     }
     
     open override class func initialize() {
-        DispatchQueue.once(token: kUILabelVerticalAlignmentKey, block: {
-            let m1 = class_getInstanceMethod(UILabel.self, #selector(textRect(forBounds:limitedToNumberOfLines:)))
-            let m2 = class_getInstanceMethod(UILabel.self, #selector(swz_textRect(forBounds:limitedToNumberOfLines:)))
-            let m3 = class_getInstanceMethod(UILabel.self, #selector(drawText(in:)))
-            let m4 = class_getInstanceMethod(UILabel.self, #selector(swz_drawText(in:)))
-            method_exchangeImplementations(m1, m2)
-            method_exchangeImplementations(m3, m4)
+        DispatchQueue.once(token: &kUILabelVerticalAlignmentKey, block: {
+            
+//            runtimeExchange(class: UILabel.self, selectors: [(from: #selector(textRect(forBounds:limitedToNumberOfLines:)),
+//                                                              to:   #selector(swz_textRect(forBounds:limitedToNumberOfLines:))),
+//                                                             (from: #selector(drawText(in:)),
+//                                                              to:   #selector(swz_drawText(in:)))])
+            
+            runtimeExchange(class: UILabel.self,
+                            from:  #selector(textRect(forBounds:limitedToNumberOfLines:)),
+                            to:    #selector(swz_textRect(forBounds:limitedToNumberOfLines:)))
+            
+            runtimeExchange(class: UILabel.self,
+                            from:  #selector(drawText(in:)),
+                            to:    #selector(swz_drawText(in:)))
         })
     }
     
     @objc private func swz_textRect(forBounds bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect {
         var newRect = swz_textRect(forBounds: bounds, limitedToNumberOfLines: numberOfLines)
-        switch self.verticalAlignment {
+        switch verticalAlignment {
         case .top:
             newRect.origin.y = bounds.origin.y
         case .bottom:
@@ -56,22 +63,3 @@ extension UILabel {
         swz_drawText(in: textRect(forBounds: rect, limitedToNumberOfLines: self.numberOfLines))
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
