@@ -79,7 +79,6 @@ open class ApplicationServices {
     @objc private func application(didEnterBackground notification: Notification) {
         services.forEach { loaderClass in
             let loader = loaderClass.singleInstence() as? ServicesLoaderProtocol
-            debugPrint("Service Loaded - \(NSStringFromClass(loaderClass as! AnyClass))")
             loader?.applicationDidEnterBackground(notification.object as! UIApplication)
         }
     }
@@ -87,7 +86,6 @@ open class ApplicationServices {
     @objc private func application(willEnterForeground notification: Notification) {
         services.forEach { loaderClass in
             let loader = loaderClass.singleInstence() as? ServicesLoaderProtocol
-            debugPrint("Service Loaded - \(NSStringFromClass(loaderClass as! AnyClass))")
             loader?.applicationWillEnterForeground(notification.object as! UIApplication)
         }
     }

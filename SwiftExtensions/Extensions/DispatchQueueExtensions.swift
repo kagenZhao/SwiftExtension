@@ -49,4 +49,22 @@ public extension DispatchQueue {
         
         asyncAfter(deadline: .now() + delay, execute: closure)
     }
+    
+    
+    public func timer(flags: DispatchSource.TimerFlags = [], deadline: DispatchTime = .now(), interval: DispatchTimeInterval, leeway: DispatchTimeInterval = .milliseconds(1), repeat: Bool = true, handler: @escaping @convention(block) () -> ()) -> DispatchSourceTimer {
+        
+        let timer = DispatchSource.makeTimerSource(flags: flags, queue: self)
+        
+        timer.setEventHandler(handler: handler)
+        
+        if `repeat` {
+            
+            timer.scheduleRepeating(deadline: deadline, interval: interval, leeway: leeway)
+        } else {
+            
+            timer.scheduleOneshot(deadline: deadline, leeway: leeway)
+        }
+        
+        return timer
+    }
 }
