@@ -50,8 +50,11 @@ public extension DispatchQueue {
         asyncAfter(deadline: .now() + delay, execute: closure)
     }
     
-    
-    public func timer(flags: DispatchSource.TimerFlags = [], deadline: DispatchTime = .now(), interval: DispatchTimeInterval, leeway: DispatchTimeInterval = .milliseconds(1), repeat: Bool = true, handler: @escaping @convention(block) () -> ()) -> DispatchSourceTimer {
+    public func timer(flags: DispatchSource.TimerFlags = [],
+                      deadline: DispatchTime = .now(),
+                      interval: DispatchTimeInterval,
+                      leeway: DispatchTimeInterval = .milliseconds(1),
+                      repeat: Bool = true, handler: @escaping @convention(block) () -> ()) -> DispatchSourceTimer {
         
         let timer = DispatchSource.makeTimerSource(flags: flags, queue: self)
         
@@ -66,5 +69,16 @@ public extension DispatchQueue {
         }
         
         return timer
+    }
+}
+
+extension DispatchSourceTimer {
+    
+    public func start() {
+        self.resume()
+    }
+    
+    public func stop() {
+        self.cancel()
     }
 }
