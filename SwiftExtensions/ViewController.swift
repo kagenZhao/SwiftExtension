@@ -8,10 +8,10 @@
 
 import UIKit
 
-var key: Void?
+
 class ViewController: UIViewController {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 }
+

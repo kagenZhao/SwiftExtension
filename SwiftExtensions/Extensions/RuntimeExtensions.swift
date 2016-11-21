@@ -29,13 +29,16 @@ public func runtimeExchange(class: AnyClass, selectors: [(from: Selector, to: Se
     }
 }
 
-
 public func runtimeSetAssociated(_ object: Any!, _ key: UnsafeRawPointer!, _ value: Any!, _ policy: objc_AssociationPolicy) {
     objc_setAssociatedObject(object, key, value, policy)
 }
 
 public func runtimeGetAssociated(_ object: Any!, _ key: UnsafeRawPointer!) -> Any! {
     return objc_getAssociatedObject(object, key)
+}
+
+public func runtimeRemoveAssociated(_ object: Any!, _ key: UnsafeRawPointer!) {
+    objc_setAssociatedObject(object, key, nil, .OBJC_ASSOCIATION_ASSIGN)
 }
 
 public func runtimeRemoveAllAssociated(_ object: Any!) {
