@@ -10,10 +10,14 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    var timer: DispatchSourceTimer!
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
-
+        timer = DispatchQueue.global().timer(interval: .seconds(1), handler: {
+           _ = AppMemoryInfo.usage
+        })
+        timer.start()
         return true
     }
 }

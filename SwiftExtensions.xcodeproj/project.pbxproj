@@ -18,6 +18,7 @@
 		04772B1E1D23D40F0036B20B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04772B1D1D23D40F0036B20B /* Assets.xcassets */; };
 		04772B211D23D40F0036B20B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04772B1F1D23D40F0036B20B /* LaunchScreen.storyboard */; };
 		04772B481D23D45F0036B20B /* Literally.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04772B471D23D45F0036B20B /* Literally.swift */; };
+		0487A0AD1DE4204B004FAA15 /* AppMemoryInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0487A0AC1DE4204B004FAA15 /* AppMemoryInfo.m */; };
 		048BFF0C1DCC76FE0010AB6C /* SwiftMD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048BFF0B1DCC76FE0010AB6C /* SwiftMD5.swift */; };
 		04A906041D80121500753C56 /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A906031D80121500753C56 /* UILabelExtensions.swift */; };
 		04CCF3A71D911EB000AE5334 /* 001.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CCF3A61D911EB000AE5334 /* 001.swift */; };
@@ -49,6 +50,7 @@
 		04772B201D23D40F0036B20B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04772B221D23D40F0036B20B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04772B471D23D45F0036B20B /* Literally.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Literally.swift; sourceTree = "<group>"; };
+		0487A0AC1DE4204B004FAA15 /* AppMemoryInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppMemoryInfo.m; sourceTree = "<group>"; };
 		048BFF0B1DCC76FE0010AB6C /* SwiftMD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftMD5.swift; sourceTree = "<group>"; };
 		04A906031D80121500753C56 /* UILabelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
 		04CCF3A61D911EB000AE5334 /* 001.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 001.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				04E950EE1DE2952700B2E926 /* AppDelegateExtensions.swift */,
 				04E950F01DE2958B00B2E926 /* UIViewControllerExtensions.swift */,
 				04E950F21DE29CBE00B2E926 /* AppMemoryInfo.swift */,
+				0487A0AC1DE4204B004FAA15 /* AppMemoryInfo.m */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 				04E860151D530DFB004C1464 /* CGRectExtensions.swift in Sources */,
 				04E950EB1DDED21900B2E926 /* ArrayExtensions.swift in Sources */,
 				04E860111D530D70004C1464 /* UIViewExtensions.swift in Sources */,
+				0487A0AD1DE4204B004FAA15 /* AppMemoryInfo.m in Sources */,
 				043962781DB076FD00DCE2BA /* 0077.swift in Sources */,
 				04E860131D530DCF004C1464 /* StringExtensions.swift in Sources */,
 				04F63D5D1DD1B589004C89E2 /* DataExtensions.swift in Sources */,
