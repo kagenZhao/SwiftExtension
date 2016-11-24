@@ -14,10 +14,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
-        timer = DispatchQueue.global().timer(interval: .seconds(1), handler: {
-           _ = AppMemoryInfo.usage
-        })
-        timer.start()
+        
+//        AppInfo.Memory.log()
+//        print("totle: \(AppInfo.Disk.appUsage(NSHomeDirectory(), .decimal(.gb))))")
+        print("available: \(AppInfo.Disk.deviceAvailable())")
         return true
     }
 }
