@@ -60,10 +60,17 @@ extension CGRect: ExpressibleByArrayLiteral {
     
     public init(arrayLiteral elements: Element...) {
         
-        guard elements.count == 4 else { self = .zero; return }
+        let x = elements.count > 0 ? elements[0] : 0
         
-        self = .init(x: elements[0], y: elements[1], width: elements[2], height: elements[3])
+        let y = elements.count > 1 ? elements[1] : 0
+        
+        let w = elements.count > 2 ? elements[2] : 0
+        
+        let h = elements.count > 3 ? elements[3] : 0
+        
+        self = .init(x: x, y: y, width: w, height: h)
     }
 }
+
 
 

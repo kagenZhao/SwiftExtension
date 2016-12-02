@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 // MARK: - Div
 public extension DispatchQueue {
     
@@ -20,30 +19,25 @@ public extension DispatchQueue {
     
     public static var background: DispatchQueue { return DispatchQueue.global(qos: .background) }
     
-    private static var _onceTracker_token = [UnsafeRawPointer]()
+    private static var _tokens: Set<UnsafeRawPointer> = []
     
-    private static var _onceTracker_keys = [String]()
     
-    public class func once(token: UnsafeRawPointer!, block: (Void)->Void) {
+    /// 替代 OC-DispatchOnce
+    /// 之所以不用String作为identifier, 个人认为也许在多人开发中 会无意间用到同一个字符串, 用 pointer 比较保险
+    /// - Parameters:
+    ///   - token: identifier
+    ///   - closure: execute
+    public class func once(_ token: UnsafeRawPointer, execute closure: (() -> ())) {
         
         objc_sync_enter(self); defer { objc_sync_exit(self) }
         
-        guard !_onceTracker_token.contains(token) else { return }
+        guard !_tokens.contains(token) else { return }
         
-        _onceTracker_token.append(token)
+        _tokens.insert(token)
         
-        block()
+        closure()
     }
-    
-    public class func once(key: String!, block: () -> ()) {
-        objc_sync_enter(self); defer { objc_sync_exit(self) }
-        
-        guard !_onceTracker_keys.contains(key) else { return }
-        
-        _onceTracker_keys.append(key)
-        
-        block()
-    }
+
     
     public func after(delay: TimeInterval, execute closure: @escaping () -> ()) {
         
@@ -72,7 +66,9 @@ public extension DispatchQueue {
     }
 }
 
-extension DispatchSourceTimer {
+
+/// 给resume 和 cancel 起个别名 便于 阅读
+public extension DispatchSourceTimer {
     
     public func start() {
         self.resume()

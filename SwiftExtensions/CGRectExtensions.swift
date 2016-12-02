@@ -9,6 +9,7 @@
 import UIKit
 
 public protocol KZRectProcotol {
+    
     var left:   CGFloat { get set }
     var right:  CGFloat { get set }
     var top:    CGFloat { get set }

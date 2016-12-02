@@ -38,6 +38,7 @@ public extension UIColor {
     
     /// Green
     /// - parameter green: 0 <= green <= 255
+    public class func green(_ green: CGFloat) -> UIColor { return UIColor().green(green) }
     public func green(_ green: CGFloat) -> UIColor {
         
         let green = min(max(0, green), 255)
@@ -58,6 +59,7 @@ public extension UIColor {
     
     /// Red
     /// - parameter green: 0 <= red <= 255
+    public class func red(_ red: CGFloat) -> UIColor { return UIColor().red(red) }
     public func red(_ red: CGFloat) -> UIColor {
         
         let red = min(max(0, red), 255)
@@ -78,6 +80,7 @@ public extension UIColor {
     
     /// Blue
     /// - parameter green: 0 <= blue <= 255
+    public class func blue(_ blue: CGFloat) -> UIColor { return UIColor().blue(blue) }
     public func blue(_ blue: CGFloat) -> UIColor {
         
         let blue = min(max(0, blue), 255)
@@ -98,6 +101,7 @@ public extension UIColor {
     
     /// Alpha
     /// - parameter green: 0 <= alpha <= 1
+    public class func alpha(_ alpha: CGFloat) -> UIColor { return UIColor().alpha(alpha) }
     public func alpha(_ alpha: CGFloat) -> UIColor {
         
         let alpha = min(max(0, alpha), 1)
@@ -120,6 +124,7 @@ public extension UIColor {
     /// HEX Color
     /// - parameter hex: hex number
     /// example: 0x000000 ... 0xffffff
+    public class func hex(_ hex: Int) -> UIColor? { return UIColor().hex(hex) }
     public func hex(_ hex: Int) -> UIColor? {
         
         let hex = min(max(0x000000, hex), 0xffffff)
@@ -137,8 +142,4 @@ public extension UIColor {
         
         return color
     }
-    
-    
-    
-    
 }

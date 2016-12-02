@@ -10,45 +10,65 @@ import UIKit
 
 
 extension UIViewController {
-    public static var rootVC: UIViewController {
+    
+    public static var root: UIViewController {
+        
         guard let root = UIApplication.shared.windows[0].rootViewController else {
+            
             fatalError("app has no root view controller")
         }
         return root
     }
     
-    public static var topVC: UIViewController {
-        return rootVC.topPersentVC
+    public static var top: UIViewController {
+        
+        return root.topPersent
     }
     
-    public var topPersentVC: UIViewController {
+    public var topPersent: UIViewController {
+        
         var vc = self
+        
         if vc.isKind(of: UINavigationController.self) {
+            
             if let top = (vc as! UINavigationController).topViewController {
+                
                 vc = top
             }
         }
         
         while vc.presentedViewController != nil {
+            
             vc = vc.presentedViewController!
         }
         
         if vc.presentedViewController == nil && !type(of: vc).isSubclass(of: UINavigationController.self) {
+            
            return vc
+            
         } else {
-            return vc.topPersentVC
+            
+            return vc.topPersent
         }
     }
 }
 
 extension UIView {
+    
     public var parentVC: UIViewController? {
+        
         var view = self
+        
         var responder: UIResponder?
+        
         while view.superview != nil {
+            
             view = view.superview!
+            
             responder = view.next
+            
             if responder != nil, responder!.isKind(of: UIViewController.self) {
+                
                 break
             }
         }

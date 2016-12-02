@@ -1,21 +1,17 @@
 //
 //  ViewController.swift
-//  SwiftExtensions
+//  SwiftExtensionsExample
 //
-//  Created by zhaoguoqing on 16/6/29.
-//  Copyright © 2016年 kagenZhao. All rights reserved.
+//  Created by Kagen Zhao on 2016/12/2.
+//  Copyright © 2016年 Kagen Zhao. All rights reserved.
 //
 
 import UIKit
-import WebKit
 
 class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
-        
-        
     }
 }
+
 

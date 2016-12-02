@@ -9,7 +9,7 @@
 import Foundation
 
 @discardableResult
-@_silgen_name("memoryUsage") // 少量oc 或者 c 文件可以不用桥接文件, 用 @_silgen_name("functionName") 代替
+@_silgen_name("memoryUsage") // 少量 oc 或者 c 文件可以不用桥接文件, 用 @_silgen_name("functionName") 代替
 private func memoryUsage() -> UInt64
 
 @_silgen_name("totalMemory")

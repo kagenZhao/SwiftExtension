@@ -203,12 +203,14 @@ func kz_md5(bytes: [UInt8]) -> KZDigest {
 func encodeMD5Digest(digest: [UInt8]) -> String {
     assert(digest.count == 16)
     let str = digest.reduce("") { str, byte in
+        print("str: \(str) ----------- byte: \(byte)")
         let radix = 16
         let s = String(byte, radix: radix)
-        // Ensure byte values less than 16 are padding with a leading 0
         let sum = str + (byte < UInt8(radix) ? "0" : "") + s
         return sum
     }
     return str
 }
+
+
 

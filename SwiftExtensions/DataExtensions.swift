@@ -12,8 +12,8 @@ extension Data {
     
     /// data -> string
     var hexString: String {
-
-        return withUnsafeBytes {
+        
+        return self.withUnsafeBytes {
             
             UnsafeBufferPointer(start: $0, count: count).map { String(format: "%02hhx", $0)}.reduce("", { $0 + $1 })
         }

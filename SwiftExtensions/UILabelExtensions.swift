@@ -16,6 +16,7 @@ public enum UILabelVerticalAlignment: Int{
 
 private var kUILabelVerticalAlignmentKey: Void?
 
+/// 添加label的 垂直对其属性, 默认居中
 extension UILabel {
     open var verticalAlignment: UILabelVerticalAlignment {
         set {
@@ -29,24 +30,20 @@ extension UILabel {
     }
     
     open override class func initialize() {
-        DispatchQueue.once(token: &kUILabelVerticalAlignmentKey, block: {
+        DispatchQueue.once(&kUILabelVerticalAlignmentKey, execute: {
             
-//            runtimeExchange(class: UILabel.self, selectors: [(from: #selector(textRect(forBounds:limitedToNumberOfLines:)),
-//                                                              to:   #selector(swz_textRect(forBounds:limitedToNumberOfLines:))),
-//                                                             (from: #selector(drawText(in:)),
-//                                                              to:   #selector(swz_drawText(in:)))])
+            Runtime.Swizzing.exchange(class: UILabel.self,
+                                      fromSEL: #selector(textRect(forBounds:limitedToNumberOfLines:)),
+                                      toSEL: #selector(swz_textRect(forBounds:limitedToNumberOfLines:)))
             
-            runtimeExchange(class: UILabel.self,
-                            from:  #selector(textRect(forBounds:limitedToNumberOfLines:)),
-                            to:    #selector(swz_textRect(forBounds:limitedToNumberOfLines:)))
-            
-            runtimeExchange(class: UILabel.self,
-                            from:  #selector(drawText(in:)),
-                            to:    #selector(swz_drawText(in:)))
+            Runtime.Swizzing.exchange(class: UILabel.self,
+                                      fromSEL: #selector(drawText(in:)),
+                                      toSEL: #selector(swz_drawText(in:)))
         })
     }
     
     @objc private func swz_textRect(forBounds bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect {
+        
         var newRect = swz_textRect(forBounds: bounds, limitedToNumberOfLines: numberOfLines)
         switch verticalAlignment {
         case .top:

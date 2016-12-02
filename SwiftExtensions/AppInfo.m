@@ -11,9 +11,6 @@
 #include <sys/param.h>
 #include <sys/mount.h>
 
-extern NSString * CTSettingCopyMyPhoneNumber();
-
-
 BOOL memoryInfo(vm_statistics_data_t *vmStats) {
     mach_msg_type_number_t infoCount = HOST_VM_INFO_COUNT;
     kern_return_t kernReturn = host_statistics(mach_host_self(), HOST_VM_INFO, (host_info_t)vmStats, &infoCount);
@@ -25,14 +22,14 @@ void logMemoryInfo() {
         NSProcessInfo *info = [[NSProcessInfo alloc] init];
         printf("***======Memory Log Begin======***\n");
         printf("     Total:         %llu \n", info.physicalMemory);
-        printf("     Free:          %lu  \n", vmStats.free_count * vm_page_size);
-        printf("     Active:        %lu  \n", vmStats.active_count * vm_page_size);
-        printf("     Inactive:      %lu  \n", vmStats.inactive_count * vm_page_size);
-        printf("     Wire:          %lu  \n", vmStats.wire_count * vm_page_size);
-        printf("     Zerofill:      %lu  \n", vmStats.zero_fill_count * vm_page_size);
-        printf("     Reactivations: %lu  \n", vmStats.reactivations * vm_page_size);
-        printf("     Pageins:       %lu  \n", vmStats.pageins * vm_page_size);
-        printf("     Pageouts:      %lu  \n", vmStats.pageouts * vm_page_size);
+        printf("     Free:          %lu  \n", (unsigned long)vmStats.free_count * vm_page_size);
+        printf("     Active:        %lu  \n", (unsigned long)vmStats.active_count * vm_page_size);
+        printf("     Inactive:      %lu  \n", (unsigned long)vmStats.inactive_count * vm_page_size);
+        printf("     Wire:          %lu  \n", (unsigned long)vmStats.wire_count * vm_page_size);
+        printf("     Zerofill:      %lu  \n", (unsigned long)vmStats.zero_fill_count * vm_page_size);
+        printf("     Reactivations: %lu  \n", (unsigned long)vmStats.reactivations * vm_page_size);
+        printf("     Pageins:       %lu  \n", (unsigned long)vmStats.pageins * vm_page_size);
+        printf("     Pageouts:      %lu  \n", (unsigned long)vmStats.pageouts * vm_page_size);
         printf("     Faults:        %u   \n", vmStats.faults);
         printf("     Cow_faults:    %u   \n", vmStats.cow_faults);
         printf("     Lookups:       %u   \n", vmStats.lookups);

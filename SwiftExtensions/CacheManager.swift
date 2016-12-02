@@ -18,10 +18,10 @@ public protocol CacheSourceProtocol {
 
 private var _otherSources: [CacheSourceProtocol] = []
 
-public class CacheManager {
+public struct CacheManager {
     
     @discardableResult
-    public class func add<T: CacheSourceProtocol>(_ otherSource: T) -> CacheManager.Type where T: Equatable  {
+    public static func add<T: CacheSourceProtocol>(_ otherSource: T) -> CacheManager.Type where T: Equatable  {
         
         _otherSources.append(otherSource)
         
@@ -29,7 +29,7 @@ public class CacheManager {
     }
     
     @discardableResult
-    public class func remove<T: CacheSourceProtocol>(_ otherSource: T) -> CacheManager.Type where T: Equatable {
+    public static func remove<T: CacheSourceProtocol>(_ otherSource: T) -> CacheManager.Type where T: Equatable {
         
         _otherSources = _otherSources.filter { $0 is T && ($0 as! T) == otherSource }
         
@@ -37,7 +37,7 @@ public class CacheManager {
     }
     
     
-    public class func clearCache() {
+    public static func clearCache() {
         
         _otherSources.forEach { (source) in
             
@@ -55,7 +55,7 @@ public class CacheManager {
     }
     
     /// KB
-    public class func cacheSize() throws -> UInt {
+    public static func cacheSize() throws -> UInt {
         
         let sizeOfDir = try size(for: NSTemporaryDirectory())
         
@@ -64,7 +64,7 @@ public class CacheManager {
         return sizeOfDir + sizeOfOther
     }
     
-    public class func cacheSizeString() throws -> String {
+    public static func cacheSizeString() throws -> String {
         
         let size = try cacheSize()
         
@@ -75,7 +75,7 @@ public class CacheManager {
         return cacheSizeStr
     }
     
-    public class func size(for folder: String) throws -> UInt {
+    public static func size(for folder: String) throws -> UInt {
         
         let contents = try FileManager.default.contentsOfDirectory(atPath: folder)
         
@@ -91,7 +91,7 @@ public class CacheManager {
         return folderSize
     }
     
-    private class func otherSourceSize() throws -> UInt {
+    private static func otherSourceSize() throws -> UInt {
         
         var folderSize: UInt = 0
         
