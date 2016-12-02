@@ -35,6 +35,7 @@
 		04EDC2EC1DE8104E00CF5FA3 /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EDC2DA1DE8104E00CF5FA3 /* UILabelExtensions.swift */; };
 		04EDC2ED1DE8104E00CF5FA3 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EDC2DB1DE8104E00CF5FA3 /* UIViewControllerExtensions.swift */; };
 		04EDC2EE1DE8104E00CF5FA3 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EDC2DC1DE8104E00CF5FA3 /* UIViewExtensions.swift */; };
+		3D35F4B81DF1BD4300D54DA1 /* UIViewCornerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D35F4B71DF1BD4300D54DA1 /* UIViewCornerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		04EDC2DA1DE8104E00CF5FA3 /* UILabelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
 		04EDC2DB1DE8104E00CF5FA3 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		04EDC2DC1DE8104E00CF5FA3 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		3D35F4B71DF1BD4300D54DA1 /* UIViewCornerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewCornerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 				04EDC2DA1DE8104E00CF5FA3 /* UILabelExtensions.swift */,
 				04EDC2DB1DE8104E00CF5FA3 /* UIViewControllerExtensions.swift */,
 				04EDC2DC1DE8104E00CF5FA3 /* UIViewExtensions.swift */,
+				3D35F4B71DF1BD4300D54DA1 /* UIViewCornerExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				04EDC2DF1DE8104E00CF5FA3 /* AppInfo.swift in Sources */,
 				04EDC2EA1DE8104E00CF5FA3 /* SwiftMD5.swift in Sources */,
 				04EDC2E81DE8104E00CF5FA3 /* RuntimeExtensions.swift in Sources */,
+				3D35F4B81DF1BD4300D54DA1 /* UIViewCornerExtension.swift in Sources */,
 				04EDC2E91DE8104E00CF5FA3 /* StringExtensions.swift in Sources */,
 				04EDC2EE1DE8104E00CF5FA3 /* UIViewExtensions.swift in Sources */,
 				04EDC2E71DE8104E00CF5FA3 /* NumberExtensions.swift in Sources */,
@@ -677,6 +681,7 @@
 				04C8FCB41DF15BC400669322 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		04EDC2AB1DE8103500CF5FA3 /* Build configuration list for PBXProject "SwiftExtensions" */ = {
 			isa = XCConfigurationList;
