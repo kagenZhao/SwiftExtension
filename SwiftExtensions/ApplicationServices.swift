@@ -6,6 +6,9 @@
 //  Copyright © 2016年 kagenZhao. All rights reserved.
 //
 
+
+// 这个类用于解除耦合性， 分离钚相关文件之间的联系， 减少代码的修改；
+
 import Foundation
 import UIKit
 

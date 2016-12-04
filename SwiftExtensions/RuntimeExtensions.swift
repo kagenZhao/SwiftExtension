@@ -73,32 +73,36 @@ public struct Runtime {
     
     public struct Swizzing {
         
-        public static func exchange(class: AnyClass, fromSEL: Selector, toSEL: Selector) {
+        public enum ExchangeMethodType {
+            case instance
+            case `class`
             
-            var oMethod: Method?
+            fileprivate func description() -> String {
+                if self == .instance { return "Instance" }
+                else { return "Class" }
+            }
+        }
+        
+        public static func exchange(class: AnyClass, fromSEL: Selector, toSEL: Selector, type: ExchangeMethodType) {
+            var oMethod: Method!
+            var sMethod: Method!
             
-            var sMethod: Method?
-            
-            if let originInstanceMethod = class_getInstanceMethod(`class`, fromSEL), let swizzingInstanceMethod = class_getInstanceMethod(`class`, toSEL) {
-                
-                oMethod = originInstanceMethod
-                
-                sMethod = swizzingInstanceMethod
-                
-            } else if let originClassMethod = class_getClassMethod(`class`, fromSEL), let swizzingClassMethod = class_getClassMethod(`class`, toSEL) {
-                
-                oMethod = originClassMethod
-                
-                sMethod = swizzingClassMethod
-                
-            } else {
-                
-                oMethod = nil
-                
-                sMethod = nil
+            switch type {
+            case .instance:
+                oMethod = class_getInstanceMethod(`class`, fromSEL)
+                sMethod = class_getInstanceMethod(`class`, toSEL)
+            case .class:
+                oMethod = class_getClassMethod(`class`, fromSEL)
+                sMethod = class_getClassMethod(`class`, toSEL)
             }
             
-            guard let originMethod = oMethod, let swizzingMethod = sMethod else { return }
+            guard let originMethod = oMethod else {
+                fatalError("Notfound the \(type.description()) selector: \(NSStringFromSelector(fromSEL)) in class: \(`class`)")
+            }
+            
+            guard let swizzingMethod = sMethod else {
+                fatalError("Notfound the \(type.description()) selector: \(NSStringFromSelector(toSEL)) in class: \(`class`)")
+            }
             
             let didAddMethod = class_addMethod(`class`, fromSEL, method_getImplementation(swizzingMethod), method_getTypeEncoding(swizzingMethod))
             

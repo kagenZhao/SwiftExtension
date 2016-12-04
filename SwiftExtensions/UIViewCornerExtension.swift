@@ -21,9 +21,11 @@ private func ceilbyunit(_ num: Double, _ unit: inout Double) -> Double {
     return num - modf(num, &unit) + unit
 }
 
+
 private func floorbyunit(_ num: Double, _ unit: inout Double) -> Double {
     return num - modf(num, &unit)
 }
+
 
 private func pixel(_ num: Double) -> Double {
     var unit: Double

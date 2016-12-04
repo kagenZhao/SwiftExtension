@@ -11,7 +11,6 @@ import Foundation
 extension Array where Element: Equatable {
     
     mutating public func remove(_ objc: Element) {
-        
         self = filter { $0 != objc }
     }
 }

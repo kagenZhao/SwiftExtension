@@ -44,6 +44,7 @@ public extension DispatchQueue {
         asyncAfter(deadline: .now() + delay, execute: closure)
     }
     
+    /// 创建GCD timeer
     public func timer(flags: DispatchSource.TimerFlags = [],
                       deadline: DispatchTime = .now(),
                       interval: DispatchTimeInterval,

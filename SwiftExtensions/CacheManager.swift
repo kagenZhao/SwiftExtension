@@ -6,6 +6,8 @@
 //  Copyright © 2016年 kagenZhao. All rights reserved.
 //
 
+// 这个类具用于计算项目文件缓存， 这是一个根类， 只提供了基本的计算和删除， 若要使用 需要自行实现代理。
+
 import Foundation
 
 public protocol CacheSourceProtocol {
