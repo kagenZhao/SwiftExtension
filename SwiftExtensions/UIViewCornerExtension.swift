@@ -1,9 +1,9 @@
 //
-//  KMRTools.swift
-//  iOSTools
+//  UIViewCornerExtension.swift
+//  SwiftExtensions
 //
-//  Created by kagen on 16/5/18.
-//  Copyright © 2016年 kagenMonster. All rights reserved.
+//  Created by Kagen Zhao on 16/8/4.
+//  Copyright © 2016年 kagenZhao. All rights reserved.
 //
 
 import Foundation
@@ -38,7 +38,7 @@ private func pixel(_ num: Double) -> Double {
     return roundbyunit(num, &unit)
 }
 
-extension UIView {
+public extension UIView {
     func addCorner(radius: CGFloat) {
         self.addCorner(radius: radius, borderWidth: 1, backgroundColor: UIColor.clear, borderColor: UIColor.black)
     }
@@ -55,7 +55,7 @@ extension UIView {
         self.insertSubview(imageView, at: 0)
     }
     
-    func drawRectWithRoundedCorner(radius: CGFloat,
+    private func drawRectWithRoundedCorner(radius: CGFloat,
                                               borderWidth: CGFloat,
                                               backgroundColor: UIColor,
                                               borderColor: UIColor) -> UIImage {
@@ -91,13 +91,13 @@ extension UIView {
     }
 }
 
-extension UIImageView {
+public extension UIImageView {
     override func addCorner(radius: CGFloat) {
         self.image = self.image?.drawRectWithRoundedCorner(radius: radius, self.bounds.size)
     }
 }
 
-extension UIImage {
+private extension UIImage {
     func drawRectWithRoundedCorner(radius: CGFloat, _ sizetoFit: CGSize) -> UIImage {
         let rect = CGRect(origin: CGPoint(x: 0, y: 0), size: sizetoFit)
         

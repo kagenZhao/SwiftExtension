@@ -83,7 +83,7 @@ public struct Runtime {
             }
         }
         
-        public static func exchange(class: AnyClass, fromSEL: Selector, toSEL: Selector, type: ExchangeMethodType) {
+        public static func exchange(class: AnyClass, fromSEL: Selector, toSEL: Selector, type: ExchangeMethodType = .instance) {
             var oMethod: Method!
             var sMethod: Method!
             

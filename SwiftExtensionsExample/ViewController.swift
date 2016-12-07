@@ -11,7 +11,27 @@ import UIKit
 class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
     }
 }
 
 
+class vehicle
+{
+    var voice: Double  { return 10 }
+    var description : String
+    {
+        return ("声音为：\(voice)")
+    }
+    func makeNoise() {
+        
+    }
+}
+
+class newVehicle : vehicle
+{
+    override var voice: Double { return 100 }
+    
+}
