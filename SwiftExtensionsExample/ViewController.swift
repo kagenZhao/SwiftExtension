@@ -9,29 +9,24 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet weak var v1: UIView!
+    @IBOutlet weak var v2: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
         
-    }
-}
-
-
-class vehicle
-{
-    var voice: Double  { return 10 }
-    var description : String
-    {
-        return ("声音为：\(voice)")
-    }
-    func makeNoise() {
+        
+        
+        
+        v1.backgroundColor = UIColor(ciColor: CIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1))
+        v2.backgroundColor = #colorLiteral(red: 0.2235294118, green: 0.2235294118, blue: 0.2235294118, alpha: 1)
+        
+        
+        
+        
+        
         
     }
 }
 
-class newVehicle : vehicle
-{
-    override var voice: Double { return 100 }
-    
-}

@@ -131,9 +131,9 @@ public extension UIColor {
         
         var color = kz_needInit()
         
-        let ciColor = CIColor(red:   CGFloat((hex >> 16) & 0xff),
-                              green: CGFloat((hex >> 8) & 0xff),
-                              blue:  CGFloat(hex & 0xff),
+        let ciColor = CIColor(red:   CGFloat((hex >> 16) & 0xff) / 255.0,
+                              green: CGFloat((hex >> 8) & 0xff) / 255.0,
+                              blue:  CGFloat(hex & 0xff) / 255.0,
                               alpha: color.ciColor.alpha)
         
         color = UIColor(ciColor: ciColor)

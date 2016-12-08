@@ -73,6 +73,7 @@ public class ApplicationServices {
 ///     }
 /// }
 @available(iOS 8.0, *)
+
 public extension UIApplicationDelegate {
     
     static func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
