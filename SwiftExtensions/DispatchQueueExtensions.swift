@@ -37,7 +37,6 @@ public extension DispatchQueue {
         
         closure()
     }
-
     
     public func after(delay: TimeInterval, execute closure: @escaping () -> ()) {
         

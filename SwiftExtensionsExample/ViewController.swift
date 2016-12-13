@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SwiftExtensions
+import Alamofire
 
 class ViewController: UIViewController {
     @IBOutlet weak var v1: UIView!
@@ -17,16 +19,11 @@ class ViewController: UIViewController {
         
         
         
-        
-        
         v1.backgroundColor = UIColor(ciColor: CIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1))
         v2.backgroundColor = #colorLiteral(red: 0.2235294118, green: 0.2235294118, blue: 0.2235294118, alpha: 1)
-        
-        
-        
-        
-        
-        
+
     }
 }
+
+
 
