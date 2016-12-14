@@ -8,8 +8,10 @@
 
 import UIKit
 
-public struct Runtime {
-    
+public struct Runtime {}
+
+// MARK: - Association
+extension Runtime {
     public struct Association {
         
         public enum Policy {
@@ -70,6 +72,11 @@ public struct Runtime {
             return objc_getAssociatedObject(objc, key) as? Value
         }
     }
+}
+
+
+// MARK: - Swizzing
+extension Runtime {
     
     public struct Swizzing {
         
@@ -117,4 +124,3 @@ public struct Runtime {
         }
     }
 }
-

@@ -15,7 +15,7 @@ public protocol CacheSourceProtocol {
     /// KB
     func cacheSize() throws -> UInt
     
-    func clearCache()
+    func clearCache() throws
 }
 
 private var _otherSources: [CacheSourceProtocol] = []
@@ -39,21 +39,38 @@ public struct CacheManager {
     }
     
     
-    public static func clearCache() {
+    public static func clearCache(complete: @escaping () -> ()) {
+        let queue = DispatchQueue.global()
+        let group = DispatchGroup()
         
         _otherSources.forEach { (source) in
-            
-            DispatchQueue.global().async {
-                
-                source.clearCache()
+            group.enter()
+            queue.async(group: group) {
+                do {
+                    try source.clearCache()
+                    group.leave()
+                }
+                catch {
+                    debugPrint("source: \(source) cannot clear cache")
+                    group.leave()
+                }
+            }
+        }
+        group.enter()
+        queue.async(group: group) {
+            do {
+                try FileManager.default.removeItem(atPath: NSTemporaryDirectory())
+                group.leave()
+            }
+            catch {
+                debugPrint("chear \"NSTemporaryDirectory\" failed")
+                group.leave()
             }
         }
         
-        DispatchQueue.global().async {
-            
-            do { try FileManager.default.removeItem(atPath: NSTemporaryDirectory()) }
-            catch {}
-        }
+        group.notify(queue: .main, execute: {
+            complete()
+        })
     }
     
     /// KB
