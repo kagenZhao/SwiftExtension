@@ -73,7 +73,4 @@ extension Service: ServicesLoaderProtocol {
     func application(_ application: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) {
         print("success lanch function: <\(#function)>")
     }
-    
-    
-    
 }

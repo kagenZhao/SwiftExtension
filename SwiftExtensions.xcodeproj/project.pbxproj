@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		040738EE1DEFBAB3003D2A4F /* ApplicationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040738ED1DEFBAB3003D2A4F /* ApplicationServices.swift */; };
+		04256E3C1E028A0A008BD205 /* 11.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 04256E3B1E028A0A008BD205 /* 11.jpeg */; };
 		04C8FCA61DF15BC400669322 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8FCA51DF15BC400669322 /* AppDelegate.swift */; };
 		04C8FCA81DF15BC400669322 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8FCA71DF15BC400669322 /* ViewController.swift */; };
 		04C8FCAB1DF15BC400669322 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04C8FCA91DF15BC400669322 /* Main.storyboard */; };
@@ -63,6 +64,7 @@
 
 /* Begin PBXFileReference section */
 		040738ED1DEFBAB3003D2A4F /* ApplicationServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationServices.swift; sourceTree = "<group>"; };
+		04256E3B1E028A0A008BD205 /* 11.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 11.jpeg; sourceTree = "<group>"; };
 		04C8FCA31DF15BC400669322 /* SwiftExtensionsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftExtensionsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04C8FCA51DF15BC400669322 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04C8FCA71DF15BC400669322 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 		04C8FCA41DF15BC400669322 /* SwiftExtensionsExample */ = {
 			isa = PBXGroup;
 			children = (
+				04256E3B1E028A0A008BD205 /* 11.jpeg */,
 				04C8FCA51DF15BC400669322 /* AppDelegate.swift */,
 				04C8FCA71DF15BC400669322 /* ViewController.swift */,
 				04C8FCB61DF15C3200669322 /* Service.swift */,
@@ -318,7 +321,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Kagen Zhao";
 				TargetAttributes = {
 					04C8FCA21DF15BC400669322 = {
@@ -359,6 +362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04C8FCB01DF15BC400669322 /* LaunchScreen.storyboard in Resources */,
+				04256E3C1E028A0A008BD205 /* 11.jpeg in Resources */,
 				04C8FCAD1DF15BC400669322 /* Assets.xcassets in Resources */,
 				04C8FCAB1DF15BC400669322 /* Main.storyboard in Resources */,
 			);
@@ -479,11 +483,11 @@
 				04EDC2DF1DE8104E00CF5FA3 /* AppInfo.swift in Sources */,
 				04EDC2EA1DE8104E00CF5FA3 /* SwiftMD5.swift in Sources */,
 				04EDC2E81DE8104E00CF5FA3 /* RuntimeExtensions.swift in Sources */,
+				040738EE1DEFBAB3003D2A4F /* ApplicationServices.swift in Sources */,
 				3D35F4B81DF1BD4300D54DA1 /* UIViewCornerExtension.swift in Sources */,
 				04EDC2E91DE8104E00CF5FA3 /* StringExtensions.swift in Sources */,
 				04EDC2EE1DE8104E00CF5FA3 /* UIViewExtensions.swift in Sources */,
 				04EDC2E71DE8104E00CF5FA3 /* NumberExtensions.swift in Sources */,
-				040738EE1DEFBAB3003D2A4F /* ApplicationServices.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,6 +525,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FFF75E87410A91966109FE9A /* Pods-SwiftExtensionsExample.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = RK3TNU2KXD;
 				INFOPLIST_FILE = SwiftExtensionsExample/Info.plist;
@@ -537,6 +542,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1A7AA146544107BB6F55AD4E /* Pods-SwiftExtensionsExample.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = RK3TNU2KXD;
 				INFOPLIST_FILE = SwiftExtensionsExample/Info.plist;
@@ -567,6 +573,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -620,6 +627,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

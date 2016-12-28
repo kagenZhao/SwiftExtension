@@ -7,7 +7,8 @@ target 'SwiftExtensions' do
   pod 'Alamofire'
   pod 'RxSwift'
   pod 'RxCocoa'
-
+  pod 'RxDataSources', '~> 1.0.0'
+  
 end
 
 target 'SwiftExtensionsExample' do
@@ -16,4 +17,5 @@ target 'SwiftExtensionsExample' do
   pod 'Alamofire'
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'RxDataSources', '~> 1.0.0'
 end

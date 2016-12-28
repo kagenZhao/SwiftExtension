@@ -10,14 +10,21 @@
 import UIKit
 import SwiftExtensions
 import Alamofire
+import RxSwift
+import RxCocoa
+import RxDataSources
 
 class ViewController: UIViewController {
-    @IBOutlet weak var v1: UIView!
-    @IBOutlet weak var v2: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+      
         
-
+        
+    
+        
     }
 }
+
+
+
