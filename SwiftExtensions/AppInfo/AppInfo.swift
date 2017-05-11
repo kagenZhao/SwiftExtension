@@ -71,6 +71,9 @@ public enum ByteStyle: Int {
 
 public struct AppInfo {
     
+    @_silgen_name("getIpAddress")
+    public static func getIpAddress() -> String
+    
     public struct Memory {
         
         public static func appUsage(_ style: CountStyle = .decimal(.bt)) -> (value: Double, string: String) {

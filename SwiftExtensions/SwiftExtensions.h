@@ -2,8 +2,8 @@
 //  SwiftExtensions.h
 //  SwiftExtensions
 //
-//  Created by Kagen Zhao on 2016/11/25.
-//  Copyright © 2016年 Kagen Zhao. All rights reserved.
+//  Created by 赵国庆 on 2017/5/11.
+//  Copyright © 2017年 kagenZhao. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

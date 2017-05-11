@@ -72,5 +72,19 @@ extension CGRect: ExpressibleByArrayLiteral {
     }
 }
 
+extension CGPoint: ExpressibleByArrayLiteral {
+    
+    public typealias Element = CGFloat
+    
+    public init(arrayLiteral elements: Element...) {
+        
+        let x = elements.count > 0 ? elements[0] : 0
+        
+        let y = elements.count > 1 ? elements[1] : 0
+        
+        self = .init(x: x, y: y)
+    }
+}
+
 
 
