@@ -8,11 +8,14 @@
 
 import UIKit
 
-public struct Runtime {}
+public struct Runtime {
+    private init() {}
+}
 
 // MARK: - Association
 extension Runtime {
     public struct Association {
+        private init() {}
         
         public enum Policy {
             
@@ -79,6 +82,7 @@ extension Runtime {
 extension Runtime {
     
     public struct Swizzing {
+        private init() {}
         
         public enum ExchangeMethodType {
             case instance

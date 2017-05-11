@@ -6,7 +6,12 @@
 //
 //
 
-struct KZDigest {
+
+
+/* 
+ Copied from Github
+ */
+struct Digest {
     let digest: [UInt8]
     
     init(_ digest: [UInt8]) {
@@ -19,28 +24,28 @@ struct KZDigest {
     }
 }
 
-private func kz_F(_ b: UInt32, _ c: UInt32, _ d: UInt32) -> UInt32 {
+private func F(_ b: UInt32, _ c: UInt32, _ d: UInt32) -> UInt32 {
     return (b & c) | ((~b) & d)
 }
 
-private func kz_G(_ b: UInt32, _ c: UInt32, _ d: UInt32) -> UInt32 {
+private func G(_ b: UInt32, _ c: UInt32, _ d: UInt32) -> UInt32 {
     return (b & d) | (c & (~d))
 }
 
-private func kz_H(_ b: UInt32, _ c: UInt32, _ d: UInt32) -> UInt32 {
+private func H(_ b: UInt32, _ c: UInt32, _ d: UInt32) -> UInt32 {
     return b ^ c ^ d
 }
 
-private func kz_I(_ b: UInt32, _ c: UInt32, _ d: UInt32) -> UInt32 {
+private func I(_ b: UInt32, _ c: UInt32, _ d: UInt32) -> UInt32 {
     return c ^ (b | (~d))
 }
 
-private func kz_rotateLeft(x: UInt32, by: UInt32) -> UInt32 {
+private func rotateLeft(x: UInt32, by: UInt32) -> UInt32 {
     return ((x << by) & 0xFFFFFFFF) | (x >> (32 - by))
 }
 
 // MARK: - Calculating a MD5 digest of bytes from bytes
-func kz_md5(bytes: [UInt8]) -> KZDigest {
+func SwiftMD5_md5(bytes: [UInt8]) -> Digest {
     // Initialization
     let s: [UInt32] = [
         7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22,
@@ -134,16 +139,16 @@ func kz_md5(bytes: [UInt8]) -> KZDigest {
             var g: Int = 0
             
             if i < 16 {
-                f = kz_F(B, C, D)
+                f = F(B, C, D)
                 g = i
             } else if i >= 16 && i <= 31 {
-                f = kz_G(B, C, D)
+                f = G(B, C, D)
                 g = ((5*i + 1) % 16)
             } else if i >= 32 && i <= 47 {
-                f = kz_H(B, C, D)
+                f = H(B, C, D)
                 g = ((3*i + 5) % 16)
             } else if i >= 48 && i <= 63 {
-                f = kz_I(B, C, D)
+                f = I(B, C, D)
                 g = ((7*i) % 16)
             }
             
@@ -154,7 +159,7 @@ func kz_md5(bytes: [UInt8]) -> KZDigest {
             let x = A &+ f &+ K[i] &+ M[g]
             let by = s[i]
             
-            B = B &+ kz_rotateLeft(x: x, by: by)
+            B = B &+ rotateLeft(x: x, by: by)
             A = dTemp
         }
         
@@ -196,7 +201,7 @@ func kz_md5(bytes: [UInt8]) -> KZDigest {
     
     assert(digest.count == 16)
     
-    return KZDigest(digest)
+    return Digest(digest)
 }
 
 // MARK: - Encoding a MD5 digest of bytes to a string

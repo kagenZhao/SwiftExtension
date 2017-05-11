@@ -20,6 +20,7 @@ private var kUILabelVerticalAlignmentKey: Void?
 extension UILabel {
     open var verticalAlignment: UILabelVerticalAlignment {
         set {
+            type(of: self)._initialize()
             objc_setAssociatedObject(self, &kUILabelVerticalAlignmentKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             setNeedsDisplay()
         }
@@ -29,14 +30,14 @@ extension UILabel {
         }
     }
     
-    open override class func initialize() {
+    private class func _initialize() {
         DispatchQueue.once(&kUILabelVerticalAlignmentKey, execute: {
             
-            Runtime.Swizzing.exchange(class: UILabel.self,
+            Runtime.Swizzing.exchange(class: self,
                                       fromSEL: #selector(textRect(forBounds:limitedToNumberOfLines:)),
                                       toSEL: #selector(swz_textRect(forBounds:limitedToNumberOfLines:)))
             
-            Runtime.Swizzing.exchange(class: UILabel.self,
+            Runtime.Swizzing.exchange(class: self,
                                       fromSEL: #selector(drawText(in:)),
                                       toSEL: #selector(swz_drawText(in:)))
         })

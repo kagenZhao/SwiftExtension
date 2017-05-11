@@ -7,6 +7,7 @@ target 'SwiftExtensions' do
   pod 'Alamofire'
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'SwiftTryCatch'
 
 end
 
@@ -16,4 +17,5 @@ target 'SwiftExtensionsExample' do
   pod 'Alamofire'
   pod 'RxSwift'
   pod 'RxCocoa'
+#  pod 'Texture'
 end

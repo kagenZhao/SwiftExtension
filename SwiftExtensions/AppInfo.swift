@@ -114,10 +114,10 @@ public struct AppInfo {
         }
     }
     
-    public struct CPU {
-        
-       
-    }
+//    public struct CPU {
+//        
+//       
+//    }
     
     fileprivate static func fix(_ s: String) -> String {
         var str = s

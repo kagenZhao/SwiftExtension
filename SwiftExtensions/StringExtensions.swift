@@ -38,13 +38,11 @@ public extension String {
     
     public static func newUUID() -> String {
         
-        let uuidRef = CFUUIDCreate(nil)
+        guard let uuidRef = CFUUIDCreate(nil) else { fatalError() }
         
-        let uuidStr = CFUUIDCreateString(nil, uuidRef)
+        guard let uuidStr = CFUUIDCreateString(nil, uuidRef) else { fatalError() }
         
-        let uuid: String = uuidStr as! String
-        
-        return uuid
+        return uuidStr as String
     }
 }
 
@@ -54,7 +52,7 @@ public extension String {
         
         let bytes = [UInt8](self.utf8)
         
-        let digest = kz_md5(bytes: bytes)
+        let digest = SwiftMD5_md5(bytes: bytes)
         
         return encodeMD5Digest(digest: digest.digest)
     }

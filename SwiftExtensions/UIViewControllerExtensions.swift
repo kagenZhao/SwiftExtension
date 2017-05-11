@@ -1,4 +1,4 @@
-//
+
 //  UIViewControllerExtensions.swift
 //  SwiftExtensions
 //
@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SwiftTryCatch
 
 extension UIViewController {
     
@@ -44,7 +44,7 @@ extension UIViewController {
         
         if vc.presentedViewController == nil && !type(of: vc).isSubclass(of: UINavigationController.self) {
             
-           return vc
+            return vc
             
         } else {
             
@@ -73,5 +73,55 @@ extension UIView {
             }
         }
         return responder as? UIViewController
+    }
+}
+
+
+private  var _viewControllersStoryboardCache: NSCache<NSString, NSString> = { return  NSCache<NSString, NSString>() }()
+private  var _viewControllersStoryboardList: [String] = {
+    let tempArr = Bundle.main.paths(forResourcesOfType: "storyboardc", inDirectory: nil)
+    return tempArr.map({ (($0 as NSString).lastPathComponent as NSString).deletingPathExtension }).filter({ $0.range(of: "~") == nil })
+}()
+
+// MARK: - 查找storyboard中的对应类的实例
+extension UIViewController {
+    
+    private static var cache: NSCache<NSString, NSString> { return _viewControllersStoryboardCache }
+    private static var storyboardList: [String] { return _viewControllersStoryboardList }
+    
+    /// 在项目文件中寻找对应当前类的 controller 实例并返回
+    ///     对查找过的storyboard做了缓存处理, 二次查找不消耗性能
+    ///
+    /// - Returns: 返回实例
+    public static func instanceFromStoryboard() -> Self? {
+        let controllerName = NSStringFromClass(self).components(separatedBy: ".").last!
+        if let storyboardName = cache.object(forKey: controllerName as NSString) {
+            guard storyboardName.length > 0 else { return nil }
+            return _instanceFromStoryboard(storyboardName: storyboardName as String, identifier: controllerName)
+        } else {
+            return _instanceFormCacheStoryBoardList(identifier: controllerName)
+        }
+    }
+    
+    private static func _instanceFormCacheStoryBoardList<T: UIViewController>(identifier: String) -> T? {
+        for name in storyboardList {
+            if let vc = _instanceFromStoryboard(storyboardName: name, identifier: identifier) {
+                cache.setObject(name as NSString, forKey: identifier as NSString)
+                return vc as? T
+            }
+        }
+        cache.setObject("", forKey: identifier as NSString)
+        return nil
+    }
+    
+    private static func _instanceFromStoryboard<T: UIViewController>(storyboardName: String, identifier: String) -> T? {
+        var vc: T? = nil
+        SwiftTryCatch.try({ 
+            let storyBoard = UIStoryboard(name: storyboardName, bundle: Bundle.main)
+            vc = storyBoard.instantiateViewController(withIdentifier: identifier) as? T
+        }, catch: { (e) in
+            vc = nil
+        }) {}
+        return vc
     }
 }

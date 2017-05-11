@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 //        ApplicationServices.registe(Service.self)
+        Router.shared.setup(rootController: .name("ViewController"))
         return true
     }
 }
