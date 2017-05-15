@@ -11,11 +11,6 @@ target 'SwiftExtensions' do
   pod 'SwiftTryCatch'
 #  pod 'RxDataSources', '~> 1.0.0'
 
-  target 'SwiftExtensionsTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
 end
 
 target 'SwiftExtensionsExample' do
