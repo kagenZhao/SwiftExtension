@@ -28,8 +28,10 @@
 		3D0598311EC4AC84002F66E2 /* SwiftMD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05981B1EC4AC84002F66E2 /* SwiftMD5.swift */; };
 		3D0598321EC4AC84002F66E2 /* NotExistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05981D1EC4AC84002F66E2 /* NotExistViewController.swift */; };
 		3D0598331EC4AC84002F66E2 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D05981E1EC4AC84002F66E2 /* Router.swift */; };
+		3D1588691ECBF6A1009E0B9D /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1588681ECBF6A1009E0B9D /* UIButtonExtensions.swift */; };
 		3D16CD261EC95A0B00450464 /* SwiftExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D0596741EC4AB06002F66E2 /* SwiftExtensions.framework */; };
 		3D16CD281EC95A1C00450464 /* SwiftExtensions.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3D0596741EC4AB06002F66E2 /* SwiftExtensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3D4B58571ECA93B200001F73 /* SequenceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4B58561ECA93B200001F73 /* SequenceExtensions.swift */; };
 		3D727EAE1EC951B400367884 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D727EAD1EC951B400367884 /* AppDelegate.swift */; };
 		3D727EB01EC951B400367884 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D727EAF1EC951B400367884 /* ViewController.swift */; };
 		3D727EB31EC951B400367884 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D727EB11EC951B400367884 /* Main.storyboard */; };
@@ -92,6 +94,8 @@
 		3D05981B1EC4AC84002F66E2 /* SwiftMD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftMD5.swift; sourceTree = "<group>"; };
 		3D05981D1EC4AC84002F66E2 /* NotExistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotExistViewController.swift; sourceTree = "<group>"; };
 		3D05981E1EC4AC84002F66E2 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		3D1588681ECBF6A1009E0B9D /* UIButtonExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
+		3D4B58561ECA93B200001F73 /* SequenceExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SequenceExtensions.swift; sourceTree = "<group>"; };
 		3D727EAB1EC951B400367884 /* SwiftExtensionsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftExtensionsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D727EAD1EC951B400367884 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3D727EAF1EC951B400367884 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -192,6 +196,7 @@
 		3D05980A1EC4AC84002F66E2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				3D4B58561ECA93B200001F73 /* SequenceExtensions.swift */,
 				3D05980B1EC4AC84002F66E2 /* ArrayExtensions.swift */,
 				3D05980C1EC4AC84002F66E2 /* CGRectExtensions.swift */,
 				3D05980D1EC4AC84002F66E2 /* DataExtensions.swift */,
@@ -206,6 +211,7 @@
 				3D0598161EC4AC84002F66E2 /* UIViewCornerExtension.swift */,
 				3D0598171EC4AC84002F66E2 /* UIViewExtensions.swift */,
 				3D727EBD1EC9524500367884 /* UITextFieldExtensions.swift */,
+				3D1588681ECBF6A1009E0B9D /* UIButtonExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -474,10 +480,12 @@
 			files = (
 				3D0598221EC4AC84002F66E2 /* CacheManager.swift in Sources */,
 				3D0598271EC4AC84002F66E2 /* NumberExtensions.swift in Sources */,
+				3D1588691ECBF6A1009E0B9D /* UIButtonExtensions.swift in Sources */,
 				3D05982B1EC4AC84002F66E2 /* UIColorExtensions.swift in Sources */,
 				3D0598241EC4AC84002F66E2 /* CGRectExtensions.swift in Sources */,
 				3D05982C1EC4AC84002F66E2 /* UILabelExtensions.swift in Sources */,
 				3D05982E1EC4AC84002F66E2 /* UIViewCornerExtension.swift in Sources */,
+				3D4B58571ECA93B200001F73 /* SequenceExtensions.swift in Sources */,
 				3D0598231EC4AC84002F66E2 /* ArrayExtensions.swift in Sources */,
 				3D05981F1EC4AC84002F66E2 /* AppInfo.m in Sources */,
 				3D05982D1EC4AC84002F66E2 /* UIViewControllerExtensions.swift in Sources */,

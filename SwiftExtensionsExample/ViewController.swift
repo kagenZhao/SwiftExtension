@@ -13,10 +13,19 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var tf2: UITextField!
+    @IBOutlet weak var button: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        textField.setupNumberKeyboard(min: 0, max: 100000)
-        tf2.setupNumberKeyboard(min: 100, max: 999)
+        
+        button.setupForceTouchAction(begin: { (t, e) in
+            print("begin")
+        }, updating: { (t, e) in
+            print("update\(t.force)")
+        }, end: { (t, e) in
+            print("end")
+        }) { (e) in
+            print("cancel")
+        }        
     }
 
     override func didReceiveMemoryWarning() {
