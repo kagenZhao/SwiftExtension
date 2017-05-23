@@ -119,7 +119,7 @@ extension UIViewController {
         SwiftTryCatch.try({ 
             let storyBoard = UIStoryboard(name: storyboardName, bundle: Bundle.main)
             vc = storyBoard.instantiateViewController(withIdentifier: identifier) as? T
-        }, catch: { (e) in
+        }, catch: { _ in
             vc = nil
         }) {}
         return vc

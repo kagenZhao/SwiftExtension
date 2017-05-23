@@ -38,6 +38,13 @@
 		3D727EB51EC951B400367884 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D727EB41EC951B400367884 /* Assets.xcassets */; };
 		3D727EB81EC951B400367884 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D727EB61EC951B400367884 /* LaunchScreen.storyboard */; };
 		3D727EBE1EC9524500367884 /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D727EBD1EC9524500367884 /* UITextFieldExtensions.swift */; };
+		3DA6CBE81ED43C77007DBF72 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA6CBE11ED43C77007DBF72 /* NetworkReachabilityManager.swift */; };
+		3DA6CBE91ED43C77007DBF72 /* WifiDidChangedNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA6CBE21ED43C77007DBF72 /* WifiDidChangedNotification.swift */; };
+		3DA6CBEA1ED43C77007DBF72 /* QRDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA6CBE41ED43C77007DBF72 /* QRDecode.swift */; };
+		3DA6CBEB1ED43C77007DBF72 /* QRDecodeUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA6CBE51ED43C77007DBF72 /* QRDecodeUI.swift */; };
+		3DA6CBEC1ED43C77007DBF72 /* QREncode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA6CBE61ED43C77007DBF72 /* QREncode.swift */; };
+		3DA6CBED1ED43C77007DBF72 /* QRManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA6CBE71ED43C77007DBF72 /* QRManager.swift */; };
+		3DF8D1801ED27B61004E73E6 /* AspectsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8D17F1ED27B61004E73E6 /* AspectsExtensions.swift */; };
 		BF3F3EE4D0AD6F4C4F875488 /* Pods_SwiftExtensionsExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EAD5ADD79B933B2E6903B06 /* Pods_SwiftExtensionsExample.framework */; };
 		E293E3C5CF5B833B1BFA22B1 /* Pods_SwiftExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62242482DD8487877138C25C /* Pods_SwiftExtensions.framework */; };
 /* End PBXBuildFile section */
@@ -104,6 +111,13 @@
 		3D727EB71EC951B400367884 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D727EB91EC951B400367884 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D727EBD1EC9524500367884 /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
+		3DA6CBE11ED43C77007DBF72 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityManager.swift; sourceTree = "<group>"; };
+		3DA6CBE21ED43C77007DBF72 /* WifiDidChangedNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WifiDidChangedNotification.swift; sourceTree = "<group>"; };
+		3DA6CBE41ED43C77007DBF72 /* QRDecode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRDecode.swift; sourceTree = "<group>"; };
+		3DA6CBE51ED43C77007DBF72 /* QRDecodeUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRDecodeUI.swift; sourceTree = "<group>"; };
+		3DA6CBE61ED43C77007DBF72 /* QREncode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QREncode.swift; sourceTree = "<group>"; };
+		3DA6CBE71ED43C77007DBF72 /* QRManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRManager.swift; sourceTree = "<group>"; };
+		3DF8D17F1ED27B61004E73E6 /* AspectsExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AspectsExtensions.swift; sourceTree = "<group>"; };
 		44BAFCD9BC589BD07291CBEA /* Pods-SwiftExtensionsExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftExtensionsExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftExtensionsExample/Pods-SwiftExtensionsExample.release.xcconfig"; sourceTree = "<group>"; };
 		62242482DD8487877138C25C /* Pods_SwiftExtensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftExtensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CEF967CCB8C885ED3FC505F /* Pods-SwiftExtensionsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftExtensionsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftExtensionsTests/Pods-SwiftExtensionsTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -155,6 +169,8 @@
 		3D0596761EC4AB06002F66E2 /* SwiftExtensions */ = {
 			isa = PBXGroup;
 			children = (
+				3DA6CBE01ED43C77007DBF72 /* NetWorkReachability */,
+				3DA6CBE31ED43C77007DBF72 /* QRManager */,
 				3D05981C1EC4AC84002F66E2 /* Router */,
 				3D0598031EC4AC84002F66E2 /* AppInfo */,
 				3D0598061EC4AC84002F66E2 /* ApplicationServices */,
@@ -212,6 +228,7 @@
 				3D0598171EC4AC84002F66E2 /* UIViewExtensions.swift */,
 				3D727EBD1EC9524500367884 /* UITextFieldExtensions.swift */,
 				3D1588681ECBF6A1009E0B9D /* UIButtonExtensions.swift */,
+				3DF8D17F1ED27B61004E73E6 /* AspectsExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -252,6 +269,26 @@
 				3D727EB91EC951B400367884 /* Info.plist */,
 			);
 			path = SwiftExtensionsExample;
+			sourceTree = "<group>";
+		};
+		3DA6CBE01ED43C77007DBF72 /* NetWorkReachability */ = {
+			isa = PBXGroup;
+			children = (
+				3DA6CBE11ED43C77007DBF72 /* NetworkReachabilityManager.swift */,
+				3DA6CBE21ED43C77007DBF72 /* WifiDidChangedNotification.swift */,
+			);
+			path = NetWorkReachability;
+			sourceTree = "<group>";
+		};
+		3DA6CBE31ED43C77007DBF72 /* QRManager */ = {
+			isa = PBXGroup;
+			children = (
+				3DA6CBE41ED43C77007DBF72 /* QRDecode.swift */,
+				3DA6CBE51ED43C77007DBF72 /* QRDecodeUI.swift */,
+				3DA6CBE61ED43C77007DBF72 /* QREncode.swift */,
+				3DA6CBE71ED43C77007DBF72 /* QRManager.swift */,
+			);
+			path = QRManager;
 			sourceTree = "<group>";
 		};
 		92E24AE308801B895B00560B /* Pods */ = {
@@ -478,11 +515,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DA6CBEA1ED43C77007DBF72 /* QRDecode.swift in Sources */,
 				3D0598221EC4AC84002F66E2 /* CacheManager.swift in Sources */,
 				3D0598271EC4AC84002F66E2 /* NumberExtensions.swift in Sources */,
 				3D1588691ECBF6A1009E0B9D /* UIButtonExtensions.swift in Sources */,
+				3DA6CBE81ED43C77007DBF72 /* NetworkReachabilityManager.swift in Sources */,
 				3D05982B1EC4AC84002F66E2 /* UIColorExtensions.swift in Sources */,
+				3DA6CBED1ED43C77007DBF72 /* QRManager.swift in Sources */,
 				3D0598241EC4AC84002F66E2 /* CGRectExtensions.swift in Sources */,
+				3DF8D1801ED27B61004E73E6 /* AspectsExtensions.swift in Sources */,
 				3D05982C1EC4AC84002F66E2 /* UILabelExtensions.swift in Sources */,
 				3D05982E1EC4AC84002F66E2 /* UIViewCornerExtension.swift in Sources */,
 				3D4B58571ECA93B200001F73 /* SequenceExtensions.swift in Sources */,
@@ -491,9 +532,12 @@
 				3D05982D1EC4AC84002F66E2 /* UIViewControllerExtensions.swift in Sources */,
 				3D0598251EC4AC84002F66E2 /* DataExtensions.swift in Sources */,
 				3D0598331EC4AC84002F66E2 /* Router.swift in Sources */,
+				3DA6CBEC1ED43C77007DBF72 /* QREncode.swift in Sources */,
+				3DA6CBE91ED43C77007DBF72 /* WifiDidChangedNotification.swift in Sources */,
 				3D0598291EC4AC84002F66E2 /* StringExtensions.swift in Sources */,
 				3D727EBE1EC9524500367884 /* UITextFieldExtensions.swift in Sources */,
 				3D0598281EC4AC84002F66E2 /* RuntimeExtensions.swift in Sources */,
+				3DA6CBEB1ED43C77007DBF72 /* QRDecodeUI.swift in Sources */,
 				3D0598321EC4AC84002F66E2 /* NotExistViewController.swift in Sources */,
 				3D0598261EC4AC84002F66E2 /* DispatchQueueExtensions.swift in Sources */,
 				3D0598201EC4AC84002F66E2 /* AppInfo.swift in Sources */,

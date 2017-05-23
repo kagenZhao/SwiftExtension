@@ -23,7 +23,7 @@ public extension DispatchQueue {
     
     
     /// 替代 OC-DispatchOnce
-    /// 之所以不用String作为identifier, 个人认为也许在多人开发中 会无意间用到同一个字符串, 用 pointer 比较保险
+    /// 之所以不用String作为identifier, 因为在多人开发中 可能用到同一个字符串, 用 pointer 比较保险
     /// - Parameters:
     ///   - token: identifier
     ///   - closure: execute

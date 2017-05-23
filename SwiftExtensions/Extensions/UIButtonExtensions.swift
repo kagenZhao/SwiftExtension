@@ -21,13 +21,14 @@ extension UIControl {
     public typealias ForceTouchClosureEnd = (UITouch?, UIEvent?) -> ()
     public typealias ForceTouchClosureCancel = (UIEvent?) -> ()
 
-    /// 用于设置UIControl的3dtouch(随便写写 多用于重写)
+    /// 用于设置UIControl的3dtouch(随便写写 了解知识 多用于重写)
     ///
     /// - Parameters:
     ///   - begin: 开始按压
     ///   - updating: 按压力度变化
     ///   - end: 结束按压
     ///   - cancel: 外力中断操作
+    ///     这里的参数都是强引用, 需要手动解决循环引用
     public func setupForceTouchAction(begin: ForceTouchClosure? = nil,
                                       updating: ForceTouchClosure? = nil,
                                       end: ForceTouchClosureEnd? = nil,
@@ -110,4 +111,5 @@ extension UIControl {
         _cancelForceTouchClosure?(event)
     }
 }
+
 
