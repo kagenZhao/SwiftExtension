@@ -131,3 +131,27 @@ public struct AppInfo {
         return str
     }
 }
+
+
+extension AppInfo {
+    public struct Device {
+        /// 电池电量
+        public var battery: Float { return UIDevice.current.batteryLevel }
+        
+        /// 充电状态
+        public var batteryMode: UIDevice.BatteryState { return UIDevice.current.batteryState }
+        
+        /// 低电量模式
+        @available(iOS 9.0, *)
+        public var isLowPowerMode: Bool { return ProcessInfo.processInfo.isLowPowerModeEnabled }
+        
+        /// 屏幕亮度
+        public var brightness: Float {
+            get { return UIScreen.main.brightness.toFloat }
+            set { UIScreen.main.brightness = newValue.toCGFloat }
+        }
+        
+        /// 音量
+//        public var voice: Float { UIDevice.current. }
+    }
+}

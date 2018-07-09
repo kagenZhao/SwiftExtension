@@ -1,25 +1,20 @@
-# Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
-
+platform :ios, '9.0'
+inhibit_all_warnings!
 target 'SwiftExtensions' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-
-  # Pods for SwiftExtensions
   pod 'Alamofire'
   pod 'RxSwift'
   pod 'RxCocoa'
   pod 'SwiftTryCatch'
-  pod 'RxDataSources', '~> 1.0.0'
+  pod 'RxDataSources'
   pod 'SwiftyJSON'
   pod 'SwifterSwift'
   pod 'Kingfisher'
   pod 'Aspects'
+  pod 'fishhook'
+  pod 'ReactiveCocoa', '~> 2.5'
 end
 
 target 'SwiftExtensionsExample' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-
-  # Pods for SwiftExtensionsExample
 end

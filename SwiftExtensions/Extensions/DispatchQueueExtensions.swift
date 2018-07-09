@@ -55,11 +55,9 @@ public extension DispatchQueue {
         timer.setEventHandler(handler: handler)
         
         if `repeat` {
-            
-            timer.scheduleRepeating(deadline: deadline, interval: interval, leeway: leeway)
+            timer.schedule(deadline: deadline, repeating: interval, leeway: leeway)
         } else {
-            
-            timer.scheduleOneshot(deadline: deadline, leeway: leeway)
+            timer.schedule(deadline: deadline, leeway: leeway)
         }
         
         return timer

@@ -188,7 +188,7 @@ extension Runtime {
             default:
                 fatalError("暂时不支持这么多参数")
             }
-            method_setImplementation(oldMethod!, imp)
+            method_setImplementation(oldMethod!, imp!)
         }
         
         

@@ -31,6 +31,7 @@ extension UILabel {
     }
     
     private class func _initialize() {
+        
         DispatchQueue.once(&kUILabelVerticalAlignmentKey, execute: {
             
             Runtime.Swizzing.exchange(class: self,

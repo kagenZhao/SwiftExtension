@@ -27,11 +27,9 @@ public protocol QRManagerCompatible {
 
 public extension QRManagerCompatible {
     
-    public var qr: QRManager<Self> {
-        
+    var qr: QRManager<Self> {
         get { return QRManager(self) }
     }
-    
 }
 
 /// you can set another Class to conform this protocol

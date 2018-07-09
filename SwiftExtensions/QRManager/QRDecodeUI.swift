@@ -72,12 +72,12 @@ extension QRManager where Type: QRDecodeUIProtocol {
     
     private func setupInput() -> AVCaptureDeviceInput {
         
-        let device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+        let device = AVCaptureDevice.default(for: AVMediaType.video)
         
         let input: AVCaptureDeviceInput!
         
         do {
-            input = try AVCaptureDeviceInput(device: device)
+            input = try AVCaptureDeviceInput(device: device!)
         }
         catch {
             fatalError("can't create input")
@@ -95,7 +95,7 @@ extension QRManager where Type: QRDecodeUIProtocol {
     
     private func checkAVAuthorizationStatus() -> Bool {
         
-        let status = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
+        let status = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
 
         return status == .authorized
     }
@@ -123,18 +123,14 @@ extension QRManager where Type: QRDecodeUIProtocol {
         
         session.addOutput(output)
         
-        output.metadataObjectTypes = [AVMetadataObjectTypeQRCode]
+        output.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
         
         _session = session
     }
     
     private func setupLayer(in superLayer: CALayer) {
         
-        guard let previewLayer = AVCaptureVideoPreviewLayer(session: _session) else {
-            
-            fatalError("can't create previewLayer")
-        }
-        
+        let previewLayer = AVCaptureVideoPreviewLayer(session: _session!)
         previewLayer.frame = superLayer.bounds
         
         _previewLayer = previewLayer
@@ -152,7 +148,7 @@ extension QRManager where Type: QRDecodeUIProtocol {
     public func setupQRUI(in superLayer: CALayer) -> Self? {
         
         if !checkAVAuthorizationStatus() {
-            AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo) {_ in}
+            AVCaptureDevice.requestAccess(for: AVMediaType.video) {_ in}
         }
         
         setupSession()
@@ -267,13 +263,13 @@ extension QRManager where Type: QRDecodeUIProtocol {
 
 extension _OutputDelegate: AVCaptureMetadataOutputObjectsDelegate {
     
-    fileprivate func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
+    fileprivate func metadataOutput(captureOutput: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         
         guard let obj = metadataObjects.last as? AVMetadataMachineReadableCodeObject else { return }
         
-        guard !obj.stringValue.isEmpty else { return }
+        guard !(obj.stringValue?.isEmpty)! else { return }
         
-        value?(obj.stringValue)
+        value?(obj.stringValue!)
     }
 }
 

@@ -77,14 +77,6 @@
         case net4g
     }
     
-    private let single = { Void -> NetworkReachabilityManager? in
-        var zeroAddress = sockaddr_in()
-        zeroAddress.sin_len = UInt8(MemoryLayout<sockaddr_in>.size)
-        zeroAddress.sin_family = sa_family_t(AF_INET)
-        
-        return NetworkReachabilityManager(address: &zeroAddress)
-    }()
-    
     final public class NetworkReachabilityManager {
         
         private var reachability: SCNetworkReachability
@@ -134,7 +126,12 @@
         public var isReachableViaWiFi: Bool { return status == .WiFi_base }
         
         /// 单例 (可用可不用)
-        public class var shared: NetworkReachabilityManager? { return single }
+        public static let shared: NetworkReachabilityManager? = {
+            var zeroAddress = sockaddr_in()
+            zeroAddress.sin_len = UInt8(MemoryLayout<sockaddr_in>.size)
+            zeroAddress.sin_family = sa_family_t(AF_INET)
+            return NetworkReachabilityManager(address: &zeroAddress)
+        }()
         
         
         /// 基础初始化方法

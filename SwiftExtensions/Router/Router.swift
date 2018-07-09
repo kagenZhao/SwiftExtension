@@ -223,7 +223,7 @@ public extension Router {
         for i in 0..<count {
             let property = properList!.advanced(by: Int(i)).pointee
             let propertyName = property_getName(property)
-            if let fixName = String.init(utf8String: propertyName!), let arg = args?[fixName] {
+            if let fixName = String.init(utf8String: propertyName), let arg = args?[fixName] {
                 if type(of: arg) == NSNull.self {
                     controller.setValue(nil, forKey: fixName)
                 } else {
@@ -238,9 +238,9 @@ public extension Router {
         func classString(from type: ControllerType) -> String? {
             switch type {
             case .instance(let vc):
-                return NSStringFromClass(type(of: vc))
+                return NSStringFromClass(Swift.type(of: vc))
             case .instanceClass(let classType):
-                return NSStringFromClass(type(of: classType.instantiateViewController()))
+                return NSStringFromClass(Swift.type(of: classType.instantiateViewController()))
             case .name(let name):
                 let c1 = NSClassFromString(name) != nil
                 let c2 = NSClassFromString(appName() + "." + name) != nil

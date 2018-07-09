@@ -12,7 +12,7 @@ public extension QRManager where Type: QRDecodeProtocol {
     
     public func decodeQR() -> String? {
         
-        guard let data = UIImagePNGRepresentation(base.decodeImage) else { return nil }
+        guard let data = base.decodeImage.pngData() else { return nil }
         
         guard let ciImage = CIImage(data: data) else { return nil }
         

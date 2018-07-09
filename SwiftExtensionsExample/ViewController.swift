@@ -8,46 +8,72 @@
 
 import UIKit
 import SwiftExtensions
+import RxCocoa
+import RxSwift
+import ReactiveCocoa
 
 class ViewController: UIViewController {
-    
     @IBOutlet weak var textView: UITextView!
+    var disposeBag = DisposeBag()
+    let subject = RACSubject()
+    let variable = Variable("111")
+    let variable2 = Variable("bbb")
     override func viewDidLoad() {
         super.viewDidLoad()
-        let attStr = "我是个链接, 不可编辑的"
-        let resStr = "我是前边的文字" + " " + attStr +  " " + "我是后边的文字"
-        let attStrRange = (resStr as NSString).range(of: attStr)
-        let att = NSMutableAttributedString(string: resStr, attributes: nil)
-        att.setAttributes([NSLinkAttributeName: URL(string: "www.baidu.com")!], range: attStrRange)
-        textView.attributedText = att
-        textView.delegate = self
-    }
-}
+        
+        
 
-extension ViewController: UITextViewDelegate {
-    public func textViewDidChangeSelection(_ textView: UITextView) {
-        guard NSLocationInRange(textView.selectedRange.location, NSRange(location: 0, length: textView.text.characters.count)) else { return }
-        var findRange = NSRange()
-        var beforeRange = NSRange()
-        let current = textView.attributedText.attribute(NSLinkAttributeName, at: textView.selectedRange.location, effectiveRange: &findRange)
-        var before: Any?
-        if NSLocationInRange(textView.selectedRange.location - 1, NSRange(location: 0, length: textView.text.characters.count)) {
-            if let before = textView.attributedText.attribute(NSLinkAttributeName, at: textView.selectedRange.location - 1, effectiveRange: &beforeRange) {
-                findRange = beforeRange
-            }
-        }
-        guard current != nil || before != nil else { return }
-        textView.delegate = nil
-        let currentSelect = textView.selectedRange.location
-        var leftRange = NSRange(location: findRange.location - 1, length: 0)
-        let rightRange = NSRange(location: findRange.location + findRange.length + 1, length: 0)
-        if currentSelect - leftRange.location > findRange.length / 2 {
-            textView.selectedRange = rightRange
-        } else {
-            textView.selectedRange = leftRange
-        }
-        textView.delegate = self
+//        subject.bind(to: variable)
+//        
+//        subject.subscribeNext { (value) in
+//            print("subject ---- \(value)")
+//        }
+//        
+//        variable.asObservable().subscribe(onNext: { (value) in
+//            print("var1 ---- \(value)")
+//        })
+//        
+//        variable2.asObservable().subscribe(onNext: {value in
+//            print("var2 ---- \(value)")
+//            
+//        })
+//        let s: Observable<String> = subject.replay().brige()
+//            s.subscribe(onNext: { (str: String) in
+//            print("bridge 1---- \(str)")
+//        })
+//        
+//        s.subscribe(onNext: { (str: String) in
+//            print("bridge 2---- \(str)")
+//        })
+//        s.subscribe(onNext: { (str: String) in
+//            print("bridge 3---- \(str)")
+//        })
+//        s.subscribe(onNext: { (str: String) in
+//            print("bridge 4---- \(str)")
+//        })
+        
+        
+        let some : String?? = nil
+        let some2: String?? = .some(nil)
+        let c = (some ?? "inner") ?? "outer"
+        let d = (some2 ?? "inner") ?? "outer"
+        
+        print(c)
+        print(d)
+        
     }
+    
+    @IBAction func action1(_ sender: Any) {
+        
+        
+        
+//        variable2.value = "赵国庆"
+    }
+    
+    @IBAction func action2(_ sender: Any) {
+//         variable.value = 
+    }
+    
+    
 }
-
 

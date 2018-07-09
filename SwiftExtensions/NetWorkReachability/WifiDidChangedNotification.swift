@@ -66,11 +66,6 @@ extension CFNotificationName {
 
 public typealias WifiDidChangedCallBack = (WiFiInfo) -> Void
 
-private let single = WiFiDidChangedManager()
-
-
-
-
 /// 此类用于仅监听 <有无WIFI> 和 <WIFI地址的改变>
 ///
 /// 如非特殊情况, 一般几乎用不到
@@ -87,7 +82,7 @@ public class WiFiDidChangedManager {
     public var wifiChangeCallBack: WifiDidChangedCallBack?
     
     /// 单例 (可用可不用, 最好不用, 自行管理其生命周期)
-    public class var shared:WiFiDidChangedManager { return single }
+    public static let shared = WiFiDidChangedManager()
     
     public init() {
         observer = Unmanaged.passUnretained(self).toOpaque()

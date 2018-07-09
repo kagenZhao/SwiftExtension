@@ -29,7 +29,7 @@ extension UIViewController {
         
         var vc = self
         
-        if vc.isKind(of: UINavigationController.self) {
+        if NSObject.isKind(of: UINavigationController.self) {
             
             if let top = (vc as! UINavigationController).topViewController {
                 
@@ -67,7 +67,7 @@ extension UIView {
             
             responder = view.next
             
-            if responder != nil, responder!.isKind(of: UIViewController.self) {
+            if responder != nil, NSObject.isKind(of: UIViewController.self) {
                 
                 break
             }

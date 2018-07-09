@@ -39,7 +39,7 @@ private func pixel(_ num: Double) -> Double {
 }
 
 public extension UIView {
-    func addCorner(radius: CGFloat) {
+    @objc func addCorner(radius: CGFloat) {
         self.addCorner(radius: radius, borderWidth: 1, backgroundColor: UIColor.clear, borderColor: UIColor.black)
     }
     

@@ -73,7 +73,7 @@ extension UIAlertController {
     
     private func _createAttribute(_ attrs: [AttributesTypes], text: String?) -> NSMutableAttributedString {
         let paragraphStyle = NSMutableParagraphStyle()
-        var attrDic: [String : Any] = [NSParagraphStyleAttributeName: paragraphStyle]
+        var attrDic: [NSAttributedString.Key : Any] = [NSAttributedString.Key.paragraphStyle: paragraphStyle]
         var attrString: NSMutableAttributedString?
         attrs.forEach({ attr in
             switch attr {
@@ -82,9 +82,9 @@ extension UIAlertController {
             case .alignment(let alignment):
                 paragraphStyle.alignment = alignment
             case .font(let font):
-                attrDic[NSFontAttributeName] = font
+                attrDic[NSAttributedString.Key.font] = font
             case .textColor(let color):
-                attrDic[NSForegroundColorAttributeName] = color
+                attrDic[NSAttributedString.Key.foregroundColor] = color
             }
         })
         return attrString ?? NSMutableAttributedString(string: text ?? kNotfoundTextIdentifier, attributes: attrDic)
