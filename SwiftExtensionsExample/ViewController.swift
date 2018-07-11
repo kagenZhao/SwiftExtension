@@ -17,8 +17,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
     }
     
     @IBAction func action1(_ sender: Any) {
@@ -28,6 +26,7 @@ class ViewController: UIViewController {
     @IBAction func action2(_ sender: Any) {
         AppInfo.Device.volume = 1
     }
+    
     
 
 }

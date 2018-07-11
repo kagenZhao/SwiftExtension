@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		044FB33920F367BA00AEB767 /* VolumeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FB33820F367BA00AEB767 /* VolumeController.swift */; };
+		04B6113720F5F4F80025974E /* UIViewController+Rotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B6113520F5F4F70025974E /* UIViewController+Rotation.m */; };
+		04B6113820F5F4F80025974E /* UIViewController+Rotation.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B6113620F5F4F70025974E /* UIViewController+Rotation.h */; };
 		3D0596851EC4AB06002F66E2 /* SwiftExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D0596771EC4AB06002F66E2 /* SwiftExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3D05981F1EC4AC84002F66E2 /* AppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0598041EC4AC84002F66E2 /* AppInfo.m */; };
 		3D0598201EC4AC84002F66E2 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0598051EC4AC84002F66E2 /* AppInfo.swift */; };
@@ -85,6 +87,8 @@
 
 /* Begin PBXFileReference section */
 		044FB33820F367BA00AEB767 /* VolumeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeController.swift; sourceTree = "<group>"; };
+		04B6113520F5F4F70025974E /* UIViewController+Rotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Rotation.m"; sourceTree = "<group>"; };
+		04B6113620F5F4F70025974E /* UIViewController+Rotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Rotation.h"; sourceTree = "<group>"; };
 		0EAD5ADD79B933B2E6903B06 /* Pods_SwiftExtensionsExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftExtensionsExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		255002D9D04BD4FFE38F7AE1 /* Pods_SwiftExtensionsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftExtensionsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		265F7FE7DA7AABF9302448B2 /* Pods-SwiftExtensionsExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftExtensionsExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftExtensionsExample/Pods-SwiftExtensionsExample.debug.xcconfig"; sourceTree = "<group>"; };
@@ -161,6 +165,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04B6113420F5F4BC0025974E /* Screen rotation */ = {
+			isa = PBXGroup;
+			children = (
+				04B6113620F5F4F70025974E /* UIViewController+Rotation.h */,
+				04B6113520F5F4F70025974E /* UIViewController+Rotation.m */,
+			);
+			path = "Screen rotation";
+			sourceTree = "<group>";
+		};
 		3D05966A1EC4AB06002F66E2 = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +197,7 @@
 		3D0596761EC4AB06002F66E2 /* SwiftExtensions */ = {
 			isa = PBXGroup;
 			children = (
+				04B6113420F5F4BC0025974E /* Screen rotation */,
 				3DA6CBE01ED43C77007DBF72 /* NetWorkReachability */,
 				3DA6CBE31ED43C77007DBF72 /* QRManager */,
 				3D05981C1EC4AC84002F66E2 /* Router */,
@@ -341,6 +355,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D0596851EC4AB06002F66E2 /* SwiftExtensions.h in Headers */,
+				04B6113820F5F4F80025974E /* UIViewController+Rotation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,6 +564,7 @@
 				3D05982E1EC4AC84002F66E2 /* UIViewCornerExtension.swift in Sources */,
 				3D4B58571ECA93B200001F73 /* SequenceExtensions.swift in Sources */,
 				3D0598231EC4AC84002F66E2 /* ArrayExtensions.swift in Sources */,
+				04B6113720F5F4F80025974E /* UIViewController+Rotation.m in Sources */,
 				3D05981F1EC4AC84002F66E2 /* AppInfo.m in Sources */,
 				3D05982D1EC4AC84002F66E2 /* UIViewControllerExtensions.swift in Sources */,
 				3D0598251EC4AC84002F66E2 /* DataExtensions.swift in Sources */,
