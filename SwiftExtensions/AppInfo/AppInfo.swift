@@ -55,8 +55,8 @@ public enum CountStyle {
         var baseNumber: Double = 1000;
         var resultStyle: ByteStyle!
         switch self {
-        case .decimal(let style): if style != .smart { return self }; baseNumber = 1000;
-        case .binary(let style): if style != .smart { return self }; baseNumber = 1024
+        case .decimal(let style): if style != .auto { return self }; baseNumber = 1000;
+        case .binary(let style): if style != .auto { return self }; baseNumber = 1024
         }
         switch value {
         case ...(baseNumber * Double(ByteStyle.bt.rawValue)): resultStyle = .bt
@@ -80,7 +80,7 @@ public enum CountStyle {
 }
 
 public enum ByteStyle: Int {
-    case smart = -1
+    case auto = -1
     case bt
     case kb
     case mb
@@ -93,7 +93,7 @@ public enum ByteStyle: Int {
     
     fileprivate var unit: String {
         switch self {
-        case .smart: return "Auto"
+        case .auto: return "Auto"
         case .bt: return "B"
         case .kb: return "KB"
         case .mb: return "MB"
@@ -120,53 +120,53 @@ public extension AppInfo {
 public extension AppInfo {
     public struct Memory {
         
-//        public static func appUsage(_ style: CountStyle = .decimal(.smart)) -> (value: Double, string: String) {
-//            var v = Double(memoryUsage())
-//            v = v / style.smartChoose(v).value
-//            return (value: v, string: AppInfo.fix(String(format: "%.2f", v)) + style.unit)
-//        }
-//
-//        public static func deviceTotal(_ style: CountStyle = .decimal(.smart)) -> (value: Double, string: String) {
-//            var v = Double(totalMemory())
-//            v = v / style.smartChoose(v).value
-//            return (value: v, string: AppInfo.fix(String(format: "%.2f", v)) + style.unit)
-//        }
-//
-//        public static func deviceAvailable(_ style: CountStyle = .decimal(.smart)) -> (value: Double, string: String) {
-//            var v = Double(freeMemory())
-//            v = v / style.smartChoose(v).value
-//            return (value: v, string: AppInfo.fix(String(format: "%.2f", v)) + style.unit)
-//
-//        }
+        public static func appUsage(_ style: CountStyle = .decimal(.auto)) -> (value: Double, string: String) {
+            var v = Double(memoryUsage())
+            v = v / style.smartChoose(v).value
+            return (value: v, string: AppInfo.fix(String(format: "%.2f", v)) + style.unit)
+        }
+
+        public static func deviceTotal(_ style: CountStyle = .decimal(.auto)) -> (value: Double, string: String) {
+            var v = Double(totalMemory())
+            v = v / style.smartChoose(v).value
+            return (value: v, string: AppInfo.fix(String(format: "%.2f", v)) + style.unit)
+        }
+
+        public static func deviceAvailable(_ style: CountStyle = .decimal(.auto)) -> (value: Double, string: String) {
+            var v = Double(freeMemory())
+            v = v / style.smartChoose(v).value
+            return (value: v, string: AppInfo.fix(String(format: "%.2f", v)) + style.unit)
+
+        }
     }
 }
 
 public extension AppInfo {
     public struct Disk {
         
-//        public static func deviceAvailable(_ style: CountStyle = .decimal(.smart)) -> (value: Double, string: String) {
-//            var v = Double(freeDiskSize())
-//            v = v / style.smartChoose(v).value
-//            return (value: v, string: AppInfo.fix(String(format: "%.2f", v)) + style.unit)
-//        }
-//        
-//        public static func deviceTotal(_ style: CountStyle = .decimal(.smart)) -> (value: Double, string: String) {
-//            var v = Double(totalDiskSize())
-//            v = v / style.smartChoose(v).value
-//            return (value: v, string: AppInfo.fix(String(format: "%.2f", v)) + style.unit)
-//        }
-//        
-//        public static func deiveUsage(_ style: CountStyle = .decimal(.smart)) -> (value: Double, string: String) {
-//            var v = Double(totalDiskSize() - freeDiskSize())
-//            v = v / style.smartChoose(v).value
-//            return (value: v, string: AppInfo.fix(String(format: "%.2f", v)) + style.unit)
-//        }
-//        
-//        public static func appUsage(_ folder: String, _ style: CountStyle = .decimal(.smart)) -> (value: Double, string: String) {
-//            var v = Double(appUsageDiskSize(folder))
-//            v = v / style.smartChoose(v).value
-//            return (value: v, string: AppInfo.fix(String(format: "%.2f", v)) + style.unit)
-//        }
+        public static func deviceAvailable(_ style: CountStyle = .decimal(.auto)) -> (value: Double, string: String) {
+            var v = Double(freeDiskSize())
+            v = v / style.smartChoose(v).value
+            return (value: v, string: AppInfo.fix(String(format: "%.2f", v)) + style.unit)
+        }
+        
+        public static func deviceTotal(_ style: CountStyle = .decimal(.auto)) -> (value: Double, string: String) {
+            var v = Double(totalDiskSize())
+            v = v / style.smartChoose(v).value
+            return (value: v, string: AppInfo.fix(String(format: "%.2f", v)) + style.unit)
+        }
+        
+        public static func deiveUsage(_ style: CountStyle = .decimal(.auto)) -> (value: Double, string: String) {
+            var v = Double(totalDiskSize() - freeDiskSize())
+            v = v / style.smartChoose(v).value
+            return (value: v, string: AppInfo.fix(String(format: "%.2f", v)) + style.unit)
+        }
+        
+        public static func appUsage(_ folder: String, _ style: CountStyle = .decimal(.auto)) -> (value: Double, string: String) {
+            var v = Double(appUsageDiskSize(folder))
+            v = v / style.smartChoose(v).value
+            return (value: v, string: AppInfo.fix(String(format: "%.2f", v)) + style.unit)
+        }
     }
 }
 

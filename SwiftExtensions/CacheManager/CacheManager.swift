@@ -183,116 +183,93 @@ public func / (lhs: Finder, rhs: Finder.Component) -> Finder {
     return result
 }
 
-public protocol CacheSourceProtocol {
-    
-    /// KB
-    func cacheSize() throws -> UInt
-    
-    func clearCache() throws
+public func / (lhs: Finder, rhs: String) -> Finder {
+    var result = lhs
+    result.append(rhs)
+    return result
 }
-
-private var _otherSources: [CacheSourceProtocol] = []
 
 public struct CacheManager {
     
-    @discardableResult
-    public static func add<T: CacheSourceProtocol>(_ otherSource: T) -> CacheManager.Type where T: Equatable  {
-        
-        _otherSources.append(otherSource)
-        
-        return self
-    }
     
-    @discardableResult
-    public static func remove<T: CacheSourceProtocol>(_ otherSource: T) -> CacheManager.Type where T: Equatable {
-        
-        _otherSources = _otherSources.filter { $0 is T && ($0 as! T) == otherSource }
-        
-        return self
-    }
+    /// 缓存所在目录, 默认为 Finder.temporary, Finder.caches
+    public var cacheFolder: [Finder] = [
+        Finder.temporary,
+        Finder.caches
+    ]
     
+    public static let shared = CacheManager()
     
-    public static func clearCache(complete: @escaping () -> ()) {
-        let queue = DispatchQueue.global()
-        let group = DispatchGroup()
-        
-        _otherSources.forEach { (source) in
-            group.enter()
-            queue.async(group: group) {
+    public func clearCache(complete: @escaping ([Finder]) -> ()) {
+        DispatchQueue.global(qos: .background).async {
+            self.cacheFolder.forEach({ (finder) in
                 do {
-                    try source.clearCache()
-                    group.leave()
-                }
-                catch {
-                    debugPrint("source: \(source) cannot clear cache")
-                    group.leave()
-                }
-            }
+                    try FileManager.default.removeItem(atPath: finder.pathString);
+                } catch {
+                    debugPrint("chear \"\(finder)\" failed")
+                } 
+            })
+            complete(self.cacheFolder)
         }
-        group.enter()
-        queue.async(group: group) {
-            do {
-                try FileManager.default.removeItem(atPath: NSTemporaryDirectory())
-                group.leave()
-            }
-            catch {
-                debugPrint("chear \"NSTemporaryDirectory\" failed")
-                group.leave()
-            }
-        }
-        
-        group.notify(queue: .main, execute: {
-            complete()
-        })
     }
     
     /// KB
-    public static func cacheSize() throws -> UInt {
-        
-        let sizeOfDir = try size(for: NSTemporaryDirectory())
-        
-        let sizeOfOther = try otherSourceSize()
-        
-        return sizeOfDir + sizeOfOther
+    public func cacheSize() -> UInt64 {
+        var result: UInt64 = 0
+        self.cacheFolder.forEach({ (finder) in
+            result += sizeFor(file: finder)
+        })
+        return result
     }
     
-    public static func cacheSizeString() throws -> String {
+    public func cacheSizeString() -> String {
         
-        let size = try cacheSize()
+        let size = cacheSize()
         
         var cacheSizeStr = ByteCountFormatter.string(fromByteCount: Int64(size), countStyle: .file)
         
-        if size == 0 { cacheSizeStr = "0KB" }
+        if size == 0 { cacheSizeStr = "0 KB" }
         
         return cacheSizeStr
     }
     
-    public static func size(for folder: String) throws -> UInt {
-        
-        let contents = try FileManager.default.contentsOfDirectory(atPath: folder)
-        
-        var folderSize: UInt = 0
-        
-        try contents.forEach { file in
-            
-            let fileAttributes = try FileManager.default.attributesOfItem(atPath: "\(folder)/\(file)")
-            
-            folderSize += fileAttributes[FileAttributeKey.size] as! UInt
-        }
-        
-        return folderSize
+    public func sizeFor(folder: Finder) -> UInt64 {
+        return sizeFor(folder: folder.pathString)
     }
     
-    private static func otherSourceSize() throws -> UInt {
-        
-        var folderSize: UInt = 0
-        
-        try _otherSources.forEach({ (source) in
-            
-            folderSize += try source.cacheSize()
-        })
-        
-        return folderSize
+    public func sizeFor(file: Finder) -> UInt64 {
+        return sizeFor(file: file.pathString)
     }
+    
+    public func sizeFor(folder: String) -> UInt64 {
+        let manager = FileManager.default
+        var isDirectory: ObjCBool = false
+        guard manager.fileExists(atPath: folder, isDirectory: &isDirectory) else {
+            return 0
+        }
+        if isDirectory.boolValue {
+            let content = (try? manager.contentsOfDirectory(atPath: folder)) ?? []
+            return content.reduce(UInt64(0)) { (result, subPath) in
+                return result + sizeFor(file: folder.appending("/\(subPath)"))
+            }
+        } else {
+            return sizeFor(file: folder)
+        }
+    }
+    
+    public func sizeFor(file: String) -> UInt64 {
+        let manager = FileManager.default
+        var isDirectory: ObjCBool = false
+        guard manager.fileExists(atPath: file, isDirectory: &isDirectory) else {
+            return 0
+        }
+        if isDirectory.boolValue {
+            return sizeFor(folder: file)
+        } else {
+            let attr = try? manager.attributesOfItem(atPath: file)
+            return (attr?[.size] as? UInt64) ?? 0
+        }
+    }
+    
 }
 

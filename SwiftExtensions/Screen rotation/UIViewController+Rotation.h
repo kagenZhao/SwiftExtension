@@ -18,7 +18,7 @@
  为什么用OC:
     如果按照一般的写法, 就应该是创建BaseViewController, BaseNavigationController, BaseTabBarController 这三个基类,
     修改其 shouldAutorotate, supportedInterfaceOrientations, preferredInterfaceOrientationForPresentation 方法来实现个别界面旋转效果
-    但是这样项目的耦合性就非常大, 需要所有类都进行继承.
+    但是这样项目的耦合性就非常大, 需要所有类都进行继承, 所以想到用扩展的方法实现, 但是swift的extension 不支持重写父类方法, 所以这里用OC实现
  
  使用方法:
     只需要在项目中引入文件, 在需要旋转的界面重写 shouldAutorotate, supportedInterfaceOrientations, preferredInterfaceOrientationForPresentation 这三个方法即可 非常低耦合
