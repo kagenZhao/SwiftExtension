@@ -31,8 +31,8 @@ public struct WiFiInfo {
     
     /// 唯一初始化方法
     public init(bssid: String?, ssid: String?) {
-        self.bssid = (bssid == nil || bssid!.characters.count == 0) ? "" : bssid!
-        self.ssid = (ssid == nil || ssid!.characters.count == 0) ? "" : ssid!
+        self.bssid = (bssid == nil || bssid!.count == 0) ? "" : bssid!
+        self.ssid = (ssid == nil || ssid!.count == 0) ? "" : ssid!
     }
     
     /// return a empty WiFiInfo
