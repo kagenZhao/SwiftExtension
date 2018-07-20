@@ -14,7 +14,7 @@ public func aspecBlock<R>(_ block: @escaping (AspectInfo)-> R) -> Any {
         let objc: @convention(block) (AspectInfo) -> Void = { info in _ = block(info) }
         return unsafeBitCast(objc, to: AnyObject.self)
     } else {
-        let objc: @convention(block) (AspectInfo) -> Any! = { info in return block(info) }
+        let objc: @convention(block) (AspectInfo) -> Any? = { info in return block(info) }
         return unsafeBitCast(objc, to: AnyObject.self)
     }
 }

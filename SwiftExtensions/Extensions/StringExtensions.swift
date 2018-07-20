@@ -10,28 +10,30 @@ import UIKit
 
 public extension String {
     
-    public func subString(to idx: Int) -> String {
-        
-        return substring(to: index(startIndex, offsetBy: idx))
-    }
-    
-    public func subString(from idx: Int) -> String {
-        
-        return substring(from: index(startIndex, offsetBy: idx))
-    }
-    
-    public func subString(withStart start: Int, end: Int) -> String {
-        
-        let range = Range<Index>(uncheckedBounds: (lower: index(startIndex, offsetBy: start), upper: index(startIndex, offsetBy: end)))
-        
-        return substring(with: range)
-    }
-    
-    public func subString(range: NSRange) -> String {
-        
-        return subString(withStart: range.location, end: range.location + range.length)
-    }
+//    public func subString(to idx: Int) -> String {
+//
+//        return substring(to: index(startIndex, offsetBy: idx))
+//    }
+//
+//    public func subString(from idx: Int) -> String {
+//
+//        return substring(from: index(startIndex, offsetBy: idx))
+//    }
+//
+//    public func subString(withStart start: Int, end: Int) -> String {
+//
+//        let range = Range<Index>(uncheckedBounds: (lower: index(startIndex, offsetBy: start), upper: index(startIndex, offsetBy: end)))
+//
+//        return substring(with: range)
+//    }
+//
+//    public func subString(range: NSRange) -> String {
+//
+//        return subString(withStart: range.location, end: range.location + range.length)
+//    }
 }
+
+
 
 /// 生成一个随机的UUID
 public extension String {

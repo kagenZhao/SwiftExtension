@@ -12,7 +12,45 @@
 #import <objc/runtime.h>
 #import <objc/message.h>
 
+
+
+static void _exchangeClassInstanceMethod(Class cls, SEL s1, SEL s2) {
+    Method originalMethod = class_getInstanceMethod(cls, s1);
+    Method swizzledMethod = class_getInstanceMethod(cls, s2);
+    if (class_addMethod(cls, s1, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod))) {
+        class_replaceMethod(cls, s2, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod));
+    } else {
+        method_exchangeImplementations(originalMethod, swizzledMethod);
+    }
+}
+
 @implementation UIViewController (Rotation)
+
++ (void)load {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _exchangeClassInstanceMethod(UIViewController.class, @selector(dismissViewControllerAnimated:completion:), @selector(hook_dismissViewControllerAnimated:completion:));
+        _exchangeClassInstanceMethod(UIViewController.class, @selector(presentViewController:animated:completion:), @selector(hook_presentViewController:animated:completion:));
+    });
+}
+
+- (void)hook_dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion {
+    [self hook_dismissViewControllerAnimated:flag completion:^{
+        
+        if (completion) {
+            completion();
+        }
+    }];
+}
+
+- (void)hook_presentViewController:(UIViewController *)viewControllerToPresent animated:(BOOL)flag completion:(void (^)(void))completion {
+    [self hook_presentViewController:viewControllerToPresent animated:flag completion:^{
+        
+        if (completion) {
+            completion();
+        }
+    }];
+}
 
 // 有一些 系统内部类, 无法重写, 这里就给出一个列表来进行修改
 - (NSDictionary <NSString *, NSArray *>*)preferenceRotateInternalClass {

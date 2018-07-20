@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		044FB33920F367BA00AEB767 /* VolumeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FB33820F367BA00AEB767 /* VolumeController.swift */; };
+		046DEBC520FDE71900A4C7E1 /* HookSwiftPrintC.m in Sources */ = {isa = PBXBuildFile; fileRef = 046DEBC320FDE71900A4C7E1 /* HookSwiftPrintC.m */; };
+		0487D40F2101B96A008FA3B3 /* WebViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0487D40E2101B96A008FA3B3 /* WebViewManager.swift */; };
 		04B6113720F5F4F80025974E /* UIViewController+Rotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B6113520F5F4F70025974E /* UIViewController+Rotation.m */; };
 		04B6113820F5F4F80025974E /* UIViewController+Rotation.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B6113620F5F4F70025974E /* UIViewController+Rotation.h */; };
 		3D0596851EC4AB06002F66E2 /* SwiftExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D0596771EC4AB06002F66E2 /* SwiftExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -87,6 +89,8 @@
 
 /* Begin PBXFileReference section */
 		044FB33820F367BA00AEB767 /* VolumeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeController.swift; sourceTree = "<group>"; };
+		046DEBC320FDE71900A4C7E1 /* HookSwiftPrintC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HookSwiftPrintC.m; sourceTree = "<group>"; };
+		0487D40E2101B96A008FA3B3 /* WebViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewManager.swift; sourceTree = "<group>"; };
 		04B6113520F5F4F70025974E /* UIViewController+Rotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Rotation.m"; sourceTree = "<group>"; };
 		04B6113620F5F4F70025974E /* UIViewController+Rotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Rotation.h"; sourceTree = "<group>"; };
 		0EAD5ADD79B933B2E6903B06 /* Pods_SwiftExtensionsExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftExtensionsExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,6 +169,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		046DEBC120FDE68E00A4C7E1 /* Swift Logger */ = {
+			isa = PBXGroup;
+			children = (
+				046DEBC320FDE71900A4C7E1 /* HookSwiftPrintC.m */,
+			);
+			path = "Swift Logger";
+			sourceTree = "<group>";
+		};
+		0487D40D2101B956008FA3B3 /* WebViewManager */ = {
+			isa = PBXGroup;
+			children = (
+				0487D40E2101B96A008FA3B3 /* WebViewManager.swift */,
+			);
+			path = WebViewManager;
+			sourceTree = "<group>";
+		};
 		04B6113420F5F4BC0025974E /* Screen rotation */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +217,8 @@
 		3D0596761EC4AB06002F66E2 /* SwiftExtensions */ = {
 			isa = PBXGroup;
 			children = (
+				0487D40D2101B956008FA3B3 /* WebViewManager */,
+				046DEBC120FDE68E00A4C7E1 /* Swift Logger */,
 				04B6113420F5F4BC0025974E /* Screen rotation */,
 				3DA6CBE01ED43C77007DBF72 /* NetWorkReachability */,
 				3DA6CBE31ED43C77007DBF72 /* QRManager */,
@@ -553,6 +575,7 @@
 				3DA6CBEA1ED43C77007DBF72 /* QRDecode.swift in Sources */,
 				3D0598221EC4AC84002F66E2 /* CacheManager.swift in Sources */,
 				3D0598271EC4AC84002F66E2 /* NumberExtensions.swift in Sources */,
+				0487D40F2101B96A008FA3B3 /* WebViewManager.swift in Sources */,
 				3D1588691ECBF6A1009E0B9D /* UIButtonExtensions.swift in Sources */,
 				3DA6CBE81ED43C77007DBF72 /* NetworkReachabilityManager.swift in Sources */,
 				3D05982B1EC4AC84002F66E2 /* UIColorExtensions.swift in Sources */,
@@ -582,6 +605,7 @@
 				3D05982F1EC4AC84002F66E2 /* UIViewExtensions.swift in Sources */,
 				3D05982A1EC4AC84002F66E2 /* UIAlertControllerExtensions.swift in Sources */,
 				3D0598301EC4AC84002F66E2 /* Literally.swift in Sources */,
+				046DEBC520FDE71900A4C7E1 /* HookSwiftPrintC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
