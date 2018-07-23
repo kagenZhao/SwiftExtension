@@ -116,7 +116,28 @@ extension Runtime {
                 
                 method_exchangeImplementations(originMethod, swizzingMethod)
             }
-            
+        }
+        
+        public static func exchange(fromCls: AnyClass, toCls: AnyClass, fromSEL: Selector, toSEL: Selector, type: MethodType = .instance) {
+            let oldSelector = fromSEL
+            let newSelector = toSEL
+            let newMethod_to = method(from: toCls, sel: newSelector, type: type)!
+            let oldMethod_to = method(from: toCls, sel: oldSelector, type: type)!
+            let oldMethod_from = method(from: fromCls, sel: oldSelector, type: type)
+            if oldMethod_from == nil { // 源类未实现原始方法
+                var success = class_addMethod(fromCls, oldSelector, method_getImplementation(newMethod_to), method_getTypeEncoding(newMethod_to))
+                success = class_addMethod(fromCls, newSelector, method_getImplementation(oldMethod_to), method_getTypeEncoding(oldMethod_to))
+                print(success)
+            } else {
+                if class_addMethod(fromCls, newSelector, method_getImplementation(newMethod_to), method_getTypeEncoding(newMethod_to)) { // 源类未添加新方法
+                    let newMethod_from = class_getInstanceMethod(fromCls, newSelector)!
+                    method_exchangeImplementations(newMethod_from, oldMethod_from!)
+                } else {
+                    // 也就是说走到这里就无需 在进行其他操作 因为已经交换过了
+                    // 这里本不应该进来 除非调用两次 请检查代码逻辑
+                     method_exchangeImplementations(oldMethod_from!, class_getInstanceMethod(fromCls, newSelector)!)
+                }
+            }
         }
         
         

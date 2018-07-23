@@ -32,12 +32,12 @@ class ViewController: UIViewController, UIWebViewDelegate, WKNavigationDelegate 
         view.addSubview(uiwebview)
         view.addSubview(wkwebview)
         
-        let url = URL(string: "https://www.kagenz.com")
+        let url = URL(string: "http://gmobiletest.cicconline.com:8003/api/checkIdentifier")
         let request = URLRequest(url: url!)
         uiwebview.loadRequest(request)
         wkwebview.load(request)
     }
-  
+    
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
         print("~UIWebView      \(request.allHTTPHeaderFields ?? [:])")
         return true
@@ -47,6 +47,5 @@ class ViewController: UIViewController, UIWebViewDelegate, WKNavigationDelegate 
         print("~WKWebView      \(navigationAction.request.allHTTPHeaderFields ?? [:])")
         decisionHandler(.allow)
     }
-
 }
 

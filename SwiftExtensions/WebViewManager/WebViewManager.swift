@@ -20,18 +20,22 @@ public class WebViewManager {
         
         self.headers = headers
         self.secheme = secheme
-        // Plan A
+        /// Plan A
+        /// 优点: 因为其作用时间在开始请求之前的代理方法中, 所以在UIWebView/WKWebView 可以看到对request的修改内容 方便调试
+        /// 缺点: 大量运用runtime 在将来的项目中有风险
         if !haveRegisted {
             UIWebView.exchangeLoad()
             WKWebView.exchangeLoad()
         }
         
-        //Plan B
-//        if !haveRegisted {
-//            URLProtocol.registerClass(GlobleURLRequestProtocol.self) // 默认只对UIWebView有效
-//            if oldSecheme.count > 0 { WKWebView.unregisterScheme(oldSecheme) }
-//        }
-//        WKWebView.registerScheme(schemes: secheme) // 为了使上式对WKWebView也有效 必须hook WebKit内部方法
+        /// Plan B
+        /// 优点: runtime 用量少 用途广泛 除了可以用在webview上 还可以用在普通的网络请求中
+        /// 缺点: 因为其作用时间在开始请求之时, 所以在UIWebView/WKWebView 的代理方法中无法看到对request的修改内容 不方便调试
+        if !haveRegisted {
+            URLProtocol.registerClass(GlobleURLRequestProtocol.self) // 默认只对UIWebView有效
+            if oldSecheme.count > 0 { WKWebView.unregisterScheme(oldSecheme) }
+        }
+        WKWebView.registerScheme(schemes: secheme) // 为了使上式对WKWebView也有效 必须hook WebKit内部方法
         
         
         haveRegisted = true
@@ -130,12 +134,12 @@ extension UIWebView {
         _hook_loadRequest(resultRquest)
     }
     @objc dynamic private func _hook_setDelegate(_ delegate: UIWebViewDelegate) {
-        NSObject.exchangeMethod(fromCls: type(of: delegate), toCls: UIWebView.self, fromSel: #selector(webView(_:shouldStartLoadWith:navigationType:)), toSel: #selector(_hook_webView(_:shouldStartLoadWith:navigationType:)))
+        NSObject.exchangeMethod(fromCls: type(of: delegate), toCls: UIWebView.self, fromSel: #selector(UIWebViewDelegate.webView(_:shouldStartLoadWith:navigationType:)), toSel: #selector(_hook_webView(_:shouldStartLoadWith:navigationType:)))
         _hook_setDelegate(delegate)
     }
     
     // 防止delegate 未实现代理方法
-    @objc dynamic func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool{ return true }
+    @objc dynamic func webView(_ webView: UIWebView, shouldStartLoadWithRequest: URLRequest, navigationType: UIWebView.NavigationType) -> Bool{ return true }
     @objc dynamic private func _hook_webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
         guard
             WebViewManager.shared.headers.count > 0,
@@ -197,10 +201,10 @@ extension WKWebView {
     }
     
     @objc dynamic private func _hook_setNavigationDelegate(_ delegate: WKNavigationDelegate) {
-//        NSObject.exchangeMethod(fromCls: type(of: delegate),
-//                                toCls: WKWebView.self,
-//                                fromSel: NSSelectorFromString("webView:decidePolicyForNavigationAction:decisionHandler:"),
-//                                toSel: #selector(_hook_webView(_:decidePolicyFor:decisionHandler:)))
+        NSObject.exchangeMethod(fromCls: type(of: delegate),
+                                toCls: WKWebView.self,
+                                fromSel: NSSelectorFromString("webView:decidePolicyForNavigationAction:decisionHandler:"),
+                                toSel: #selector(_hook_webView(_:decidePolicyFor:decisionHandler:)))
         _hook_setNavigationDelegate(delegate)
     }
 
@@ -260,32 +264,21 @@ extension NSObject {
     fileprivate static func exchangeMethod(fromCls: AnyClass, toCls: AnyClass, fromSel: Selector, toSel: Selector) {
         let oldSelector = fromSel
         let newSelector = toSel
-//        let newMethod_to = class_getInstanceMethod(toCls, newSelector)!
-//        guard class_addMethod(fromCls, newSelector, method_getImplementation(newMethod_to), method_getTypeEncoding(newMethod_to)) else {
-//            // 这么巧 源类 也实现了 新方法 ???  你咋不上天!
-//            return
-//        }
-//        let newMethod_from = class_getInstanceMethod(fromCls, newSelector)!
-//        if class_addMethod(fromCls, oldSelector, method_getImplementation(newMethod_from), method_getTypeEncoding(newMethod_from)) {
-//            let oldMethod_from = class_getInstanceMethod(fromCls, oldSelector)!
-//            class_replaceMethod(fromCls, newSelector, method_getImplementation(oldMethod_from), method_getTypeEncoding(oldMethod_from))
-//        } else {
-//            let oldMethod_from = class_getInstanceMethod(fromCls, oldSelector)!
-//            method_exchangeImplementations(oldMethod_from, newMethod_from)
-//        }
-        
         let newMethod_to = class_getInstanceMethod(toCls, newSelector)!
         let oldMethod_to = class_getInstanceMethod(toCls, oldSelector)!
         let oldMethod_from = class_getInstanceMethod(fromCls, oldSelector)
         if oldMethod_from == nil { // 源类未实现原始方法
-            class_addMethod(fromCls, oldSelector, method_getImplementation(newMethod_to), method_getTypeEncoding(newMethod_to))
-            class_addMethod(fromCls, newSelector, method_getImplementation(oldMethod_to), method_getTypeEncoding(oldMethod_to))
+            var success = class_addMethod(fromCls, oldSelector, method_getImplementation(newMethod_to), method_getTypeEncoding(newMethod_to))
+            success = class_addMethod(fromCls, newSelector, method_getImplementation(oldMethod_to), method_getTypeEncoding(oldMethod_to))
+            print(success)
         } else {
-            if class_addMethod(fromCls, newSelector, method_getImplementation(newMethod_to), method_getTypeEncoding(newMethod_to)) {
+            if class_addMethod(fromCls, newSelector, method_getImplementation(newMethod_to), method_getTypeEncoding(newMethod_to)) { // 源类未添加新方法
                 let newMethod_from = class_getInstanceMethod(fromCls, newSelector)!
-                class_replaceMethod(fromCls, oldSelector, method_getImplementation(newMethod_from), method_getTypeEncoding(newMethod_from))
+                method_exchangeImplementations(newMethod_from, oldMethod_from!)
             } else {
-                method_exchangeImplementations(oldMethod_from!, class_getInstanceMethod(fromCls, newSelector)!)
+                // 也就是说走到这里就无需 在进行其他操作 因为已经交换过了
+                // 这里本不应该进来 除非调用两次 请检查代码逻辑
+                // method_exchangeImplementations(oldMethod_from!, class_getInstanceMethod(fromCls, newSelector)!)
             }
         }
     }
