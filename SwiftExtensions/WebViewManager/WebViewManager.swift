@@ -13,13 +13,14 @@ import WebKit
 public class WebViewManager {
     public static let shared = WebViewManager()
     public private(set) var headers: [String : String] = [:]
-    public private(set) var secheme: [String] = []
+    public private(set) var secheme: Set<String> = []
     private var haveRegisted = false
-    public func config(headers: [String: String], for secheme: [String]) {
+    public func config<T: Sequence>(headers: [String: String], for secheme: T) where T.Element == String {
+        
         let oldSecheme = self.secheme
         
         self.headers = headers
-        self.secheme = secheme
+        self.secheme = Set(secheme)
         /// Plan A
         /// 优点: 因为其作用时间在开始请求之前的代理方法中, 所以在UIWebView/WKWebView 可以看到对request的修改内容 方便调试
         /// 缺点: 大量运用runtime 在将来的项目中有风险
@@ -33,10 +34,10 @@ public class WebViewManager {
         /// 缺点: 因为其作用时间在开始请求之时, 所以在UIWebView/WKWebView 的代理方法中无法看到对request的修改内容 不方便调试
         if !haveRegisted {
             URLProtocol.registerClass(GlobleURLRequestProtocol.self) // 默认只对UIWebView有效
-            if oldSecheme.count > 0 { WKWebView.unregisterScheme(oldSecheme) }
+            let diff = oldSecheme.subtracting(self.secheme)
+            if diff.count > 0 { WKWebView.unregisterScheme(diff) }
         }
-        WKWebView.registerScheme(schemes: secheme) // 为了使上式对WKWebView也有效 必须hook WebKit内部方法
-        
+        WKWebView.registerScheme(schemes: self.secheme.subtracting(oldSecheme)) // 为了使上式对WKWebView也有效 必须hook WebKit内部方法
         
         haveRegisted = true
     }
@@ -134,16 +135,20 @@ extension UIWebView {
         _hook_loadRequest(resultRquest)
     }
     @objc dynamic private func _hook_setDelegate(_ delegate: UIWebViewDelegate) {
-        NSObject.exchangeMethod(fromCls: type(of: delegate), toCls: UIWebView.self, fromSel: #selector(UIWebViewDelegate.webView(_:shouldStartLoadWith:navigationType:)), toSel: #selector(_hook_webView(_:shouldStartLoadWith:navigationType:)))
+        NSObject.exchangeMethod(fromCls: type(of: delegate),
+                                toCls: UIWebView.self,
+                                fromSel: #selector(UIWebViewDelegate.webView(_:shouldStartLoadWith:navigationType:)),
+                                toSel: #selector(_hook_webView(_:shouldStartLoadWith:navigationType:)))
         _hook_setDelegate(delegate)
     }
     
     // 防止delegate 未实现代理方法
-    @objc dynamic func webView(_ webView: UIWebView, shouldStartLoadWithRequest: URLRequest, navigationType: UIWebView.NavigationType) -> Bool{ return true }
+    @objc dynamic private func webView(_ webView: UIWebView, shouldStartLoadWithRequest: URLRequest, navigationType: UIWebView.NavigationType) -> Bool{ return true }
     @objc dynamic private func _hook_webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
         guard
             WebViewManager.shared.headers.count > 0,
-            let scheme = request.url?.scheme?.lowercased(), WebViewManager.shared.secheme.contains(scheme)
+            let scheme = request.url?.scheme?.lowercased(),
+            WebViewManager.shared.secheme.contains(scheme)
             else { return _hook_webView(webView, shouldStartLoadWith: request, navigationType: navigationType) }
         
         if let headers = request.allHTTPHeaderFields {
@@ -166,38 +171,36 @@ extension UIWebView {
 }
 
 
+extension NSObjectProtocol {
+    fileprivate func safePerform<T: Sequence>(sel: Selector, with repeatArguments: T) {
+        if self.responds(to: sel) {
+            repeatArguments.forEach { (arg) in
+                self.perform(sel, with: arg)
+            }
+        }
+    }
+}
+
 extension WKWebView {
     fileprivate static func exchangeLoad() {
         exchangeMethod(cls: WKWebView.self, from: #selector(load(_:)), to: #selector(_hook_load(_:)))
         exchangeMethod(cls: WKWebView.self, from: NSSelectorFromString("setNavigationDelegate:"), to: #selector(_hook_setNavigationDelegate(_:)))
     }
     
-    fileprivate static func registerScheme(schemes: [String]) {
-        guard let context = WKWebView().value(forKey: "browsingContextController"),
-            let cls = (type(of: context) as AnyObject) as? NSObjectProtocol // 这里编译警告 但是实际运行是可以的
-            else {
-                return
-        }
-        let sel = NSSelectorFromString("registerSchemeForCustomProtocol:")
-        if cls.responds(to: sel) {
-            schemes.forEach { (scheme) in
-                cls.perform(sel, with: scheme)
-            }
-        }
+    fileprivate static var registerSchemeSelector: Selector { return NSSelectorFromString("registerSchemeForCustomProtocol:") }
+    
+    fileprivate static var unregisterSchemeSelector: Selector { return NSSelectorFromString("unregisterSchemeForCustomProtocol:") }
+    
+    fileprivate static var browsingContext: NSObjectProtocol? { return (type(of: WKWebView().value(forKey: "browsingContextController")) as AnyObject) as? NSObjectProtocol }
+    
+    fileprivate static func registerScheme<T: Sequence>(schemes: T) where T.Element == String {
+        guard let context = browsingContext else { return }
+        context.safePerform(sel: registerSchemeSelector, with: schemes)
     }
     
-    fileprivate static func unregisterScheme(_ schemes: [String]) {
-        guard let context = WKWebView().value(forKey: "browsingContextController"),
-            let cls = (type(of: context) as AnyObject) as? NSObjectProtocol // 这里编译警告 但是实际运行是可以的
-            else {
-                return
-        }
-        let sel = NSSelectorFromString("unregisterSchemeForCustomProtocol:")
-        if cls.responds(to: sel) {
-            schemes.forEach { (scheme) in
-                cls.perform(sel, with: scheme)
-            }
-        }
+    fileprivate static func unregisterScheme<T: Sequence>(_ schemes: T) where T.Element == String {
+        guard let context = browsingContext else { return }
+        context.safePerform(sel: unregisterSchemeSelector, with: schemes)
     }
     
     @objc dynamic private func _hook_setNavigationDelegate(_ delegate: WKNavigationDelegate) {
