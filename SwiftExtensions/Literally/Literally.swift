@@ -34,24 +34,11 @@ extension URL: ExpressibleByStringLiteral {
 extension TimeZone : ExpressibleByStringLiteral {
     
     public typealias StringLiteralType = String
-    public typealias UnicodeScalarLiteralType = String
-    public typealias ExtendedGraphemeClusterLiteralType = String
     
     public init(stringLiteral value: URL.StringLiteralType) {
         
         self = TimeZone.init(identifier: value) ?? TimeZone.init(abbreviation: value)!
     }
-    
-    public init(extendedGraphemeClusterLiteral value: URL.ExtendedGraphemeClusterLiteralType) {
-        
-        self = TimeZone.init(identifier: value) ?? TimeZone.init(abbreviation: value)!
-    }
-    
-    public init(unicodeScalarLiteral value: URL.UnicodeScalarLiteralType) {
-        
-        self = TimeZone.init(identifier: value) ?? TimeZone.init(abbreviation: value)!
-    }
-    
 }
 
 extension CGRect: ExpressibleByArrayLiteral {
@@ -85,6 +72,3 @@ extension CGPoint: ExpressibleByArrayLiteral {
         self = .init(x: x, y: y)
     }
 }
-
-
-

@@ -31,7 +31,6 @@ class ViewController: UIViewController, UIWebViewDelegate, WKNavigationDelegate 
         super.viewDidLoad()
         view.addSubview(uiwebview)
         view.addSubview(wkwebview)
-        
         let url = URL(string: "http://gmobiletest.cicconline.com:8003/api/checkIdentifier")
         let request = URLRequest(url: url!)
         uiwebview.loadRequest(request)
