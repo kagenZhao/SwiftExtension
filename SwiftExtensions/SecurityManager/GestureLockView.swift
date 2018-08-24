@@ -35,8 +35,8 @@ class GestureLockView: UIView {
         lineLayer.lineWidth = 6
         lineLayer.fillColor = UIColor.clear.cgColor
         lineLayer.strokeColor = UIColor(red: 0.0706, green: 0.588, blue: 0.859, alpha: 1).cgColor
-        lineLayer.lineCap = kCALineCapRound
-        lineLayer.lineJoin = kCALineJoinRound
+        lineLayer.lineCap = .round
+        lineLayer.lineJoin = .round
         layer.addSublayer(lineLayer)
         
         for i in 0...8 {

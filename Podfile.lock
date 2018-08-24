@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (4.7.3)
   - Aspects (1.4.1)
+  - DeviceKit (1.7.0)
   - Differentiator (3.0.2)
   - fishhook (0.2)
   - Kingfisher (4.8.0)
@@ -18,6 +19,7 @@ PODS:
     - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
   - RxSwift (4.2.0)
+  - SnapKit (4.0.0)
   - SwifterSwift (4.4.0):
     - SwifterSwift/AppKit (= 4.4.0)
     - SwifterSwift/CoreGraphics (= 4.4.0)
@@ -41,12 +43,14 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - Aspects
+  - DeviceKit
   - fishhook
   - Kingfisher
   - ReactiveCocoa (~> 2.5)
   - RxCocoa
   - RxDataSources
   - RxSwift
+  - SnapKit
   - SwifterSwift
   - SwiftTryCatch
   - SwiftyJSON
@@ -55,6 +59,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - Aspects
+    - DeviceKit
     - Differentiator
     - fishhook
     - Kingfisher
@@ -62,6 +67,7 @@ SPEC REPOS:
     - RxCocoa
     - RxDataSources
     - RxSwift
+    - SnapKit
     - SwifterSwift
     - SwiftTryCatch
     - SwiftyJSON
@@ -69,6 +75,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   Aspects: 7595ba96a6727a58ebcbfc954497fc5d2fdde546
+  DeviceKit: 6a5bdeb103c03757bb94aef1ccb01e08bc8ef4ee
   Differentiator: a87be69eba49ec4ab460c7671143ee3a9eececfd
   fishhook: ea19933abfe8f2f52c55fd8b6e2718467d3ebc89
   Kingfisher: 976d828df2b24834c6a3f2fc4d82cdbd26552be1
@@ -76,10 +83,11 @@ SPEC CHECKSUMS:
   RxCocoa: 0b54909c902e1e581212a03e690bbd94032d8baa
   RxDataSources: cb7c31e652a87ebb919da45f716bbb87b3765f6b
   RxSwift: 99e10317ddfcc7fbe01356aafd118fde4a0be104
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SwifterSwift: 1ce0e31801ddd3a2bd3256626275425adb01067a
   SwiftTryCatch: fb6d2b34abe48efd69578dac919293a44f95b481
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
-PODFILE CHECKSUM: 8369532a1c8415764a8623c92f5a8a9bd58e6686
+PODFILE CHECKSUM: 03d161aad468da0fbafe38e0bfa2f618e26dc043
 
 COCOAPODS: 1.5.3

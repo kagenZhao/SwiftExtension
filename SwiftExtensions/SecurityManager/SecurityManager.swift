@@ -40,7 +40,7 @@ public final class SecurityManager {
     public lazy var window: UIWindow = {
         let w = UIWindow.init(frame: UIScreen.main.bounds)
         w.backgroundColor = .white
-        w.windowLevel = UIWindowLevelAlert
+        w.windowLevel = .alert
         return w
     }()
     private var notificationObservers: [Any] = []
@@ -268,12 +268,12 @@ public final class SecurityManager {
         }
         
         let key = "com.cicc.SecurityManager.backgroundTime"
-        let obs1 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationDidEnterBackground, object: nil, queue: .main) { (notification) in
+        let obs1 = NotificationCenter.default.addObserver(forName: UIApplication.didEnterBackgroundNotification, object: nil, queue: .main) { (notification) in
             UserDefaults.standard.set(Date(), forKey: key)
             UserDefaults.standard.synchronize()
         }
         
-        let obs2 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationWillEnterForeground, object: nil, queue: .main) {[unowned self] (notification) in
+        let obs2 = NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification, object: nil, queue: .main) {[unowned self] (notification) in
             guard let oldDate = UserDefaults.standard.value(forKey: key) as? Date else { return }
             let date = Date()
             let times = abs(date.timeIntervalSince(oldDate))
@@ -432,21 +432,5 @@ extension SecurityManager {
             }
             failedClosure(error.transformToAuthenticateError())
         }
-    }
-}
-
-
-extension DispatchQueue {
-    
-    fileprivate static var _tokens: Set<UnsafeRawPointer> = []
-    fileprivate class func once(_ token: UnsafeRawPointer, execute closure: (() -> ())) {
-        
-        objc_sync_enter(self); defer { objc_sync_exit(self) }
-        
-        guard !_tokens.contains(token) else { return }
-        
-        _tokens.insert(token)
-        
-        closure()
     }
 }

@@ -43,7 +43,7 @@ class BiometryLockViewController: UIViewController {
     private func createWindow() -> UIWindow {
         let w = UIWindow.init(frame: UIScreen.main.bounds)
         w.backgroundColor = .white
-        w.windowLevel = UIWindowLevelAlert
+        w.windowLevel = .alert
         return w
     }
     
@@ -109,8 +109,8 @@ class BiometryLockViewController: UIViewController {
             button.isHidden = true
         }
         
-        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnderBackground(_:)), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(applicationWillEnterForeground(_:)), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnderBackground(_:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationWillEnterForeground(_:)), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
     
     @objc private func applicationDidEnderBackground(_ notification: Notification) {

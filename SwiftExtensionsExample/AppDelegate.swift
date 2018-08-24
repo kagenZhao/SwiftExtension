@@ -8,7 +8,6 @@
 
 import UIKit
 import SwiftExtensions
-import AVKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -16,9 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        AVAudioSession
-        // Override point for customization after application launch.
-        WebViewManager.shared.config(headers: ["GWMS-ORIGIN":"client"], for: ["https", "http"])
+        
         return true
     }
 

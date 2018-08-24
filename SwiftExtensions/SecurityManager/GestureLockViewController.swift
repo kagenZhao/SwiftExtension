@@ -220,7 +220,7 @@ class GestureLockViewController: UIViewController {
         let right = CGPoint(x: position.x + 10, y: position.y)
         
         let animation = CABasicAnimation(keyPath: "position")
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
         animation.fromValue = left
         animation.toValue = right
         animation.autoreverses = true
@@ -356,7 +356,7 @@ class GestureLockViewController: UIViewController {
     private func createWindow() -> UIWindow {
         let w = UIWindow.init(frame: UIScreen.main.bounds)
         w.backgroundColor = .white
-        w.windowLevel = UIWindowLevelAlert
+        w.windowLevel = .alert
         return w
     }
 }
