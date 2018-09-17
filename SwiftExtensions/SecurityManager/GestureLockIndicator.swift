@@ -26,8 +26,8 @@ class GestureLockIndicator: UIView {
         for i in 0...8 {
             let btn = UIButton(type: .custom)
             btn.isUserInteractionEnabled = false
-            btn.setImage(UIImage(named: "gesture_indicator_normal"), for: .normal)
-            btn.setImage(UIImage(named: "gesture_indicator_selected"), for: .selected)
+            btn.setImage(UIImage.currentBundleImage(with: "gesture_indicator_normal"), for: .normal)
+            btn.setImage(UIImage.currentBundleImage(with: "gesture_indicator_selected"), for: .selected)
             btn.imageView?.contentMode = .scaleAspectFit
             btn.contentHorizontalAlignment = .fill
             btn.contentVerticalAlignment = .fill

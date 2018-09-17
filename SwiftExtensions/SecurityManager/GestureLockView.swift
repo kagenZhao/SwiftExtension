@@ -43,8 +43,8 @@ class GestureLockView: UIView {
             let btn = UIButton(type: .custom)
             btn.backgroundColor = .white
             btn.isUserInteractionEnabled = false
-            btn.setImage(UIImage(named: "gesture_normal"), for: .normal)
-            btn.setImage(UIImage(named: "gesture_selected"), for: .selected)
+            btn.setImage(UIImage.currentBundleImage(with: "gesture_normal"), for: .normal)
+            btn.setImage(UIImage.currentBundleImage(with: "gesture_selected"), for: .selected)
             btn.tag = 1000 + i
             btn.imageView?.contentMode = .scaleAspectFit
             btn.contentHorizontalAlignment = .fill
@@ -151,7 +151,7 @@ class GestureLockView: UIView {
     }
     
     private func createArrowImage(with btn: UIButton) -> UIImage? {
-        let image = UIImage(named: "gesture_direction")!
+        guard let image = UIImage.currentBundleImage(with: "gesture_direction") else { return nil }
         let btnSize = btn.frame.size
         let centerSize = CGSize(width: btnSize.width / 2.7, height: btnSize.height / 2.7)
         UIGraphicsBeginImageContextWithOptions(btn.frame.size, false, UIScreen.main.scale)

@@ -56,14 +56,14 @@ class BiometryLockViewController: UIViewController {
         switch SecurityManager.shared.biometryType {
         case .none:
             text = "点击进行指纹解锁"
-            image = UIImage(named: "touchid")
+            image = UIImage.currentBundleImage(with: "touchid")
             return
         case .faceID:
             text = "点击进行面容 ID 解锁"
-            image = UIImage(named: "faceid")
+            image = UIImage.currentBundleImage(with: "faceid")
         case .touchID:
             text = "点击进行指纹解锁"
-            image = UIImage(named: "touchid")
+            image = UIImage.currentBundleImage(with: "touchid")
         }
         
         let centerView = UIView()

@@ -72,6 +72,9 @@ public class SecurityManagerErrorProcesser {
             }
             SecurityManager.shared.window.rootViewController = vc
             break
+        case .changeBiometry:
+            // 其他方式登录验证????
+            break
         }
     }
     

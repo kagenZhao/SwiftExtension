@@ -15,10 +15,10 @@ public final class SecurityManager {
     public var fallbackTitle: String = "验证密码"
     public var maxGestureAttemptNumber = 5
     lazy private var _currentGestureAttemptNumber: Int = {
-        var saved = UserDefaults.standard.integer(forKey: "com.cicc.SecurityManager.currentGestureAttemptNumber")
+        var saved = UserDefaults.standard.integer(forKey: "com.kagenz.SecurityManager.currentGestureAttemptNumber")
         if saved > maxGestureAttemptNumber {
             saved = maxGestureAttemptNumber
-            UserDefaults.standard.set(saved, forKey: "com.cicc.SecurityManager.currentGestureAttemptNumber")
+            UserDefaults.standard.set(saved, forKey: "com.kagenz.SecurityManager.currentGestureAttemptNumber")
             UserDefaults.standard.synchronize()
         }
         return saved
@@ -27,7 +27,7 @@ public final class SecurityManager {
     public private(set) var currentGestureAttemptNumber: Int {
         set {
             _currentGestureAttemptNumber = min(maxGestureAttemptNumber, max(newValue, 0))
-            UserDefaults.standard.set(_currentGestureAttemptNumber, forKey: "com.cicc.SecurityManager.currentGestureAttemptNumber")
+            UserDefaults.standard.set(_currentGestureAttemptNumber, forKey: "com.kagenz.SecurityManager.currentGestureAttemptNumber")
             UserDefaults.standard.synchronize()
         }
         get {
@@ -47,9 +47,6 @@ public final class SecurityManager {
     private var becomeActiveAction: ((Bool, SecurityManager.AuthenticateError?) -> ())?
     private var biometry = Biometry()
     private var device = Device()
-    private let faceIDDevice = [Device.iPhoneX, Device.simulator(Device.iPhoneX)]
-    private let touchIDDevice = [Device.iPhone5s, Device.iPhone6, Device.iPhone6Plus, Device.iPhone6s, Device.iPhone6sPlus, Device.iPhone7, Device.iPhone7Plus, Device.iPhone8, Device.iPhone8Plus]
-    
     
     public func showCreateAuthenticateController(_ type: LockType, fromController: UIViewController, completed: ((Bool, SecurityManager.AuthenticateError?) -> ())? = nil) {
         let newComplteted: ((Bool, SecurityManager.AuthenticateError?) -> ()) = {[weak self] (success, err) in
@@ -79,6 +76,7 @@ public final class SecurityManager {
             if !self.gestureLock {
                 biometry.authenticate(fallbackTitle: fallbackTitle, successClosure: {[weak self] in
                     self?.setupBiometryLock(setting: true)
+                    newComplteted(true, nil)
                 }) { (err) in
                     newComplteted(false, err)
                 }
@@ -235,31 +233,35 @@ public final class SecurityManager {
     
 
     private func saveGesturePwd(_ pwd: String?) {
-        UserDefaults.standard.set(pwd, forKey: "com.cicc.SecurityManager.Gesture")
+        UserDefaults.standard.set(pwd, forKey: "com.kagenz.SecurityManager.Gesture")
         UserDefaults.standard.synchronize()
     }
     
     private func getGestrurePwd() -> String? {
-        return UserDefaults.standard.string(forKey: "com.cicc.SecurityManager.Gesture")
+        return UserDefaults.standard.string(forKey: "com.kagenz.SecurityManager.Gesture")
     }
     
     private func saveBiometrySetting(_ setting: Bool) {
-        UserDefaults.standard.set(setting, forKey: "com.cicc.SecurityManager.Biometry")
+        UserDefaults.standard.set(setting, forKey: "com.kagenz.SecurityManager.Biometry")
+        UserDefaults.standard.synchronize()
+        UserDefaults.standard.set(biometry.canUseDeviceID().0.evaluatedPolicyDomainState, forKey: "com.kagenz.SecurityManager.Biometry.oldState")
         UserDefaults.standard.synchronize()
     }
     
     private func getBiometrySetting() -> Bool {
-        return UserDefaults.standard.bool(forKey: "com.cicc.SecurityManager.Biometry")
+        return UserDefaults.standard.bool(forKey: "com.kagenz.SecurityManager.Biometry")
     }
     
     private init() {
-        if faceIDDevice.contains(device) {
-            biometryType = .faceID
-        } else if touchIDDevice.contains(device) {
-            biometryType = .touchID
-        } else {
+        
+        if Device.allNoneBiometry.contains(device) {
             biometryType = .none
+        } else if Device.allTouchId.contains(device) {
+            biometryType = .touchID
+        } else { // 未知类型的手机 一般为新手机 这里默认认为他是 FaceID
+            biometryType = .faceID
         }
+        
         if getGestrurePwd() != nil {
             gestureLock = true
         }
@@ -267,7 +269,7 @@ public final class SecurityManager {
             biometryLock = true
         }
         
-        let key = "com.cicc.SecurityManager.backgroundTime"
+        let key = "com.kagenz.SecurityManager.backgroundTime"
         let obs1 = NotificationCenter.default.addObserver(forName: UIApplication.didEnterBackgroundNotification, object: nil, queue: .main) { (notification) in
             UserDefaults.standard.set(Date(), forKey: key)
             UserDefaults.standard.synchronize()
@@ -316,6 +318,7 @@ extension SecurityManager {
         case invalidContext
         case notInteractive
         case forgetGesturePwd
+        case changeBiometry
 //        case beyondAttempts
         
         public var description: String {
@@ -340,6 +343,7 @@ extension SecurityManager {
             case .invalidContext:         return "invalidContext: LAContext已经失效, 这里基本上不会走, 因为上边每次调用context 都是新创建的, 不用处理"
             case .notInteractive:         return "notInteractive: UI无法交互, 不用处理"
             case .forgetGesturePwd:       return "forgetGesturePwd: 忘记了手势密码"
+            case .changeBiometry:         return "changeBiometry: 用户修改了指纹"
 //            case .beyondAttempts:         return "beyondAttempts: 手势密码超过尝试次数"
             }
         }
@@ -348,7 +352,16 @@ extension SecurityManager {
 
 extension LAError {
     fileprivate func transformToAuthenticateError() -> SecurityManager.AuthenticateError {
-        switch self.code {
+        if #available(iOS 11, *) {
+            if code == .biometryNotAvailable {
+                return .biometryNotAvailable
+            } else if code == .biometryLockout {
+                return .biometryLockout
+            } else if code == .biometryNotEnrolled {
+                return .biometryNotEnrolled
+            }
+        }
+        switch code {
         case .appCancel: return .appCancel
         case .systemCancel: return .systemCancel
         case .userCancel:  return .userCancel
@@ -366,17 +379,30 @@ extension LAError {
 
 extension SecurityManager {
     private final class Biometry {
-        fileprivate func canUseDeviceID() -> (LAContext, Bool, NSError?) {
+        fileprivate func canUseDeviceID() -> (LAContext, Bool, SecurityManager.AuthenticateError?) {
             let context = LAContext()
-            var error: NSError? = nil
-            let result = context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error)
-            return (context, result, error)
+            var error: NSError?
+            var err: SecurityManager.AuthenticateError?
+            var result = context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error)
+            err = error == nil ? nil : LAError.init(_nsError: error!).transformToAuthenticateError()
+            if result, let status = context.evaluatedPolicyDomainState{
+                if let oldStatus = UserDefaults.standard.data(forKey: "com.kagenz.SecurityManager.Biometry.oldState") {
+                    if status != oldStatus { // 用户修改了指纹(包括增加或删除)
+                        result = false
+                        err = .changeBiometry
+                    }
+                } else {
+                    UserDefaults.standard.set(status, forKey: "com.kagenz.SecurityManager.Biometry.oldState")
+                    UserDefaults.standard.synchronize()
+                }
+            }
+            return (context, result, err)
         }
         
         fileprivate func authenticate(fallbackTitle: String? = nil, second: Bool = false, successClosure:@escaping (() -> ()) = {}, failedClosure:@escaping ((SecurityManager.AuthenticateError) -> ()) = {_ in}) {
             let (context, isCanEvaluatePolicy, error) = canUseDeviceID()
             
-            if isCanEvaluatePolicy || LAError.init(_nsError: error!).code == .touchIDLockout {
+            if isCanEvaluatePolicy || error == .biometryLockout {
                 var message = "通过Home键验证已有手机指纹"
                 if SecurityManager.shared.biometryType == .faceID {
                     message = "请利用面容 ID 解锁"
@@ -391,7 +417,7 @@ extension SecurityManager {
                                 successClosure()
                             }
                         } else {
-                            self?.processError(err! as NSError, fallbackTitle: fallbackTitle, successClosure: successClosure, failedClosure: failedClosure)
+                            self?.processError((err! as! LAError).transformToAuthenticateError(), fallbackTitle: fallbackTitle, successClosure: successClosure, failedClosure: failedClosure)
                         }
                     }
                 }
@@ -402,10 +428,8 @@ extension SecurityManager {
             }
         }
         
-        
-        private func processError(_ err: NSError, fallbackTitle: String? = nil, successClosure:@escaping (() -> ()) = {}, failedClosure:@escaping ((SecurityManager.AuthenticateError) -> ()) = {_ in}) {
-            let error = LAError.init(_nsError: err)
-            switch error.code {
+        private func processError(_ err: SecurityManager.AuthenticateError, fallbackTitle: String? = nil, successClosure:@escaping (() -> ()) = {}, failedClosure:@escaping ((SecurityManager.AuthenticateError) -> ()) = {_ in}) {
+            switch err {
             case .appCancel:
                 break
             case .systemCancel:
@@ -416,11 +440,11 @@ extension SecurityManager {
                 break
             case .passcodeNotSet:
                 break
-            case .touchIDNotAvailable:
+            case .biometryNotAvailable:
                 break
-            case .touchIDNotEnrolled:
+            case .biometryNotEnrolled:
                 break
-            case .touchIDLockout:
+            case .biometryLockout:
                 self.authenticate(fallbackTitle: fallbackTitle, second: true, successClosure: successClosure, failedClosure: failedClosure)
                 return
             case .userFallback:
@@ -429,8 +453,13 @@ extension SecurityManager {
                 break
             case .notInteractive:
                 break
+            case .forgetGesturePwd:
+                break
+            case .changeBiometry:
+                break
             }
-            failedClosure(error.transformToAuthenticateError())
+            failedClosure(err)
         }
+        
     }
 }

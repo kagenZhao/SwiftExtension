@@ -23,7 +23,8 @@ public class WebViewManager {
         self.secheme = Set(secheme)
         /// Plan A
         /// 优点: 因为其作用时间在开始请求之前的代理方法中, 所以在UIWebView/WKWebView 可以看到对request的修改内容 方便调试
-        /// 缺点: 大量运用runtime 在将来的项目中有风险
+        /// 缺点: 1, 大量运用runtime 在将来的项目中有风险
+        ///      2,
         if !haveRegisted {
             UIWebView.exchangeLoad()
             WKWebView.exchangeLoad()
@@ -44,7 +45,7 @@ public class WebViewManager {
     private init() {}
 }
 
-private let _kPropertyKey = "cn.com.cicc.GlobleURLRequestProtocol"
+private let _kPropertyKey = "cn.com.kagenz.GlobleURLRequestProtocol"
 private class GlobleURLRequestProtocol: URLProtocol, URLSessionDataDelegate {
     
     private var _task: URLSessionTask?
