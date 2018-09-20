@@ -253,13 +253,12 @@ public final class SecurityManager {
     }
     
     private init() {
-        
-        if Device.allNoneBiometry.contains(device) {
-            biometryType = .none
-        } else if Device.allTouchId.contains(device) {
-            biometryType = .touchID
-        } else { // 未知类型的手机 一般为新手机 这里默认认为他是 FaceID
+        if device.isOneOf(Device.allFaceIDCapableDevices + Device.allFaceIDCapableDevices.map(Device.simulator)) {
             biometryType = .faceID
+        } else if device.isOneOf(Device.allTouchIDCapableDevices + Device.allTouchIDCapableDevices.map(Device.simulator))  {
+            biometryType = .touchID
+        } else {
+            biometryType = .none
         }
         
         if getGestrurePwd() != nil {

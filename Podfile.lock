@@ -1,11 +1,11 @@
 PODS:
   - Alamofire (4.7.3)
   - Aspects (1.4.1)
-  - DeviceKit (1.7.0)
-  - Differentiator (3.0.2)
+  - DeviceKit (1.8.1)
+  - Differentiator (3.1.0)
   - fishhook (0.2)
-  - HandyJSON (4.2.0-beta1)
-  - Kingfisher (4.8.1)
+  - HandyJSON (4.2.0)
+  - Kingfisher (4.10.0)
   - ReactiveCocoa (2.5):
     - ReactiveCocoa/UI (= 2.5)
   - ReactiveCocoa/Core (2.5):
@@ -13,15 +13,15 @@ PODS:
   - ReactiveCocoa/no-arc (2.5)
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
-  - RxCocoa (4.2.0):
+  - RxCocoa (4.3.0):
     - RxSwift (~> 4.0)
-  - RxDataSources (3.0.2):
+  - RxDataSources (3.1.0):
     - Differentiator (~> 3.0)
     - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
-  - RxSwift (4.2.0)
-  - SnapKit (4.0.0)
-  - SwiftDate (5.0.7)
+  - RxSwift (4.3.0)
+  - SnapKit (4.0.1)
+  - SwiftDate (5.0.9)
   - SwifterSwift (4.4.0):
     - SwifterSwift/AppKit (= 4.4.0)
     - SwifterSwift/CoreGraphics (= 4.4.0)
@@ -47,7 +47,7 @@ DEPENDENCIES:
   - Aspects
   - DeviceKit
   - fishhook
-  - HandyJSON (from `https://github.com/alibaba/HandyJSON.git`, branch `dev_for_swift4.2`)
+  - HandyJSON
   - Kingfisher
   - ReactiveCocoa (~> 2.5)
   - RxCocoa
@@ -66,6 +66,7 @@ SPEC REPOS:
     - DeviceKit
     - Differentiator
     - fishhook
+    - HandyJSON
     - Kingfisher
     - ReactiveCocoa
     - RxCocoa
@@ -77,34 +78,24 @@ SPEC REPOS:
     - SwiftTryCatch
     - SwiftyJSON
 
-EXTERNAL SOURCES:
-  HandyJSON:
-    :branch: dev_for_swift4.2
-    :git: https://github.com/alibaba/HandyJSON.git
-
-CHECKOUT OPTIONS:
-  HandyJSON:
-    :commit: fa7f5242bac9a4d946a5e6fcc05d07a0dea75aa9
-    :git: https://github.com/alibaba/HandyJSON.git
-
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   Aspects: 7595ba96a6727a58ebcbfc954497fc5d2fdde546
-  DeviceKit: 6a5bdeb103c03757bb94aef1ccb01e08bc8ef4ee
-  Differentiator: a87be69eba49ec4ab460c7671143ee3a9eececfd
+  DeviceKit: eb29be542f5473b46b1c719011cf7de3ec5264ca
+  Differentiator: be49ca3408f0ecfc761e4c7763d20c62be01b9ad
   fishhook: ea19933abfe8f2f52c55fd8b6e2718467d3ebc89
-  HandyJSON: 6e8bf08c47be3680cb369f12fb427127f52b9419
-  Kingfisher: 868c1149679a7ab6869be118faa9b5aed154aaf0
+  HandyJSON: 9dfc026c7d7adc1f0f8ba8b181495f0e0763b0f4
+  Kingfisher: 43c4b802d8b5256cf1f4379e9cd10b329be6d3e2
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
-  RxCocoa: 0b54909c902e1e581212a03e690bbd94032d8baa
-  RxDataSources: cb7c31e652a87ebb919da45f716bbb87b3765f6b
-  RxSwift: 99e10317ddfcc7fbe01356aafd118fde4a0be104
-  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
-  SwiftDate: f053fb89250c59af5eff777f3b832d2b9dd57403
+  RxCocoa: 71b9cce833fbcb89a8eec11816dd225830c2bd3c
+  RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
+  RxSwift: a9717a34df3179fe63563f76e046ad345078dd3a
+  SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
+  SwiftDate: 52b718d32ec006861a2be2756cbfa482d438e781
   SwifterSwift: 1ce0e31801ddd3a2bd3256626275425adb01067a
   SwiftTryCatch: fb6d2b34abe48efd69578dac919293a44f95b481
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
-PODFILE CHECKSUM: 778ff917d8b98d7370e5d5cf237994111382c9a5
+PODFILE CHECKSUM: 385036dfaa323f9aea0abd1b320fc7b30a89b680
 
 COCOAPODS: 1.5.3
