@@ -13,32 +13,32 @@ PODS:
   - ReactiveCocoa/no-arc (2.5)
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
-  - RxCocoa (4.3.0):
+  - RxCocoa (4.3.1):
     - RxSwift (~> 4.0)
   - RxDataSources (3.1.0):
     - Differentiator (~> 3.0)
     - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
-  - RxSwift (4.3.0)
+  - RxSwift (4.3.1)
   - SnapKit (4.0.1)
   - SwiftDate (5.0.9)
-  - SwifterSwift (4.4.0):
-    - SwifterSwift/AppKit (= 4.4.0)
-    - SwifterSwift/CoreGraphics (= 4.4.0)
-    - SwifterSwift/CoreLocation (= 4.4.0)
-    - SwifterSwift/Foundation (= 4.4.0)
-    - SwifterSwift/MapKit (= 4.4.0)
-    - SwifterSwift/SpriteKit (= 4.4.0)
-    - SwifterSwift/SwiftStdlib (= 4.4.0)
-    - SwifterSwift/UIKit (= 4.4.0)
-  - SwifterSwift/AppKit (4.4.0)
-  - SwifterSwift/CoreGraphics (4.4.0)
-  - SwifterSwift/CoreLocation (4.4.0)
-  - SwifterSwift/Foundation (4.4.0)
-  - SwifterSwift/MapKit (4.4.0)
-  - SwifterSwift/SpriteKit (4.4.0)
-  - SwifterSwift/SwiftStdlib (4.4.0)
-  - SwifterSwift/UIKit (4.4.0)
+  - SwifterSwift (4.5.0):
+    - SwifterSwift/AppKit (= 4.5.0)
+    - SwifterSwift/CoreGraphics (= 4.5.0)
+    - SwifterSwift/CoreLocation (= 4.5.0)
+    - SwifterSwift/Foundation (= 4.5.0)
+    - SwifterSwift/MapKit (= 4.5.0)
+    - SwifterSwift/SpriteKit (= 4.5.0)
+    - SwifterSwift/SwiftStdlib (= 4.5.0)
+    - SwifterSwift/UIKit (= 4.5.0)
+  - SwifterSwift/AppKit (4.5.0)
+  - SwifterSwift/CoreGraphics (4.5.0)
+  - SwifterSwift/CoreLocation (4.5.0)
+  - SwifterSwift/Foundation (4.5.0)
+  - SwifterSwift/MapKit (4.5.0)
+  - SwifterSwift/SpriteKit (4.5.0)
+  - SwifterSwift/SwiftStdlib (4.5.0)
+  - SwifterSwift/UIKit (4.5.0)
   - SwiftTryCatch (0.0.1)
   - SwiftyJSON (4.1.0)
 
@@ -87,12 +87,12 @@ SPEC CHECKSUMS:
   HandyJSON: 9dfc026c7d7adc1f0f8ba8b181495f0e0763b0f4
   Kingfisher: 43c4b802d8b5256cf1f4379e9cd10b329be6d3e2
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
-  RxCocoa: 71b9cce833fbcb89a8eec11816dd225830c2bd3c
+  RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
   RxDataSources: a843bad90c29817f5923ec8163f4af2de084ceb3
-  RxSwift: a9717a34df3179fe63563f76e046ad345078dd3a
+  RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
   SwiftDate: 52b718d32ec006861a2be2756cbfa482d438e781
-  SwifterSwift: 1ce0e31801ddd3a2bd3256626275425adb01067a
+  SwifterSwift: 45339f9100181f0ca1d9b46248e45d0879a48596
   SwiftTryCatch: fb6d2b34abe48efd69578dac919293a44f95b481
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
