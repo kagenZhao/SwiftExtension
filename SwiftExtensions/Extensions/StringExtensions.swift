@@ -33,6 +33,27 @@ public extension String {
 //    }
 }
 
+/// 计算size
+public extension String {
+    public func width(with height: CGFloat, font: UIFont) -> CGFloat {
+        return size(with: CGSize(width: CGFloat.greatestFiniteMagnitude, height: height), font: font).width
+    }
+    
+    public func height(with width: CGFloat, font: UIFont) -> CGFloat {
+        return size(with: CGSize(width: width, height: CGFloat.greatestFiniteMagnitude), font: font).height
+    }
+    
+    public func size(with size: CGSize, font: UIFont) -> CGSize {
+        return rect(with: size, font: font).size
+    }
+    
+    public func rect(with size: CGSize, font: UIFont) -> CGRect {
+        return self.boundingRect(with: size,
+                                 options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                 attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)], context: nil)
+    }
+}
+
 
 
 /// 生成一个随机的UUID
