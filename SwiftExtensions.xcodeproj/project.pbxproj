@@ -19,6 +19,8 @@
 		046F0CFC211D908300F2BFDC /* SecurityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F0CEF211D908300F2BFDC /* SecurityManager.swift */; };
 		046F0CFD211D908300F2BFDC /* SecurityManagerErrorProcesser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F0CF0211D908300F2BFDC /* SecurityManagerErrorProcesser.swift */; };
 		0487D40F2101B96A008FA3B3 /* WebViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0487D40E2101B96A008FA3B3 /* WebViewManager.swift */; };
+		049D4578215E2FCC00DC9A35 /* ViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049D4577215E2FCC00DC9A35 /* ViewController1.swift */; };
+		049D457A215E302500DC9A35 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049D4579215E302500DC9A35 /* ViewController2.swift */; };
 		04B6113720F5F4F80025974E /* UIViewController+Rotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B6113520F5F4F70025974E /* UIViewController+Rotation.m */; };
 		04B6113820F5F4F80025974E /* UIViewController+Rotation.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B6113620F5F4F70025974E /* UIViewController+Rotation.h */; };
 		04D47917212FB2F50056D22E /* HookSwiftPrintC.m in Sources */ = {isa = PBXBuildFile; fileRef = 046DEBC320FDE71900A4C7E1 /* HookSwiftPrintC.m */; };
@@ -115,6 +117,8 @@
 		046F0CEF211D908300F2BFDC /* SecurityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityManager.swift; sourceTree = "<group>"; };
 		046F0CF0211D908300F2BFDC /* SecurityManagerErrorProcesser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityManagerErrorProcesser.swift; sourceTree = "<group>"; };
 		0487D40E2101B96A008FA3B3 /* WebViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewManager.swift; sourceTree = "<group>"; };
+		049D4577215E2FCC00DC9A35 /* ViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController1.swift; sourceTree = "<group>"; };
+		049D4579215E302500DC9A35 /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		04B6113520F5F4F70025974E /* UIViewController+Rotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Rotation.m"; sourceTree = "<group>"; };
 		04B6113620F5F4F70025974E /* UIViewController+Rotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Rotation.h"; sourceTree = "<group>"; };
 		04F1276121391447000E55ED /* MacExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -387,6 +391,8 @@
 			children = (
 				3D727EAD1EC951B400367884 /* AppDelegate.swift */,
 				3D727EAF1EC951B400367884 /* ViewController.swift */,
+				049D4577215E2FCC00DC9A35 /* ViewController1.swift */,
+				049D4579215E302500DC9A35 /* ViewController2.swift */,
 				3D727EB11EC951B400367884 /* Main.storyboard */,
 				3D727EB41EC951B400367884 /* Assets.xcassets */,
 				3D727EB61EC951B400367884 /* LaunchScreen.storyboard */,
@@ -743,6 +749,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				049D4578215E2FCC00DC9A35 /* ViewController1.swift in Sources */,
+				049D457A215E302500DC9A35 /* ViewController2.swift in Sources */,
 				3D727EB01EC951B400367884 /* ViewController.swift in Sources */,
 				3D727EAE1EC951B400367884 /* AppDelegate.swift in Sources */,
 			);

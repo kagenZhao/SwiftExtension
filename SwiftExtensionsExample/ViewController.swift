@@ -19,20 +19,14 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
-        
+                
     }
     
     @IBAction func zhiwen(_ sender: Any) {
-        SecurityManager.shared.showCreateAuthenticateController(.biometry, fromController: self) { (success, err) in
-            
-        }
+        
     }
     
     @IBAction func shoushi(_ sender: Any) {
-        SecurityManager.shared.showCreateAuthenticateController(.gesture, fromController: self) { (success, err) in
-            
-        }
+      
     }
 }

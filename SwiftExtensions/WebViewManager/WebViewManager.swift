@@ -33,6 +33,7 @@ public class WebViewManager {
         /// Plan B
         /// 优点: runtime 用量少 用途广泛 除了可以用在webview上 还可以用在普通的网络请求中
         /// 缺点: 因为其作用时间在开始请求之时, 所以在UIWebView/WKWebView 的代理方法中无法看到对request的修改内容 不方便调试
+        /// WKWebView 会存在问题 不建议用
         if !haveRegisted {
             URLProtocol.registerClass(GlobleURLRequestProtocol.self) // 默认只对UIWebView有效
             let diff = oldSecheme.subtracting(self.secheme)

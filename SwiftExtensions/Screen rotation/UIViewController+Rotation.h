@@ -3,7 +3,7 @@
 //  wmICIOS
 //
 //  Created by 赵国庆 on 2018/7/11.
-//  Copyright © 2018年 yy. All rights reserved.
+//  Copyright © 2018年 kagen. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -26,15 +26,6 @@
 
 
 @interface UIViewController (Rotation)
-@end
-
-@interface UITabBarController (Rotation)
-@end
-
-@interface UINavigationController (Rotation)
-@end
-
-@interface UIAlertController (Rotation)
 @end
 
 @interface UIApplication (Rotation)

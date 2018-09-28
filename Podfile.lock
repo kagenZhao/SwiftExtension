@@ -40,7 +40,7 @@ PODS:
   - SwifterSwift/SwiftStdlib (4.5.0)
   - SwifterSwift/UIKit (4.5.0)
   - SwiftTryCatch (0.0.1)
-  - SwiftyJSON (4.1.0)
+  - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -94,8 +94,8 @@ SPEC CHECKSUMS:
   SwiftDate: 52b718d32ec006861a2be2756cbfa482d438e781
   SwifterSwift: 45339f9100181f0ca1d9b46248e45d0879a48596
   SwiftTryCatch: fb6d2b34abe48efd69578dac919293a44f95b481
-  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: 385036dfaa323f9aea0abd1b320fc7b30a89b680
+PODFILE CHECKSUM: 9303cb07611b82f1bd89645ca14fc991eb429720
 
 COCOAPODS: 1.5.3
