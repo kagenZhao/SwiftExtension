@@ -48,7 +48,7 @@ class ViewController2: UIViewController {
     }
     
     @IBAction func back(_ sender: Any) {
-//        self.navigationController?.popToViewController(self.navigationController!.viewControllers[1], animated: true)
-        self.navigationController?.pushViewController(UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController1"), animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
+//        self.navigationController?.pushViewController(UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController1"), animated: true)
     }
 }

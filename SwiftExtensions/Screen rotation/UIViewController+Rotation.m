@@ -131,7 +131,7 @@ static void *rotation_viewWillDisappearBlockKey;
  为什么每次设置orientation的时候都先设置为UnKnown？
  因为在视图B回到视图A时，如果当时设备方向已经是Portrait，再设置成Portrait会不起作用(直接return)。
  */
-- (void)_rotation_forceToOrientation:(UIDeviceOrientation)orientation {
+- (void)rotation_forceToOrientation:(UIDeviceOrientation)orientation {
     NSLog(@"orientation: %ld", orientation);
     NSNumber *orientationUnknown = [NSNumber numberWithInt:UIInterfaceOrientationUnknown];
     [[UIDevice currentDevice] setValue:orientationUnknown forKey:@"orientation"];
@@ -181,7 +181,7 @@ static NSDictionary <NSString *,UIViewControllerRotationModel *>* _rotation_pref
 }
 
 /// 此方法只针对 present 出来的controller 管用, 在push 的时候不起作用
-/// 所以请调用 - (void)forceToOrientation:(UIDeviceOrientation)orientation
+/// 所以在下边UINavigationController 处 做了处理
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
     UIViewController *topVC = self.rotation_findTopViewController;
     UIViewControllerRotationModel *preference = self.rotation_preferenceRotateInternalClassModel[NSStringFromClass(topVC.class)];
@@ -253,8 +253,6 @@ static NSDictionary <NSString *,UIViewControllerRotationModel *>* _rotation_pref
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _exchangeClassInstanceMethod(UINavigationController.class, @selector(pushViewController:animated:), @selector(rotation_hook_pushViewController:animated:));
-        
-        
         /*
          系统调用这两个方法 没有调用 shouldAutorotate 和 supportedInterfaceOrientations
          导致 界面没有旋转回正确位置
@@ -304,16 +302,16 @@ static NSDictionary <NSString *,UIViewControllerRotationModel *>* _rotation_pref
                 case UIInterfaceOrientationUnknown:
                     break;
                 case UIInterfaceOrientationPortrait:
-                    [self _rotation_forceToOrientation:(UIDeviceOrientationPortrait)];
+                    [self rotation_forceToOrientation:(UIDeviceOrientationPortrait)];
                     break;
                 case UIInterfaceOrientationLandscapeLeft:
-                    [self _rotation_forceToOrientation:(UIDeviceOrientationLandscapeLeft)];
+                    [self rotation_forceToOrientation:(UIDeviceOrientationLandscapeLeft)];
                     break;
                 case UIInterfaceOrientationLandscapeRight:
-                    [self _rotation_forceToOrientation:(UIDeviceOrientationLandscapeRight)];
+                    [self rotation_forceToOrientation:(UIDeviceOrientationLandscapeRight)];
                     break;
                 case UIInterfaceOrientationPortraitUpsideDown:
-                    [self _rotation_forceToOrientation:(UIDeviceOrientationPortraitUpsideDown)];
+                    [self rotation_forceToOrientation:(UIDeviceOrientationPortraitUpsideDown)];
                     break;
             }
         };
