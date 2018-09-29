@@ -21,8 +21,8 @@
 		0487D40F2101B96A008FA3B3 /* WebViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0487D40E2101B96A008FA3B3 /* WebViewManager.swift */; };
 		049D4578215E2FCC00DC9A35 /* ViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049D4577215E2FCC00DC9A35 /* ViewController1.swift */; };
 		049D457A215E302500DC9A35 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049D4579215E302500DC9A35 /* ViewController2.swift */; };
-		04B6113720F5F4F80025974E /* UIViewController+Rotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B6113520F5F4F70025974E /* UIViewController+Rotation.m */; };
-		04B6113820F5F4F80025974E /* UIViewController+Rotation.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B6113620F5F4F70025974E /* UIViewController+Rotation.h */; };
+		049D457B215F190E00DC9A35 /* UIViewController+Rotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B6113520F5F4F70025974E /* UIViewController+Rotation.m */; };
+		049D457C215F191000DC9A35 /* UIViewController+Rotation.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B6113620F5F4F70025974E /* UIViewController+Rotation.h */; };
 		04D47917212FB2F50056D22E /* HookSwiftPrintC.m in Sources */ = {isa = PBXBuildFile; fileRef = 046DEBC320FDE71900A4C7E1 /* HookSwiftPrintC.m */; };
 		04F1276421391447000E55ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F1276321391447000E55ED /* AppDelegate.swift */; };
 		04F1276621391447000E55ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F1276521391447000E55ED /* ViewController.swift */; };
@@ -454,7 +454,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D0596851EC4AB06002F66E2 /* SwiftExtensions.h in Headers */,
-				04B6113820F5F4F80025974E /* UIViewController+Rotation.h in Headers */,
+				049D457C215F191000DC9A35 /* UIViewController+Rotation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -703,6 +703,7 @@
 				046F0CF9211D908300F2BFDC /* GestureLockViewController.swift in Sources */,
 				3DA6CBEA1ED43C77007DBF72 /* QRDecode.swift in Sources */,
 				042AE4692133E64C006EC585 /* DeviceExtensions.swift in Sources */,
+				049D457B215F190E00DC9A35 /* UIViewController+Rotation.m in Sources */,
 				3D0598221EC4AC84002F66E2 /* CacheManager.swift in Sources */,
 				3D0598271EC4AC84002F66E2 /* NumberExtensions.swift in Sources */,
 				0487D40F2101B96A008FA3B3 /* WebViewManager.swift in Sources */,
@@ -718,7 +719,6 @@
 				3D05982E1EC4AC84002F66E2 /* UIViewCornerExtension.swift in Sources */,
 				3D4B58571ECA93B200001F73 /* SequenceExtensions.swift in Sources */,
 				3D0598231EC4AC84002F66E2 /* ArrayExtensions.swift in Sources */,
-				04B6113720F5F4F80025974E /* UIViewController+Rotation.m in Sources */,
 				046F0CFB211D908300F2BFDC /* PasswordController.swift in Sources */,
 				3D05981F1EC4AC84002F66E2 /* AppInfo.m in Sources */,
 				3D05982D1EC4AC84002F66E2 /* UIViewControllerExtensions.swift in Sources */,

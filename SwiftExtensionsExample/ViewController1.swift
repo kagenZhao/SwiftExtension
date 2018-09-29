@@ -17,7 +17,7 @@ class ViewController1: UIViewController {
     
 
     @IBAction func back(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     override var shouldAutorotate: Bool {
@@ -34,6 +34,10 @@ class ViewController1: UIViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+    
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return .landscapeLeft
     }
 
 }
