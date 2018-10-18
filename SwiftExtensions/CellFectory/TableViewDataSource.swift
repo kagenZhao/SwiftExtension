@@ -8,6 +8,32 @@
 
 import UIKit
 
+public typealias UITableViewCellReusableFectoryProtocol = (UITableViewCell & TableViewReusableFectoryProtocol)
+public typealias UITableViewHeaderFooterViewReusableFectoryProtocol = (UITableViewHeaderFooterView & TableViewReusableFectoryProtocol)
+
+public protocol TableViewReusableFectoryProtocol {
+    associatedtype DataType
+    func config(_ data: DataType?)
+}
+
+open class TableViewReusableContainer<ReusableClass, DataType>: NSObject {
+    open var height: CGFloat = UITableView.automaticDimension
+    open var data: DataType?
+    public init(height: CGFloat = UITableView.automaticDimension, data: DataType? = nil) {
+        super.init()
+        self.height = height
+        self.data = data
+    }
+}
+
+public final class NilCellClass: UITableViewCellReusableFectoryProtocol {
+    @objc public func config(_: Any?) { selectionStyle = .none }
+}
+
+public final class NilHeaderFooterClass: UITableViewHeaderFooterViewReusableFectoryProtocol {
+    @objc public func config(_: Any?) {}
+}
+
 fileprivate func generateReuseId(_ class: AnyClass) -> String {
     return String(describing: `class`)
 }
@@ -68,7 +94,6 @@ open class TableViewHeaderFooterContainer: TableViewReusableContainer<UITableVie
     public let `class`: AnyClass
     open var clickAction: ((UITableView, Int, TableViewHeaderFooterContainer) -> Void)?
     fileprivate var generateClosure: ((UITableView, Int) -> UIView?)!
-    fileprivate var gestureClosure: ((UITableView, Int) -> ())?
     private weak var tableView: UITableView?
     private var section: Int?
     private lazy var tapGesture: UITapGestureRecognizer = {
@@ -147,7 +172,7 @@ public class TableViewSectionsContainer {
     }
 }
 
-public class TableViewSectionDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
+public class TableViewDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
     private let sectionsContainer: TableViewSectionsContainer
     private weak var tableView: UITableView!
     private weak var otherDelegate: AnyObject?

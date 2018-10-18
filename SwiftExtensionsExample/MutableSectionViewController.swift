@@ -104,7 +104,7 @@ class Footer2: UITableViewHeaderFooterViewReusableFectoryProtocol {
 class MutableSectionViewController: UIViewController, UITableViewDelegate {
     @IBOutlet var tableView: UITableView!
     var sectionsDataSource: TableViewSectionsContainer!
-    var tableViewDataSource: TableViewSectionDataSource!
+    var tableViewDataSource: TableViewDataSource!
     override func viewDidLoad() {
         super.viewDidLoad()
         let section1 = TableViewSectionContainer(
@@ -135,6 +135,6 @@ class MutableSectionViewController: UIViewController, UITableViewDelegate {
                 })
             ])
         sectionsDataSource = .init([section1, section2, section3])
-        tableViewDataSource = TableViewSectionDataSource(tableView, delegate: self, sectionsContainer: sectionsDataSource)
+        tableViewDataSource = TableViewDataSource(tableView, delegate: self, sectionsContainer: sectionsDataSource)
     }
 }

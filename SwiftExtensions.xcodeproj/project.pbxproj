@@ -11,7 +11,6 @@
 		0419DFFB2138DF2200677C36 /* SecurityManager.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0419DFFA2138DF2200677C36 /* SecurityManager.xcassets */; };
 		042AE4692133E64C006EC585 /* DeviceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AE4682133E64C006EC585 /* DeviceExtensions.swift */; };
 		044FB33920F367BA00AEB767 /* VolumeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FB33820F367BA00AEB767 /* VolumeController.swift */; };
-		045067D8217488FF00243CFF /* TableViewCellFectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045067D7217488FF00243CFF /* TableViewCellFectory.swift */; };
 		045067DC21749A9F00243CFF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045067DB21749A9F00243CFF /* Main.storyboard */; };
 		046F0CF6211D908300F2BFDC /* BiometryLockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F0CE9211D908300F2BFDC /* BiometryLockViewController.swift */; };
 		046F0CF7211D908300F2BFDC /* GestureLockIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F0CEA211D908300F2BFDC /* GestureLockIndicator.swift */; };
@@ -21,7 +20,7 @@
 		046F0CFC211D908300F2BFDC /* SecurityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F0CEF211D908300F2BFDC /* SecurityManager.swift */; };
 		046F0CFD211D908300F2BFDC /* SecurityManagerErrorProcesser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F0CF0211D908300F2BFDC /* SecurityManagerErrorProcesser.swift */; };
 		0487D40F2101B96A008FA3B3 /* WebViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0487D40E2101B96A008FA3B3 /* WebViewManager.swift */; };
-		0497A007217710E1007CBDC2 /* TableViewSectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0497A006217710E1007CBDC2 /* TableViewSectionDataSource.swift */; };
+		0497A007217710E1007CBDC2 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0497A006217710E1007CBDC2 /* TableViewDataSource.swift */; };
 		0497A0092177110B007CBDC2 /* MutableSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0497A0082177110B007CBDC2 /* MutableSectionViewController.swift */; };
 		049D457B215F190E00DC9A35 /* UIViewController+Rotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B6113520F5F4F70025974E /* UIViewController+Rotation.m */; };
 		049D457C215F191000DC9A35 /* UIViewController+Rotation.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B6113620F5F4F70025974E /* UIViewController+Rotation.h */; };
@@ -101,7 +100,6 @@
 		0419DFFA2138DF2200677C36 /* SecurityManager.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = SecurityManager.xcassets; sourceTree = "<group>"; };
 		042AE4682133E64C006EC585 /* DeviceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceExtensions.swift; sourceTree = "<group>"; };
 		044FB33820F367BA00AEB767 /* VolumeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeController.swift; sourceTree = "<group>"; };
-		045067D7217488FF00243CFF /* TableViewCellFectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellFectory.swift; sourceTree = "<group>"; };
 		045067DB21749A9F00243CFF /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		046DEBC320FDE71900A4C7E1 /* HookSwiftPrintC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HookSwiftPrintC.m; sourceTree = "<group>"; };
 		046F0CE9211D908300F2BFDC /* BiometryLockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BiometryLockViewController.swift; sourceTree = "<group>"; };
@@ -112,7 +110,7 @@
 		046F0CEF211D908300F2BFDC /* SecurityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityManager.swift; sourceTree = "<group>"; };
 		046F0CF0211D908300F2BFDC /* SecurityManagerErrorProcesser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityManagerErrorProcesser.swift; sourceTree = "<group>"; };
 		0487D40E2101B96A008FA3B3 /* WebViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewManager.swift; sourceTree = "<group>"; };
-		0497A006217710E1007CBDC2 /* TableViewSectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewSectionDataSource.swift; sourceTree = "<group>"; };
+		0497A006217710E1007CBDC2 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
 		0497A0082177110B007CBDC2 /* MutableSectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MutableSectionViewController.swift; sourceTree = "<group>"; };
 		04B6113520F5F4F70025974E /* UIViewController+Rotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Rotation.m"; sourceTree = "<group>"; };
 		04B6113620F5F4F70025974E /* UIViewController+Rotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Rotation.h"; sourceTree = "<group>"; };
@@ -194,8 +192,7 @@
 		045067D6217488D900243CFF /* CellFectory */ = {
 			isa = PBXGroup;
 			children = (
-				045067D7217488FF00243CFF /* TableViewCellFectory.swift */,
-				0497A006217710E1007CBDC2 /* TableViewSectionDataSource.swift */,
+				0497A006217710E1007CBDC2 /* TableViewDataSource.swift */,
 			);
 			path = CellFectory;
 			sourceTree = "<group>";
@@ -642,7 +639,7 @@
 				046F0CF7211D908300F2BFDC /* GestureLockIndicator.swift in Sources */,
 				3D1588691ECBF6A1009E0B9D /* UIButtonExtensions.swift in Sources */,
 				3DA6CBE81ED43C77007DBF72 /* NetworkReachabilityManager.swift in Sources */,
-				0497A007217710E1007CBDC2 /* TableViewSectionDataSource.swift in Sources */,
+				0497A007217710E1007CBDC2 /* TableViewDataSource.swift in Sources */,
 				3D05982B1EC4AC84002F66E2 /* UIColorExtensions.swift in Sources */,
 				3D0598241EC4AC84002F66E2 /* CGRectExtensions.swift in Sources */,
 				3DF8D1801ED27B61004E73E6 /* AspectsExtensions.swift in Sources */,
@@ -663,7 +660,6 @@
 				3D727EBE1EC9524500367884 /* UITextFieldExtensions.swift in Sources */,
 				3D0598281EC4AC84002F66E2 /* RuntimeExtensions.swift in Sources */,
 				3D0598321EC4AC84002F66E2 /* NotExistViewController.swift in Sources */,
-				045067D8217488FF00243CFF /* TableViewCellFectory.swift in Sources */,
 				3D0598261EC4AC84002F66E2 /* DispatchQueueExtensions.swift in Sources */,
 				3D0598201EC4AC84002F66E2 /* AppInfo.swift in Sources */,
 				3D0598311EC4AC84002F66E2 /* SwiftMD5.swift in Sources */,
