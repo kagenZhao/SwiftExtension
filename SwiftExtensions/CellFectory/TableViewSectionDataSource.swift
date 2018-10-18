@@ -1,5 +1,5 @@
 //
-//  TableViewMutableSectionDataSource.swift
+//  TableViewSectionDataSource.swift
 //  SwiftExtensions
 //
 //  Created by 赵国庆 on 2018/10/17.
@@ -8,28 +8,55 @@
 
 import UIKit
 
-open class TableViewMutableCellContainer: TableViewReusableContainer<UITableViewCellReusableFectoryProtocol, Any>, ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral {
+fileprivate func generateReuseId(_ class: AnyClass) -> String {
+    return String.init(describing: `class`)
+}
+
+open class TableViewCellContainer: TableViewReusableContainer<UITableViewCellReusableFectoryProtocol, Any>, ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral {
     public let `class`: AnyClass
     open var canEdit: Bool = false
     open var canMove: Bool = false
-    open var clickAction: ((UITableView, IndexPath, TableViewMutableCellContainer) -> Void)?
+    open var clickAction: ((UITableView, IndexPath, TableViewCellContainer) -> Void)?
+    fileprivate lazy var generateClosure: ((UITableView, IndexPath) -> UITableViewCell)! = {
+        return {[unowned self] tableView, indexPath in
+            return tableView.dequeueReusableCell(withIdentifier: generateReuseId(self.`class`), for: indexPath)
+        }
+    }()
     public init<T: UITableViewCellReusableFectoryProtocol>(class: T.Type,
                                                            height: CGFloat = UITableView.automaticDimension,
                                                            canEdit: Bool = false,
                                                            canMove: Bool = false,
                                                            data: T.DataType? = nil,
-                                                           clickAction: ((UITableView, IndexPath, TableViewMutableCellContainer, T.DataType?) -> Void)? = nil) {
+                                                           clickAction: ((UITableView, IndexPath, TableViewCellContainer, T.DataType?) -> Void)? = nil) {
         self.class = `class`
         super.init(height: height, data: data)
         self.canEdit = canEdit
         self.canMove = canMove
-        self.clickAction = { tv, ip, ct in
-            clickAction?(tv, ip, ct, data)
+        if clickAction != nil {
+            self.clickAction = { tv, ip, ct in
+                clickAction?(tv, ip, ct, data)
+            }
+        }
+        self.generateClosure = { tableView, indexPath in
+            let cell = tableView.dequeueReusableCell(withIdentifier: generateReuseId(`class`), for: indexPath) as! T
+            cell.config(data)
+            return cell
         }
     }
     
-    public class func space(_ height: CGFloat) -> TableViewMutableCellContainer {
-        return TableViewMutableCellContainer.init(class: NilCellClass.self, height: height)
+    private init<T: UITableViewCellReusableFectoryProtocol>(class: T.Type,
+                                                           height: CGFloat = UITableView.automaticDimension) {
+        self.class = `class`
+        super.init(height: height)
+        self.generateClosure = { tableView, indexPath in
+            let cell = tableView.dequeueReusableCell(withIdentifier: generateReuseId(`class`), for: indexPath) as! T
+            cell.config(nil)
+            return cell
+        }
+    }
+    
+    public class func space(_ height: CGFloat) -> TableViewCellContainer {
+        return TableViewCellContainer.init(class: NilCellClass.self, height: height)
     }
     
     required public convenience init(floatLiteral value: Float) {
@@ -41,17 +68,25 @@ open class TableViewMutableCellContainer: TableViewReusableContainer<UITableView
     }
 }
 
-open class TableViewMutableHeaderFooterContainer: TableViewReusableContainer<UITableViewHeaderFooterViewReusableFectoryProtocol, Any>, ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral {
+open class TableViewHeaderFooterContainer: TableViewReusableContainer<UITableViewHeaderFooterViewReusableFectoryProtocol, Any>, ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral {
     public let `class`: AnyClass
-    open var clickAction: ((UITableView, IndexPath, TableViewMutableHeaderFooterContainer) -> Void)?
+    open var clickAction: ((UITableView, IndexPath, TableViewHeaderFooterContainer) -> Void)?
+    fileprivate var generateClosure: ((UITableView, Int) -> UIView?)!
     public init<T: UITableViewHeaderFooterViewReusableFectoryProtocol>(class: T.Type,
                                                                        height: CGFloat = UITableView.automaticDimension,
                                                                        data: T.DataType? = nil,
-                                                                       clickAction: ((UITableView, IndexPath, TableViewMutableHeaderFooterContainer, T.DataType?) -> Void)? = nil) {
+                                                                       clickAction: ((UITableView, IndexPath, TableViewHeaderFooterContainer, T.DataType?) -> Void)? = nil) {
         self.class = `class`
         super.init(height: height, data: data)
-        self.clickAction = { tv, ip, ct in
-            clickAction?(tv, ip, ct, data)
+        if clickAction != nil {
+            self.clickAction = { tv, ip, ct in
+                clickAction?(tv, ip, ct, data)
+            }
+        }
+        self.generateClosure = { tableView, section in
+            let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: generateReuseId(`class`)) as! T
+            header.config(data)
+            return header
         }
     }
     
@@ -67,25 +102,25 @@ open class TableViewMutableHeaderFooterContainer: TableViewReusableContainer<UIT
     }
 }
 
-public class TableViewMutableSectionContainer {
-    public var headerContainer: TableViewMutableHeaderFooterContainer?
-    public var footerContainer: TableViewMutableHeaderFooterContainer?
-    public var cellContainers: [TableViewMutableCellContainer] = []
-    public init(_ cellContainers: [TableViewMutableCellContainer] = [],
-                headerContainer: TableViewMutableHeaderFooterContainer? = nil,
-                footerContainer: TableViewMutableHeaderFooterContainer? = nil) {
+public class TableViewSectionContainer {
+    public var headerContainer: TableViewHeaderFooterContainer?
+    public var footerContainer: TableViewHeaderFooterContainer?
+    public var cellContainers: [TableViewCellContainer] = []
+    public init(_ cellContainers: [TableViewCellContainer] = [],
+                headerContainer: TableViewHeaderFooterContainer? = nil,
+                footerContainer: TableViewHeaderFooterContainer? = nil) {
         self.headerContainer = headerContainer
         self.footerContainer = footerContainer
         self.cellContainers = cellContainers
     }
 }
 
-public class TableViewMutableSectionsContainer {
+public class TableViewSectionsContainer {
     public var sectionIndexTitles: [String]?
     public var sectionForSectionIndexTitle: ((UITableView, String, Int) -> Int)?
     public var moveRow: ((UITableView, IndexPath, IndexPath) -> ())?
-    public var sectionsContainers: [TableViewMutableSectionContainer] = []
-    public init(_ sectionsContainers: [TableViewMutableSectionContainer] = [],
+    public var sectionsContainers: [TableViewSectionContainer] = []
+    public init(_ sectionsContainers: [TableViewSectionContainer] = [],
                 sectionIndexTitles: [String]? = nil,
                 sectionForSectionIndexTitle: ((UITableView, String, Int) -> Int)? = nil,
                 moveRow: ((UITableView, IndexPath, IndexPath) -> ())? = nil) {
@@ -96,14 +131,14 @@ public class TableViewMutableSectionsContainer {
     }
 }
 
-public class TableViewMutableSectionDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
+public class TableViewSectionDataSource: NSObject, UITableViewDelegate, UITableViewDataSource {
     
-    private let sectionsContainer: TableViewMutableSectionsContainer
+    private let sectionsContainer: TableViewSectionsContainer
     private weak var tableView: UITableView!
     private weak var otherDelegate: AnyObject?
     public init(_ tableView: UITableView,
                 delegate: UITableViewDelegate? = nil,
-                sectionsContainer: TableViewMutableSectionsContainer) {
+                sectionsContainer: TableViewSectionsContainer) {
         self.sectionsContainer = sectionsContainer
         super.init()
         self.tableView = tableView
@@ -120,30 +155,26 @@ public class TableViewMutableSectionDataSource: NSObject, UITableViewDelegate, U
         sectionsContainer.sectionsContainers.forEach { (sectionContainer) in
             if let headerContainer = sectionContainer.headerContainer {
                 let headerId = generateReuseId(headerContainer.class)
-                if registed.0[headerId] != nil {
+                if registed.0[headerId] == nil {
                     tableView.register(headerContainer.class, forHeaderFooterViewReuseIdentifier: headerId)
                     registed.0[headerId] = headerContainer.class
                 }
             }
             if let footerContainer = sectionContainer.footerContainer {
                 let footerId = generateReuseId(footerContainer.class)
-                if registed.0[footerId] != nil {
+                if registed.0[footerId] == nil {
                     tableView.register(footerContainer.class, forHeaderFooterViewReuseIdentifier: footerId)
                     registed.0[footerId] = footerContainer.class
                 }
             }
             sectionContainer.cellContainers.forEach({ (cellContainer) in
                 let cellId = generateReuseId(cellContainer.class)
-                if registed.1[cellId] != nil {
+                if registed.1[cellId] == nil {
                     tableView.register(cellContainer.class, forCellReuseIdentifier: cellId)
                     registed.1[cellId] = cellContainer.class
                 }
             })
         }
-    }
-    
-    private func generateReuseId(_ class: AnyClass) -> String {
-        return String.init(describing: `class`)
     }
     
     public override func responds(to aSelector: Selector!) -> Bool {
@@ -157,7 +188,7 @@ public class TableViewMutableSectionDataSource: NSObject, UITableViewDelegate, U
         return super.forwardingTarget(for: aSelector) ?? otherDelegate
     }
     
-    @objc public func config(_ sender: Any?) {}
+    @objc private func config(_ sender: Any?) {}
 
     public func numberOfSections(in tableView: UITableView) -> Int {
         return sectionsContainer.sectionsContainers.count
@@ -186,17 +217,11 @@ public class TableViewMutableSectionDataSource: NSObject, UITableViewDelegate, U
     }
     
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let headerContainer = sectionsContainer.sectionsContainers[section].headerContainer else { return nil }
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: generateReuseId(headerContainer.class))
-        header?.perform(#selector(config(_:)), with: headerContainer.data)
-        return header
+        return sectionsContainer.sectionsContainers[section].headerContainer?.generateClosure(tableView, section)
     }
     
     public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        guard let footerContainer = sectionsContainer.sectionsContainers[section].headerContainer else { return nil }
-        let footer = tableView.dequeueReusableHeaderFooterView(withIdentifier: generateReuseId(footerContainer.class))
-        footer?.perform(#selector(config(_:)), with: footerContainer.data)
-        return footer
+        return sectionsContainer.sectionsContainers[section].footerContainer?.generateClosure(tableView, section)
     }
     
     public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -208,10 +233,9 @@ public class TableViewMutableSectionDataSource: NSObject, UITableViewDelegate, U
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellContainer = sectionsContainer.sectionsContainers[indexPath.section].cellContainers[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: generateReuseId(cellContainer.class), for: indexPath)
-        cell.perform(#selector(config(_:)), with: cellContainer.data)
-        return cell
+        let container = sectionsContainer.sectionsContainers[indexPath.section].cellContainers[indexPath.row]
+        let closure = container.generateClosure
+        return closure!(tableView, indexPath)
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

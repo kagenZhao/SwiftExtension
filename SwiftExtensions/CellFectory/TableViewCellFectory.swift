@@ -15,33 +15,23 @@ public protocol TableViewReusableFectoryProtocol {
     func config(_ data: DataType?)
 }
 
-open class TableViewReusableContainer<ReusableClass, DataType> {
+open class TableViewReusableContainer<ReusableClass, DataType>: NSObject {
     open var height: CGFloat = UITableView.automaticDimension
     open var data: DataType?
     public init(height: CGFloat = UITableView.automaticDimension, data: DataType? = nil) {
+        super.init()
         self.height = height
         self.data = data
     }
 }
 
 public final class NilCellClass: UITableViewCellReusableFectoryProtocol {
-    @objc public func config(_ data: Any?){}
-}
-
-extension NilCellClass: ExpressibleByNilLiteral {
-    public convenience init(nilLiteral: ()) {
-        self.init()
-    }
+    @objc public func config(_ data: Any?) { selectionStyle = .none }
 }
 
 public final class NilHeaderFooterClass: UITableViewHeaderFooterViewReusableFectoryProtocol {
-    @objc public func config(_ data: Any?){}
+    @objc public func config(_ data: Any?) {}
 }
 
-extension NilHeaderFooterClass: ExpressibleByNilLiteral {
-    public convenience init(nilLiteral: ()) {
-        self.init()
-    }
-}
 
 
