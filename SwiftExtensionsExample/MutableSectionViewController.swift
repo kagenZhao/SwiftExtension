@@ -114,7 +114,9 @@ class MutableSectionViewController: UIViewController, UITableViewDelegate {
             }),
             .space(10)
             ],
-            headerContainer: TableViewHeaderFooterContainer.init(class: Header1.self, height: 45, data: 2222),
+            headerContainer: TableViewHeaderFooterContainer.init(class: Header1.self, height: 45, data: 2222, clickAction: { (tv, indexPath, container, data) in
+                print("点击了header header1")
+            }),
             footerContainer: TableViewHeaderFooterContainer.init(class: Footer1.self, height: 45, data: 1111))
         
         let section2 = TableViewSectionContainer(

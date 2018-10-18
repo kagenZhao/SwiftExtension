@@ -26,12 +26,9 @@ open class TableViewReusableContainer<ReusableClass, DataType>: NSObject {
 }
 
 public final class NilCellClass: UITableViewCellReusableFectoryProtocol {
-    @objc public func config(_ data: Any?) { selectionStyle = .none }
+    @objc public func config(_: Any?) { selectionStyle = .none }
 }
 
 public final class NilHeaderFooterClass: UITableViewHeaderFooterViewReusableFectoryProtocol {
-    @objc public func config(_ data: Any?) {}
+    @objc public func config(_: Any?) {}
 }
-
-
-
