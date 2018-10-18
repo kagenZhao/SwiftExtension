@@ -108,22 +108,36 @@ public class TableViewMutableSectionDataSource: NSObject, UITableViewDelegate, U
         super.init()
         self.tableView = tableView
         self.otherDelegate = delegate
+        self.registerCells()
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.otherDelegate = delegate
-        registerCells()
+        
     }
     
     private func registerCells() {
+        var registed = ([String: AnyClass](), [String: AnyClass]())
         sectionsContainer.sectionsContainers.forEach { (sectionContainer) in
             if let headerContainer = sectionContainer.headerContainer {
-                tableView.register(headerContainer.class, forHeaderFooterViewReuseIdentifier: generateReuseId(headerContainer.class))
+                let headerId = generateReuseId(headerContainer.class)
+                if registed.0[headerId] != nil {
+                    tableView.register(headerContainer.class, forHeaderFooterViewReuseIdentifier: headerId)
+                    registed.0[headerId] = headerContainer.class
+                }
             }
             if let footerContainer = sectionContainer.footerContainer {
-                tableView.register(footerContainer.class, forHeaderFooterViewReuseIdentifier: generateReuseId(footerContainer.class))
+                let footerId = generateReuseId(footerContainer.class)
+                if registed.0[footerId] != nil {
+                    tableView.register(footerContainer.class, forHeaderFooterViewReuseIdentifier: footerId)
+                    registed.0[footerId] = footerContainer.class
+                }
             }
             sectionContainer.cellContainers.forEach({ (cellContainer) in
-                tableView.register(cellContainer.class, forCellReuseIdentifier: generateReuseId(cellContainer.class))
+                let cellId = generateReuseId(cellContainer.class)
+                if registed.1[cellId] != nil {
+                    tableView.register(cellContainer.class, forCellReuseIdentifier: cellId)
+                    registed.1[cellId] = cellContainer.class
+                }
             })
         }
     }
