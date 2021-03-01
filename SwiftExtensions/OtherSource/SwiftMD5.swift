@@ -113,7 +113,7 @@ func SwiftMD5_md5(bytes: [UInt8]) -> Digest {
     
     for chunk in 0..<totalChunks {
         let index = chunk*chunkLengthInBytes
-        var chunk: [UInt8] = Array(message[index..<index+chunkLengthInBytes]) // 512-bit/64-byte chunk
+        let chunk: [UInt8] = Array(message[index..<index+chunkLengthInBytes]) // 512-bit/64-byte chunk
         
         // break chunk into sixteen 32-bit words
         var M: [UInt32] = []

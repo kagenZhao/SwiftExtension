@@ -125,3 +125,20 @@ extension UIViewController {
         return vc
     }
 }
+
+extension UIViewController {
+    /// 寻找第一个不是navigation / tabbar的controller
+    /// 用于展示一些自定义View 弹窗, 能覆盖除了Navigation 和 Tabbar 的其他所有部分
+    func findContentViewController() -> UIViewController {
+        if parent == nil {
+            return self
+        } else if parent! is UINavigationController {
+            return self
+        } else if parent! is UITabBarController {
+            return self
+        } else {
+            return parent!.findContentViewController()
+        }
+    }
+}
+

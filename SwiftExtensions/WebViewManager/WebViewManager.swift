@@ -116,7 +116,7 @@ private class GlobleURLRequestProtocol: URLProtocol, URLSessionDataDelegate {
 }
 
 public extension  URLRequest {
-    mutating public func setupGlobleConfig() {
+    mutating func setupGlobleConfig() {
         WebViewManager.shared.headers.forEach({ (header) in
             setValue(header.value, forHTTPHeaderField: header.key)
         })

@@ -14,7 +14,8 @@ class BiometryLockViewController: UIViewController {
     
     private var validateComplete: ((Bool, SecurityManager.AuthenticateError?) -> ())?
     private var window: UIWindow?
-    private var tapGesture: UITapGestureRecognizer?
+    private lazy var tapGesture: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapAction(_:)))
+
     private var didEnderBackground = false
     init(with validateComplete: ((Bool, SecurityManager.AuthenticateError?) -> ())?) {
         super.init(nibName: nil, bundle: nil)
@@ -30,40 +31,45 @@ class BiometryLockViewController: UIViewController {
             self.window = window ?? self.createWindow()
             self.window?.rootViewController = self
             self.window?.makeKeyAndVisible()
+            self.window?.isHidden = false
         }
     }
     
     func removeFromWindow() {
         DispatchQueue.main.async {
+            self.window?.resignKey()
             self.window?.rootViewController = nil
             self.window?.isHidden = true
+            self.window = nil
         }
     }
     
     private func createWindow() -> UIWindow {
         let w = UIWindow.init(frame: UIScreen.main.bounds)
         w.backgroundColor = .white
-        w.windowLevel = .alert
+        w.windowLevel = UIWindow.Level.alert
         return w
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        self.navigationItem.title = "\(SecurityManager.shared.biometryType == .faceID ? "面容 ID" : "指纹")验证"
+        
         let color = UIColor(red: 0.0706, green: 0.588, blue: 0.859, alpha: 1)
         var text: String?
         var image: UIImage?
         switch SecurityManager.shared.biometryType {
         case .none:
             text = "点击进行指纹解锁"
-            image = UIImage.currentBundleImage(with: "touchid")
+            image = UIImage(named: "touchid")
             return
         case .faceID:
             text = "点击进行面容 ID 解锁"
-            image = UIImage.currentBundleImage(with: "faceid")
+            image = UIImage(named: "faceid")
         case .touchID:
             text = "点击进行指纹解锁"
-            image = UIImage.currentBundleImage(with: "touchid")
+            image = UIImage(named: "touchid")
         }
         
         let centerView = UIView()
@@ -102,8 +108,7 @@ class BiometryLockViewController: UIViewController {
             maker.height.equalTo(35)
         }
         
-        tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction(_:)))
-        centerView.addGestureRecognizer(tapGesture!)
+        centerView.addGestureRecognizer(tapGesture)
         
         if !SecurityManager.shared.gestureLock {
             button.isHidden = true
@@ -113,21 +118,19 @@ class BiometryLockViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(applicationWillEnterForeground(_:)), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
     
-    @objc private func applicationDidEnderBackground(_ notification: Notification) {
+    @objc private func applicationDidEnderBackground(_ notification: NSNotification) {
         self.didEnderBackground = true
-        print("sssssss")
     }
     
-    @objc private func applicationWillEnterForeground(_ notification: Notification) {
-        print("aaaaaa")
+    @objc private func applicationWillEnterForeground(_ notification: NSNotification) {
         if self.didEnderBackground {
-            self.tapAction(self.tapGesture!)
+            self.tapAction(tapGesture)
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        tapAction(tapGesture!)
+        tapAction(tapGesture)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

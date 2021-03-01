@@ -12,19 +12,7 @@
 		042AE4692133E64C006EC585 /* DeviceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AE4682133E64C006EC585 /* DeviceExtensions.swift */; };
 		044FB33920F367BA00AEB767 /* VolumeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FB33820F367BA00AEB767 /* VolumeController.swift */; };
 		045067DC21749A9F00243CFF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045067DB21749A9F00243CFF /* Main.storyboard */; };
-		046F0CF6211D908300F2BFDC /* BiometryLockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F0CE9211D908300F2BFDC /* BiometryLockViewController.swift */; };
-		046F0CF7211D908300F2BFDC /* GestureLockIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F0CEA211D908300F2BFDC /* GestureLockIndicator.swift */; };
-		046F0CF8211D908300F2BFDC /* GestureLockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F0CEB211D908300F2BFDC /* GestureLockView.swift */; };
-		046F0CF9211D908300F2BFDC /* GestureLockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F0CEC211D908300F2BFDC /* GestureLockViewController.swift */; };
-		046F0CFB211D908300F2BFDC /* PasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F0CEE211D908300F2BFDC /* PasswordController.swift */; };
-		046F0CFC211D908300F2BFDC /* SecurityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F0CEF211D908300F2BFDC /* SecurityManager.swift */; };
-		046F0CFD211D908300F2BFDC /* SecurityManagerErrorProcesser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046F0CF0211D908300F2BFDC /* SecurityManagerErrorProcesser.swift */; };
 		0487D40F2101B96A008FA3B3 /* WebViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0487D40E2101B96A008FA3B3 /* WebViewManager.swift */; };
-		0497A007217710E1007CBDC2 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0497A006217710E1007CBDC2 /* TableViewDataSource.swift */; };
-		0497A0092177110B007CBDC2 /* MutableSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0497A0082177110B007CBDC2 /* MutableSectionViewController.swift */; };
-		049D457B215F190E00DC9A35 /* UIViewController+Rotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B6113520F5F4F70025974E /* UIViewController+Rotation.m */; };
-		049D457C215F191000DC9A35 /* UIViewController+Rotation.h in Headers */ = {isa = PBXBuildFile; fileRef = 04B6113620F5F4F70025974E /* UIViewController+Rotation.h */; };
-		04D47917212FB2F50056D22E /* HookSwiftPrintC.m in Sources */ = {isa = PBXBuildFile; fileRef = 046DEBC320FDE71900A4C7E1 /* HookSwiftPrintC.m */; };
 		3D0596851EC4AB06002F66E2 /* SwiftExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D0596771EC4AB06002F66E2 /* SwiftExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3D05981F1EC4AC84002F66E2 /* AppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D0598041EC4AC84002F66E2 /* AppInfo.m */; };
 		3D0598201EC4AC84002F66E2 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0598051EC4AC84002F66E2 /* AppInfo.swift */; };
@@ -55,10 +43,36 @@
 		3D727EB51EC951B400367884 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D727EB41EC951B400367884 /* Assets.xcassets */; };
 		3D727EB81EC951B400367884 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D727EB61EC951B400367884 /* LaunchScreen.storyboard */; };
 		3D727EBE1EC9524500367884 /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D727EBD1EC9524500367884 /* UITextFieldExtensions.swift */; };
-		3DA6CBE81ED43C77007DBF72 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA6CBE11ED43C77007DBF72 /* NetworkReachabilityManager.swift */; };
 		3DA6CBE91ED43C77007DBF72 /* WifiDidChangedNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA6CBE21ED43C77007DBF72 /* WifiDidChangedNotification.swift */; };
 		3DF8D1801ED27B61004E73E6 /* AspectsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF8D17F1ED27B61004E73E6 /* AspectsExtensions.swift */; };
 		BF3F3EE4D0AD6F4C4F875488 /* Pods_SwiftExtensionsExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0EAD5ADD79B933B2E6903B06 /* Pods_SwiftExtensionsExample.framework */; };
+		C00E798025ECC1F600985FB6 /* CADisplayLink+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00E797F25ECC1F600985FB6 /* CADisplayLink+Rx.swift */; };
+		C00E79AF25ECC4F500985FB6 /* CLLocationManager+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00E79AA25ECC4F400985FB6 /* CLLocationManager+Rx.swift */; };
+		C00E79B025ECC4F500985FB6 /* PHPickerViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00E79AB25ECC4F400985FB6 /* PHPickerViewController+Rx.swift */; };
+		C00E79B125ECC4F500985FB6 /* UIDocumentPickerDelegate+RX.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00E79AC25ECC4F400985FB6 /* UIDocumentPickerDelegate+RX.swift */; };
+		C00E79B225ECC4F500985FB6 /* UIImagePickerController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00E79AD25ECC4F400985FB6 /* UIImagePickerController+Rx.swift */; };
+		C00E79B325ECC4F500985FB6 /* UITableViewCell+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00E79AE25ECC4F500985FB6 /* UITableViewCell+Rx.swift */; };
+		C00E79B925ECC52900985FB6 /* PageViewControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00E79B625ECC52900985FB6 /* PageViewControl.swift */; };
+		C00E79BA25ECC52900985FB6 /* PageScrollingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00E79B725ECC52900985FB6 /* PageScrollingViewController.swift */; };
+		C00E79BB25ECC52900985FB6 /* PageScrollingSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00E79B825ECC52900985FB6 /* PageScrollingSegment.swift */; };
+		C00E79C625ECC53800985FB6 /* MQTTEchoProceser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00E79BF25ECC53800985FB6 /* MQTTEchoProceser.swift */; };
+		C00E79C725ECC53800985FB6 /* MQTTDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00E79C125ECC53800985FB6 /* MQTTDefines.swift */; };
+		C00E79C825ECC53800985FB6 /* MQTTManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00E79C225ECC53800985FB6 /* MQTTManager.swift */; };
+		C00E79C925ECC53800985FB6 /* MQTTMessageProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00E79C325ECC53800985FB6 /* MQTTMessageProtocols.swift */; };
+		C00E79CA25ECC53800985FB6 /* CocoaMQTTPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00E79C525ECC53800985FB6 /* CocoaMQTTPublisher.swift */; };
+		C00E79D125ECC60B00985FB6 /* KZWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00E79CD25ECC60B00985FB6 /* KZWebView.swift */; };
+		C00E79D225ECC60B00985FB6 /* KZWebKitSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00E79CE25ECC60B00985FB6 /* KZWebKitSupport.swift */; };
+		C00E79D325ECC60B00985FB6 /* KZWebViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00E79CF25ECC60B00985FB6 /* KZWebViewDelegate.swift */; };
+		C00E79D425ECC60B00985FB6 /* KZWebViewForStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00E79D025ECC60B00985FB6 /* KZWebViewForStoryboard.swift */; };
+		C013C9E825ECBBCA0022CCF8 /* SecurityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013C9DE25ECBBCA0022CCF8 /* SecurityManager.swift */; };
+		C013C9E925ECBBCA0022CCF8 /* SecurityManager+BackgroundNotify.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013C9E025ECBBCA0022CCF8 /* SecurityManager+BackgroundNotify.swift */; };
+		C013C9EA25ECBBCA0022CCF8 /* SecurityManager+ErrorProcesser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013C9E125ECBBCA0022CCF8 /* SecurityManager+ErrorProcesser.swift */; };
+		C013C9EB25ECBBCA0022CCF8 /* GestureLockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013C9E325ECBBCA0022CCF8 /* GestureLockViewController.swift */; };
+		C013C9EC25ECBBCA0022CCF8 /* GestureLockIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013C9E425ECBBCA0022CCF8 /* GestureLockIndicator.swift */; };
+		C013C9ED25ECBBCA0022CCF8 /* GestureLockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013C9E525ECBBCA0022CCF8 /* GestureLockView.swift */; };
+		C013C9EE25ECBBCA0022CCF8 /* BiometryLockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013C9E625ECBBCA0022CCF8 /* BiometryLockViewController.swift */; };
+		C013C9EF25ECBBCA0022CCF8 /* SecurityManager+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013C9E725ECBBCA0022CCF8 /* SecurityManager+UI.swift */; };
+		C013CA0825ECBEB70022CCF8 /* UITableView+Dragable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C013CA0725ECBEB70022CCF8 /* UITableView+Dragable.swift */; };
 		E293E3C5CF5B833B1BFA22B1 /* Pods_SwiftExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62242482DD8487877138C25C /* Pods_SwiftExtensions.framework */; };
 /* End PBXBuildFile section */
 
@@ -101,19 +115,7 @@
 		042AE4682133E64C006EC585 /* DeviceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceExtensions.swift; sourceTree = "<group>"; };
 		044FB33820F367BA00AEB767 /* VolumeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeController.swift; sourceTree = "<group>"; };
 		045067DB21749A9F00243CFF /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		046DEBC320FDE71900A4C7E1 /* HookSwiftPrintC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HookSwiftPrintC.m; sourceTree = "<group>"; };
-		046F0CE9211D908300F2BFDC /* BiometryLockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BiometryLockViewController.swift; sourceTree = "<group>"; };
-		046F0CEA211D908300F2BFDC /* GestureLockIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GestureLockIndicator.swift; sourceTree = "<group>"; };
-		046F0CEB211D908300F2BFDC /* GestureLockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GestureLockView.swift; sourceTree = "<group>"; };
-		046F0CEC211D908300F2BFDC /* GestureLockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GestureLockViewController.swift; sourceTree = "<group>"; };
-		046F0CEE211D908300F2BFDC /* PasswordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordController.swift; sourceTree = "<group>"; };
-		046F0CEF211D908300F2BFDC /* SecurityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityManager.swift; sourceTree = "<group>"; };
-		046F0CF0211D908300F2BFDC /* SecurityManagerErrorProcesser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityManagerErrorProcesser.swift; sourceTree = "<group>"; };
 		0487D40E2101B96A008FA3B3 /* WebViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewManager.swift; sourceTree = "<group>"; };
-		0497A006217710E1007CBDC2 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
-		0497A0082177110B007CBDC2 /* MutableSectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MutableSectionViewController.swift; sourceTree = "<group>"; };
-		04B6113520F5F4F70025974E /* UIViewController+Rotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Rotation.m"; sourceTree = "<group>"; };
-		04B6113620F5F4F70025974E /* UIViewController+Rotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Rotation.h"; sourceTree = "<group>"; };
 		0EAD5ADD79B933B2E6903B06 /* Pods_SwiftExtensionsExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftExtensionsExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		255002D9D04BD4FFE38F7AE1 /* Pods_SwiftExtensionsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftExtensionsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		265F7FE7DA7AABF9302448B2 /* Pods-SwiftExtensionsExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftExtensionsExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftExtensionsExample/Pods-SwiftExtensionsExample.debug.xcconfig"; sourceTree = "<group>"; };
@@ -154,7 +156,6 @@
 		3D727EB71EC951B400367884 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D727EB91EC951B400367884 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D727EBD1EC9524500367884 /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
-		3DA6CBE11ED43C77007DBF72 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityManager.swift; sourceTree = "<group>"; };
 		3DA6CBE21ED43C77007DBF72 /* WifiDidChangedNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WifiDidChangedNotification.swift; sourceTree = "<group>"; };
 		3DA6CBE41ED43C77007DBF72 /* QRDecode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRDecode.swift; sourceTree = "<group>"; };
 		3DA6CBE51ED43C77007DBF72 /* QRDecodeUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRDecodeUI.swift; sourceTree = "<group>"; };
@@ -165,6 +166,33 @@
 		62242482DD8487877138C25C /* Pods_SwiftExtensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftExtensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9CEF967CCB8C885ED3FC505F /* Pods-SwiftExtensionsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftExtensionsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftExtensionsTests/Pods-SwiftExtensionsTests.release.xcconfig"; sourceTree = "<group>"; };
 		B889E513EB88584042E51B55 /* Pods-SwiftExtensions.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftExtensions.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftExtensions/Pods-SwiftExtensions.debug.xcconfig"; sourceTree = "<group>"; };
+		C00E797F25ECC1F600985FB6 /* CADisplayLink+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CADisplayLink+Rx.swift"; sourceTree = "<group>"; };
+		C00E79AA25ECC4F400985FB6 /* CLLocationManager+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocationManager+Rx.swift"; sourceTree = "<group>"; };
+		C00E79AB25ECC4F400985FB6 /* PHPickerViewController+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PHPickerViewController+Rx.swift"; sourceTree = "<group>"; };
+		C00E79AC25ECC4F400985FB6 /* UIDocumentPickerDelegate+RX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDocumentPickerDelegate+RX.swift"; sourceTree = "<group>"; };
+		C00E79AD25ECC4F400985FB6 /* UIImagePickerController+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImagePickerController+Rx.swift"; sourceTree = "<group>"; };
+		C00E79AE25ECC4F500985FB6 /* UITableViewCell+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Rx.swift"; sourceTree = "<group>"; };
+		C00E79B625ECC52900985FB6 /* PageViewControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewControl.swift; sourceTree = "<group>"; };
+		C00E79B725ECC52900985FB6 /* PageScrollingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageScrollingViewController.swift; sourceTree = "<group>"; };
+		C00E79B825ECC52900985FB6 /* PageScrollingSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageScrollingSegment.swift; sourceTree = "<group>"; };
+		C00E79BF25ECC53800985FB6 /* MQTTEchoProceser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQTTEchoProceser.swift; sourceTree = "<group>"; };
+		C00E79C125ECC53800985FB6 /* MQTTDefines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQTTDefines.swift; sourceTree = "<group>"; };
+		C00E79C225ECC53800985FB6 /* MQTTManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQTTManager.swift; sourceTree = "<group>"; };
+		C00E79C325ECC53800985FB6 /* MQTTMessageProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQTTMessageProtocols.swift; sourceTree = "<group>"; };
+		C00E79C525ECC53800985FB6 /* CocoaMQTTPublisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CocoaMQTTPublisher.swift; sourceTree = "<group>"; };
+		C00E79CD25ECC60B00985FB6 /* KZWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZWebView.swift; sourceTree = "<group>"; };
+		C00E79CE25ECC60B00985FB6 /* KZWebKitSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZWebKitSupport.swift; sourceTree = "<group>"; };
+		C00E79CF25ECC60B00985FB6 /* KZWebViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZWebViewDelegate.swift; sourceTree = "<group>"; };
+		C00E79D025ECC60B00985FB6 /* KZWebViewForStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KZWebViewForStoryboard.swift; sourceTree = "<group>"; };
+		C013C9DE25ECBBCA0022CCF8 /* SecurityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecurityManager.swift; sourceTree = "<group>"; };
+		C013C9E025ECBBCA0022CCF8 /* SecurityManager+BackgroundNotify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SecurityManager+BackgroundNotify.swift"; sourceTree = "<group>"; };
+		C013C9E125ECBBCA0022CCF8 /* SecurityManager+ErrorProcesser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SecurityManager+ErrorProcesser.swift"; sourceTree = "<group>"; };
+		C013C9E325ECBBCA0022CCF8 /* GestureLockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GestureLockViewController.swift; sourceTree = "<group>"; };
+		C013C9E425ECBBCA0022CCF8 /* GestureLockIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GestureLockIndicator.swift; sourceTree = "<group>"; };
+		C013C9E525ECBBCA0022CCF8 /* GestureLockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GestureLockView.swift; sourceTree = "<group>"; };
+		C013C9E625ECBBCA0022CCF8 /* BiometryLockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BiometryLockViewController.swift; sourceTree = "<group>"; };
+		C013C9E725ECBBCA0022CCF8 /* SecurityManager+UI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SecurityManager+UI.swift"; sourceTree = "<group>"; };
+		C013CA0725ECBEB70022CCF8 /* UITableView+Dragable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Dragable.swift"; sourceTree = "<group>"; };
 		EBA031EC271679616C6F2734 /* Pods-SwiftExtensions.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftExtensions.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftExtensions/Pods-SwiftExtensions.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -189,32 +217,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		045067D6217488D900243CFF /* CellFectory */ = {
-			isa = PBXGroup;
-			children = (
-				0497A006217710E1007CBDC2 /* TableViewDataSource.swift */,
-			);
-			path = CellFectory;
-			sourceTree = "<group>";
-		};
-		046DEBC120FDE68E00A4C7E1 /* Swift Logger */ = {
-			isa = PBXGroup;
-			children = (
-				046DEBC320FDE71900A4C7E1 /* HookSwiftPrintC.m */,
-			);
-			path = "Swift Logger";
-			sourceTree = "<group>";
-		};
 		046F0CE2211D908300F2BFDC /* SecurityManager */ = {
 			isa = PBXGroup;
 			children = (
-				046F0CE9211D908300F2BFDC /* BiometryLockViewController.swift */,
-				046F0CEA211D908300F2BFDC /* GestureLockIndicator.swift */,
-				046F0CEB211D908300F2BFDC /* GestureLockView.swift */,
-				046F0CEC211D908300F2BFDC /* GestureLockViewController.swift */,
-				046F0CEE211D908300F2BFDC /* PasswordController.swift */,
-				046F0CEF211D908300F2BFDC /* SecurityManager.swift */,
-				046F0CF0211D908300F2BFDC /* SecurityManagerErrorProcesser.swift */,
+				C013C9DD25ECBBCA0022CCF8 /* Core */,
+				C013C9DF25ECBBCA0022CCF8 /* Extension */,
+				C013C9E225ECBBCA0022CCF8 /* UI */,
 				0419DFFA2138DF2200677C36 /* SecurityManager.xcassets */,
 			);
 			path = SecurityManager;
@@ -226,15 +234,6 @@
 				0487D40E2101B96A008FA3B3 /* WebViewManager.swift */,
 			);
 			path = WebViewManager;
-			sourceTree = "<group>";
-		};
-		04B6113420F5F4BC0025974E /* Screen rotation */ = {
-			isa = PBXGroup;
-			children = (
-				04B6113620F5F4F70025974E /* UIViewController+Rotation.h */,
-				04B6113520F5F4F70025974E /* UIViewController+Rotation.m */,
-			);
-			path = "Screen rotation";
 			sourceTree = "<group>";
 		};
 		3D05966A1EC4AB06002F66E2 = {
@@ -260,17 +259,17 @@
 		3D0596761EC4AB06002F66E2 /* SwiftExtensions */ = {
 			isa = PBXGroup;
 			children = (
-				045067D6217488D900243CFF /* CellFectory */,
 				046F0CE2211D908300F2BFDC /* SecurityManager */,
 				0487D40D2101B956008FA3B3 /* WebViewManager */,
-				046DEBC120FDE68E00A4C7E1 /* Swift Logger */,
-				04B6113420F5F4BC0025974E /* Screen rotation */,
+				C00E79CC25ECC60B00985FB6 /* KZWebView */,
 				3DA6CBE01ED43C77007DBF72 /* NetWorkReachability */,
 				3DA6CBE31ED43C77007DBF72 /* QRManager */,
 				3D05981C1EC4AC84002F66E2 /* Router */,
 				3D0598031EC4AC84002F66E2 /* AppInfo */,
 				3D0598061EC4AC84002F66E2 /* ApplicationServices */,
 				3D0598081EC4AC84002F66E2 /* CacheManager */,
+				C00E79B525ECC52900985FB6 /* PageScrollingKit */,
+				C00E79BD25ECC53800985FB6 /* MQTT */,
 				3D05980A1EC4AC84002F66E2 /* Extensions */,
 				3D0598181EC4AC84002F66E2 /* Literally */,
 				3D05981A1EC4AC84002F66E2 /* OtherSource */,
@@ -309,6 +308,12 @@
 		3D05980A1EC4AC84002F66E2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				C00E797F25ECC1F600985FB6 /* CADisplayLink+Rx.swift */,
+				C00E79AA25ECC4F400985FB6 /* CLLocationManager+Rx.swift */,
+				C00E79AB25ECC4F400985FB6 /* PHPickerViewController+Rx.swift */,
+				C00E79AC25ECC4F400985FB6 /* UIDocumentPickerDelegate+RX.swift */,
+				C00E79AD25ECC4F400985FB6 /* UIImagePickerController+Rx.swift */,
+				C00E79AE25ECC4F500985FB6 /* UITableViewCell+Rx.swift */,
 				3D0246291EE8DE6A00B9B9AA /* ReactiveCocoa+DXRx.swift */,
 				3D4B58561ECA93B200001F73 /* SequenceExtensions.swift */,
 				3D05980B1EC4AC84002F66E2 /* ArrayExtensions.swift */,
@@ -317,6 +322,7 @@
 				3D05980E1EC4AC84002F66E2 /* DispatchQueueExtensions.swift */,
 				3D05980F1EC4AC84002F66E2 /* NumberExtensions.swift */,
 				3D0598101EC4AC84002F66E2 /* RuntimeExtensions.swift */,
+				C013CA0725ECBEB70022CCF8 /* UITableView+Dragable.swift */,
 				3D0598111EC4AC84002F66E2 /* StringExtensions.swift */,
 				3D0598121EC4AC84002F66E2 /* UIAlertControllerExtensions.swift */,
 				3D0598131EC4AC84002F66E2 /* UIColorExtensions.swift */,
@@ -363,7 +369,6 @@
 			children = (
 				3D727EAD1EC951B400367884 /* AppDelegate.swift */,
 				3D727EAF1EC951B400367884 /* ViewController.swift */,
-				0497A0082177110B007CBDC2 /* MutableSectionViewController.swift */,
 				045067DB21749A9F00243CFF /* Main.storyboard */,
 				3D727EB41EC951B400367884 /* Assets.xcassets */,
 				3D727EB61EC951B400367884 /* LaunchScreen.storyboard */,
@@ -375,7 +380,6 @@
 		3DA6CBE01ED43C77007DBF72 /* NetWorkReachability */ = {
 			isa = PBXGroup;
 			children = (
-				3DA6CBE11ED43C77007DBF72 /* NetworkReachabilityManager.swift */,
 				3DA6CBE21ED43C77007DBF72 /* WifiDidChangedNotification.swift */,
 			);
 			path = NetWorkReachability;
@@ -405,6 +409,92 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		C00E79B525ECC52900985FB6 /* PageScrollingKit */ = {
+			isa = PBXGroup;
+			children = (
+				C00E79B625ECC52900985FB6 /* PageViewControl.swift */,
+				C00E79B725ECC52900985FB6 /* PageScrollingViewController.swift */,
+				C00E79B825ECC52900985FB6 /* PageScrollingSegment.swift */,
+			);
+			path = PageScrollingKit;
+			sourceTree = "<group>";
+		};
+		C00E79BD25ECC53800985FB6 /* MQTT */ = {
+			isa = PBXGroup;
+			children = (
+				C00E79BE25ECC53800985FB6 /* Proceser */,
+				C00E79C025ECC53800985FB6 /* Core */,
+				C00E79C425ECC53800985FB6 /* Publisher */,
+			);
+			path = MQTT;
+			sourceTree = "<group>";
+		};
+		C00E79BE25ECC53800985FB6 /* Proceser */ = {
+			isa = PBXGroup;
+			children = (
+				C00E79BF25ECC53800985FB6 /* MQTTEchoProceser.swift */,
+			);
+			path = Proceser;
+			sourceTree = "<group>";
+		};
+		C00E79C025ECC53800985FB6 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				C00E79C125ECC53800985FB6 /* MQTTDefines.swift */,
+				C00E79C225ECC53800985FB6 /* MQTTManager.swift */,
+				C00E79C325ECC53800985FB6 /* MQTTMessageProtocols.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		C00E79C425ECC53800985FB6 /* Publisher */ = {
+			isa = PBXGroup;
+			children = (
+				C00E79C525ECC53800985FB6 /* CocoaMQTTPublisher.swift */,
+			);
+			path = Publisher;
+			sourceTree = "<group>";
+		};
+		C00E79CC25ECC60B00985FB6 /* KZWebView */ = {
+			isa = PBXGroup;
+			children = (
+				C00E79CD25ECC60B00985FB6 /* KZWebView.swift */,
+				C00E79CE25ECC60B00985FB6 /* KZWebKitSupport.swift */,
+				C00E79CF25ECC60B00985FB6 /* KZWebViewDelegate.swift */,
+				C00E79D025ECC60B00985FB6 /* KZWebViewForStoryboard.swift */,
+			);
+			path = KZWebView;
+			sourceTree = "<group>";
+		};
+		C013C9DD25ECBBCA0022CCF8 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				C013C9DE25ECBBCA0022CCF8 /* SecurityManager.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		C013C9DF25ECBBCA0022CCF8 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C013C9E025ECBBCA0022CCF8 /* SecurityManager+BackgroundNotify.swift */,
+				C013C9E125ECBBCA0022CCF8 /* SecurityManager+ErrorProcesser.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		C013C9E225ECBBCA0022CCF8 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				C013C9E325ECBBCA0022CCF8 /* GestureLockViewController.swift */,
+				C013C9E425ECBBCA0022CCF8 /* GestureLockIndicator.swift */,
+				C013C9E525ECBBCA0022CCF8 /* GestureLockView.swift */,
+				C013C9E625ECBBCA0022CCF8 /* BiometryLockViewController.swift */,
+				C013C9E725ECBBCA0022CCF8 /* SecurityManager+UI.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		CB962F67262C875E9FE4D887 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -425,7 +515,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D0596851EC4AB06002F66E2 /* SwiftExtensions.h in Headers */,
-				049D457C215F191000DC9A35 /* UIViewController+Rotation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,7 +569,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1000;
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = kagenZhao;
 				TargetAttributes = {
 					3D0596731EC4AB06002F66E2 = {
@@ -499,7 +588,7 @@
 			};
 			buildConfigurationList = 3D05966E1EC4AB06002F66E2 /* Build configuration list for PBXProject "SwiftExtensions" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -580,9 +669,11 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-SwiftExtensionsExample/Pods-SwiftExtensionsExample-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-SwiftExtensionsExample/Pods-SwiftExtensionsExample-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Aspects/Aspects.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaMQTT/CocoaMQTT.framework",
 				"${BUILT_PRODUCTS_DIR}/DeviceKit/DeviceKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
@@ -590,6 +681,7 @@
 				"${BUILT_PRODUCTS_DIR}/ReactiveCocoa/ReactiveCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
@@ -602,6 +694,8 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Aspects.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaMQTT.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DeviceKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
@@ -609,6 +703,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactiveCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
@@ -619,7 +714,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftExtensionsExample/Pods-SwiftExtensionsExample-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SwiftExtensionsExample/Pods-SwiftExtensionsExample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -629,45 +724,61 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04D47917212FB2F50056D22E /* HookSwiftPrintC.m in Sources */,
-				046F0CF9211D908300F2BFDC /* GestureLockViewController.swift in Sources */,
+				C00E79C725ECC53800985FB6 /* MQTTDefines.swift in Sources */,
 				042AE4692133E64C006EC585 /* DeviceExtensions.swift in Sources */,
-				049D457B215F190E00DC9A35 /* UIViewController+Rotation.m in Sources */,
+				C00E79B325ECC4F500985FB6 /* UITableViewCell+Rx.swift in Sources */,
 				3D0598221EC4AC84002F66E2 /* CacheManager.swift in Sources */,
 				3D0598271EC4AC84002F66E2 /* NumberExtensions.swift in Sources */,
+				C013C9EB25ECBBCA0022CCF8 /* GestureLockViewController.swift in Sources */,
+				C013C9E825ECBBCA0022CCF8 /* SecurityManager.swift in Sources */,
 				0487D40F2101B96A008FA3B3 /* WebViewManager.swift in Sources */,
-				046F0CF7211D908300F2BFDC /* GestureLockIndicator.swift in Sources */,
+				C00E79B025ECC4F500985FB6 /* PHPickerViewController+Rx.swift in Sources */,
 				3D1588691ECBF6A1009E0B9D /* UIButtonExtensions.swift in Sources */,
-				3DA6CBE81ED43C77007DBF72 /* NetworkReachabilityManager.swift in Sources */,
-				0497A007217710E1007CBDC2 /* TableViewDataSource.swift in Sources */,
 				3D05982B1EC4AC84002F66E2 /* UIColorExtensions.swift in Sources */,
+				C013C9EE25ECBBCA0022CCF8 /* BiometryLockViewController.swift in Sources */,
+				C00E79C925ECC53800985FB6 /* MQTTMessageProtocols.swift in Sources */,
 				3D0598241EC4AC84002F66E2 /* CGRectExtensions.swift in Sources */,
 				3DF8D1801ED27B61004E73E6 /* AspectsExtensions.swift in Sources */,
 				044FB33920F367BA00AEB767 /* VolumeController.swift in Sources */,
 				3D05982C1EC4AC84002F66E2 /* UILabelExtensions.swift in Sources */,
+				C013C9EC25ECBBCA0022CCF8 /* GestureLockIndicator.swift in Sources */,
+				C00E79B925ECC52900985FB6 /* PageViewControl.swift in Sources */,
+				C00E79D225ECC60B00985FB6 /* KZWebKitSupport.swift in Sources */,
+				C00E79BB25ECC52900985FB6 /* PageScrollingSegment.swift in Sources */,
+				C00E79D425ECC60B00985FB6 /* KZWebViewForStoryboard.swift in Sources */,
 				3D05982E1EC4AC84002F66E2 /* UIViewCornerExtension.swift in Sources */,
 				3D4B58571ECA93B200001F73 /* SequenceExtensions.swift in Sources */,
+				C00E79C825ECC53800985FB6 /* MQTTManager.swift in Sources */,
 				3D0598231EC4AC84002F66E2 /* ArrayExtensions.swift in Sources */,
-				046F0CFB211D908300F2BFDC /* PasswordController.swift in Sources */,
+				C00E79D325ECC60B00985FB6 /* KZWebViewDelegate.swift in Sources */,
 				3D05981F1EC4AC84002F66E2 /* AppInfo.m in Sources */,
+				C013C9EA25ECBBCA0022CCF8 /* SecurityManager+ErrorProcesser.swift in Sources */,
 				3D05982D1EC4AC84002F66E2 /* UIViewControllerExtensions.swift in Sources */,
 				3D0598251EC4AC84002F66E2 /* DataExtensions.swift in Sources */,
+				C00E79C625ECC53800985FB6 /* MQTTEchoProceser.swift in Sources */,
 				3D0598331EC4AC84002F66E2 /* Router.swift in Sources */,
-				046F0CF8211D908300F2BFDC /* GestureLockView.swift in Sources */,
+				C00E79AF25ECC4F500985FB6 /* CLLocationManager+Rx.swift in Sources */,
+				C013C9E925ECBBCA0022CCF8 /* SecurityManager+BackgroundNotify.swift in Sources */,
+				C00E79B225ECC4F500985FB6 /* UIImagePickerController+Rx.swift in Sources */,
 				3DA6CBE91ED43C77007DBF72 /* WifiDidChangedNotification.swift in Sources */,
+				C013CA0825ECBEB70022CCF8 /* UITableView+Dragable.swift in Sources */,
 				3D0598291EC4AC84002F66E2 /* StringExtensions.swift in Sources */,
-				046F0CFC211D908300F2BFDC /* SecurityManager.swift in Sources */,
 				3D727EBE1EC9524500367884 /* UITextFieldExtensions.swift in Sources */,
 				3D0598281EC4AC84002F66E2 /* RuntimeExtensions.swift in Sources */,
 				3D0598321EC4AC84002F66E2 /* NotExistViewController.swift in Sources */,
+				C00E798025ECC1F600985FB6 /* CADisplayLink+Rx.swift in Sources */,
 				3D0598261EC4AC84002F66E2 /* DispatchQueueExtensions.swift in Sources */,
 				3D0598201EC4AC84002F66E2 /* AppInfo.swift in Sources */,
+				C00E79BA25ECC52900985FB6 /* PageScrollingViewController.swift in Sources */,
+				C013C9EF25ECBBCA0022CCF8 /* SecurityManager+UI.swift in Sources */,
+				C013C9ED25ECBBCA0022CCF8 /* GestureLockView.swift in Sources */,
 				3D0598311EC4AC84002F66E2 /* SwiftMD5.swift in Sources */,
+				C00E79D125ECC60B00985FB6 /* KZWebView.swift in Sources */,
+				C00E79B125ECC4F500985FB6 /* UIDocumentPickerDelegate+RX.swift in Sources */,
 				0419DFF92138DBF600677C36 /* BundleExtension.swift in Sources */,
 				3D05982F1EC4AC84002F66E2 /* UIViewExtensions.swift in Sources */,
-				046F0CF6211D908300F2BFDC /* BiometryLockViewController.swift in Sources */,
 				3D05982A1EC4AC84002F66E2 /* UIAlertControllerExtensions.swift in Sources */,
-				046F0CFD211D908300F2BFDC /* SecurityManagerErrorProcesser.swift in Sources */,
+				C00E79CA25ECC53800985FB6 /* CocoaMQTTPublisher.swift in Sources */,
 				3D0598301EC4AC84002F66E2 /* Literally.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -678,7 +789,6 @@
 			files = (
 				3D727EB01EC951B400367884 /* ViewController.swift in Sources */,
 				3D727EAE1EC951B400367884 /* AppDelegate.swift in Sources */,
-				0497A0092177110B007CBDC2 /* MutableSectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -834,13 +944,13 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SwiftExtensions/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kagen.SwiftExtensions;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -858,12 +968,12 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SwiftExtensions/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kagen.SwiftExtensions;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

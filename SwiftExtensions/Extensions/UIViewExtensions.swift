@@ -52,3 +52,17 @@ extension UIView: KZRectProcotol {
         get { return frame.bottom }
     }
 }
+
+extension UIView{
+    func viewController() -> UIViewController? {
+        var next = self.next
+        repeat {
+            if let vc = next as? UIViewController {
+                return vc
+            }
+            next = next?.next
+        } while next != nil;
+        
+        return next as? UIViewController
+    }
+}

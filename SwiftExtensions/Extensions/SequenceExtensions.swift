@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Sequence where SubSequence: Sequence, SubSequence.Iterator.Element == Iterator.Element {
+extension Sequence where Element: Sequence, Element.Iterator.Element == Iterator.Element {
     public func eachPair() -> AnySequence<(Iterator.Element, Iterator.Element)> {
         return AnySequence(zip(self, self.dropFirst()))
     }

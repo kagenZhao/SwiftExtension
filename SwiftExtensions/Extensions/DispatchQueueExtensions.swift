@@ -11,13 +11,13 @@ import Foundation
 // MARK: - Div
 public extension DispatchQueue {
     
-    public static var userInteractive: DispatchQueue { return DispatchQueue.global(qos: .userInteractive) }
+    static var userInteractive: DispatchQueue { return DispatchQueue.global(qos: .userInteractive) }
     
-    public static var userInitiated: DispatchQueue { return DispatchQueue.global(qos: .userInitiated) }
+    static var userInitiated: DispatchQueue { return DispatchQueue.global(qos: .userInitiated) }
     
-    public static var utility: DispatchQueue { return DispatchQueue.global(qos: .utility) }
+    static var utility: DispatchQueue { return DispatchQueue.global(qos: .utility) }
     
-    public static var background: DispatchQueue { return DispatchQueue.global(qos: .background) }
+    static var background: DispatchQueue { return DispatchQueue.global(qos: .background) }
     
     private static var _tokens: Set<UnsafeRawPointer> = []
     
@@ -27,7 +27,7 @@ public extension DispatchQueue {
     /// - Parameters:
     ///   - token: identifier
     ///   - closure: execute
-    public class func once(_ token: UnsafeRawPointer, execute closure: (() -> ())) {
+    class func once(_ token: UnsafeRawPointer, execute closure: (() -> ())) {
         
         objc_sync_enter(self); defer { objc_sync_exit(self) }
         
@@ -38,13 +38,13 @@ public extension DispatchQueue {
         closure()
     }
     
-    public func after(delay: TimeInterval, execute closure: @escaping () -> ()) {
+    func after(delay: TimeInterval, execute closure: @escaping () -> ()) {
         
         asyncAfter(deadline: .now() + delay, execute: closure)
     }
     
     /// 创建GCD timer
-    public func timer(flags: DispatchSource.TimerFlags = [],
+    func timer(flags: DispatchSource.TimerFlags = [],
                       deadline: DispatchTime = .now(),
                       interval: DispatchTimeInterval,
                       leeway: DispatchTimeInterval = .milliseconds(1),
@@ -68,11 +68,11 @@ public extension DispatchQueue {
 /// 给resume 和 cancel 起个别名 便于 阅读
 public extension DispatchSourceTimer {
     
-    public func start() {
+    func start() {
         self.resume()
     }
     
-    public func stop() {
+    func stop() {
         self.cancel()
     }
 }

@@ -16,6 +16,7 @@ class GestureLockViewController: UIViewController {
         case validate
     }
     
+    var isReset: Bool = false
     private var validateComplete: ((Bool, SecurityManager.AuthenticateError?) -> ())?
     private var createSuccess: Bool = false
     private var createdCompleted: ((Bool, SecurityManager.AuthenticateError?) -> ())?
@@ -52,6 +53,7 @@ class GestureLockViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        self.navigationItem.title = (type == .create) ? "设置手势密码" : "验证手势密码"
         
         let color = UIColor(red: 0.0706, green: 0.588, blue: 0.859, alpha: 1)
         
@@ -115,7 +117,6 @@ class GestureLockViewController: UIViewController {
         
         backButton.setTitle("取消", for: .normal)
         backButton.setTitleColor(color, for: .normal)
-//        backButton.setImage(UIImage(named: "gesture_back"), for: .normal)
         backButton.addTarget(self, action: #selector(dismissAction), for: .touchUpInside)
         view.addSubview(backButton)
         backButton.snp.makeConstraints { (maker) in
@@ -129,6 +130,10 @@ class GestureLockViewController: UIViewController {
             self?.drawRectFinished(pwd)
         }
         
+        reload()
+    }
+    
+    private func reload() {
         if type != .create {
             gestureLockIndicator.isHidden = true
             infoLabel.snp.updateConstraints { (maker) in
@@ -137,6 +142,10 @@ class GestureLockViewController: UIViewController {
             otherFuncButton.isHidden = false
             forgetPwdButton.isHidden = false
         } else {
+            gestureLockIndicator.isHidden = false
+            infoLabel.snp.updateConstraints { (maker) in
+                maker.bottom.equalTo(gestureLockView.snp.top).offset(-15)
+            }
             otherFuncButton.isHidden = true
             forgetPwdButton.isHidden = true
         }
@@ -150,14 +159,13 @@ class GestureLockViewController: UIViewController {
                 maker.height.equalTo(35)
             }
         }
-
-//        checkTryNumbers()
+        infoLabel.text = "绘制解锁图案"
+        infoLabel.textColor = .lightGray
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         backButton.isHidden = !(self.navigationController == nil && self.presentingViewController != nil)
-//        checkTryNumbers()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -207,9 +215,17 @@ class GestureLockViewController: UIViewController {
                     shakeAnimation(for: infoLabel)
                 }
             } else {
-                validateComplete?(true, nil)
-                removeFromWindow()
-            }
+                if isReset {
+                    type = .create
+                    reload()
+                    createdCompleted = validateComplete
+                    validateComplete = nil
+                    self.navigationItem.title = "设置手势密码"
+                } else {
+                    validateComplete?(true, nil)
+                    removeFromWindow()
+                }
+            }            
         }
     }
     
@@ -220,7 +236,7 @@ class GestureLockViewController: UIViewController {
         let right = CGPoint(x: position.x + 10, y: position.y)
         
         let animation = CABasicAnimation(keyPath: "position")
-        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         animation.fromValue = left
         animation.toValue = right
         animation.autoreverses = true
@@ -330,7 +346,19 @@ class GestureLockViewController: UIViewController {
     
     private func back() {
         if self.navigationController != nil, self.navigationController?.viewControllers[0] != self {
-            self.navigationController?.popViewController(animated: true)
+            var toViewController: UIViewController!
+            for vc in self.navigationController!.viewControllers {
+                if vc.isKind(of: GestureLockViewController.self) {
+                    break
+                } else {
+                    toViewController = vc
+                }
+            }
+            if toViewController != nil {
+                self.navigationController?.popToViewController(toViewController, animated: true)
+            } else {
+                self.navigationController?.popViewController(animated: true)
+            }
         } else if self.navigationController != nil {
             self.navigationController?.dismiss(animated: true, completion: nil)
         } else {
@@ -343,20 +371,23 @@ class GestureLockViewController: UIViewController {
             self.window = window ?? self.createWindow()
             self.window?.rootViewController = self
             self.window?.makeKeyAndVisible()
+            self.window?.isHidden = false
         }
     }
     
     func removeFromWindow() {
         DispatchQueue.main.async {
+            self.window?.resignKey()
             self.window?.rootViewController = nil
             self.window?.isHidden = true
+            self.window = nil
         }
     }
 
     private func createWindow() -> UIWindow {
         let w = UIWindow.init(frame: UIScreen.main.bounds)
         w.backgroundColor = .white
-        w.windowLevel = .alert
+        w.windowLevel = UIWindow.Level.alert
         return w
     }
 }

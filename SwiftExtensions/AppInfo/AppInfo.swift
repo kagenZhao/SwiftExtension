@@ -111,14 +111,14 @@ public enum ByteStyle: Int {
 public struct AppInfo {}
 
 public extension AppInfo {
-        public struct CPU {
-    
-    
-        }
+    struct CPU {
+        
+        
+    }
 }
 
 public extension AppInfo {
-    public struct Memory {
+    struct Memory {
         
         public static func appUsage(_ style: CountStyle = .decimal(.auto)) -> (value: Double, string: String) {
             var v = Double(memoryUsage())
@@ -142,7 +142,7 @@ public extension AppInfo {
 }
 
 public extension AppInfo {
-    public struct Disk {
+    struct Disk {
         
         public static func deviceAvailable(_ style: CountStyle = .decimal(.auto)) -> (value: Double, string: String) {
             var v = Double(freeDiskSize())
@@ -171,7 +171,7 @@ public extension AppInfo {
 }
 
 public extension AppInfo {
-    public struct Device {
+    struct Device {
         @_silgen_name("getIpAddress")
         public static func getIpAddress() -> String
         
@@ -187,8 +187,8 @@ public extension AppInfo {
         
         /// 屏幕亮度
         public static var brightness: Float {
-            get { return UIScreen.main.brightness.toFloat }
-            set { UIScreen.main.brightness = newValue.toCGFloat }
+            get { return UIScreen.main.brightness.toFloat() }
+            set { UIScreen.main.brightness = newValue.toCGFloat() }
         }
         
         /// 音量
@@ -206,7 +206,7 @@ public extension AppInfo {
 
 // MARK: - Tools
 public extension AppInfo.Memory {
-    public static func memoryInfo( vmStats: inout vm_statistics_data_t) -> Bool {
+    static func memoryInfo( vmStats: inout vm_statistics_data_t) -> Bool {
         var infoCount: mach_msg_type_number_t = mach_msg_type_number_t(MemoryLayout<vm_statistics_data_t>.size / MemoryLayout<integer_t>.size)
         let kernReturn: kern_return_t = withUnsafeMutablePointer(to: &vmStats) {
             $0.withMemoryRebound(to: integer_t.self, capacity: 1) {
@@ -216,7 +216,7 @@ public extension AppInfo.Memory {
         return kernReturn == KERN_SUCCESS
     }
     
-    public static func logMemoryInfo() {
+    static func logMemoryInfo() {
         var vmStats = vm_statistics_data_t()
         if memoryInfo(vmStats: &vmStats) {
             let info = ProcessInfo()
@@ -240,11 +240,11 @@ public extension AppInfo.Memory {
         }
     }
     
-    public static func totalMemory() -> UInt64 {
+    static func totalMemory() -> UInt64 {
         return ProcessInfo().physicalMemory;
     }
     
-    public static func freeMemory() -> UInt64 {
+    static func freeMemory() -> UInt64 {
         var vmStats = vm_statistics_data_t()
         if memoryInfo(vmStats: &vmStats) {
             return UInt64(vmStats.free_count) * UInt64(vm_page_size)
@@ -252,7 +252,7 @@ public extension AppInfo.Memory {
         return 0
     }
     
-    public static func memoryUsage() -> UInt64 {
+    static func memoryUsage() -> UInt64 {
         var info = mach_task_basic_info()
         var size: mach_msg_type_number_t = mach_msg_type_number_t(MemoryLayout<mach_task_basic_info_data_t>.size / MemoryLayout<natural_t>.size)
         let kernReturn: kern_return_t = withUnsafeMutablePointer(to: &info) {
@@ -265,7 +265,7 @@ public extension AppInfo.Memory {
 }
 
 public extension AppInfo.Disk {
-    public static func appUsageDiskSize(_ folder: String? = nil) -> UInt64 {
+    static func appUsageDiskSize(_ folder: String? = nil) -> UInt64 {
         guard let path = folder ?? NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last else {
             return 0
         }
@@ -285,11 +285,11 @@ public extension AppInfo.Disk {
         }
     }
     
-    public static func totalDiskSize() -> UInt64 {
+    static func totalDiskSize() -> UInt64 {
         return diskSize(for: .systemSize)
     }
     
-    public static func freeDiskSize() -> UInt64 {
+    static func freeDiskSize() -> UInt64 {
         return diskSize(for: .systemFreeSize)
     }
     

@@ -35,19 +35,19 @@ public extension String {
 
 /// 计算size
 public extension String {
-    public func width(with height: CGFloat, font: UIFont) -> CGFloat {
+    func width(with height: CGFloat, font: UIFont) -> CGFloat {
         return size(with: CGSize(width: CGFloat.greatestFiniteMagnitude, height: height), font: font).width
     }
     
-    public func height(with width: CGFloat, font: UIFont) -> CGFloat {
+    func height(with width: CGFloat, font: UIFont) -> CGFloat {
         return size(with: CGSize(width: width, height: CGFloat.greatestFiniteMagnitude), font: font).height
     }
     
-    public func size(with size: CGSize, font: UIFont) -> CGSize {
+    func size(with size: CGSize, font: UIFont) -> CGSize {
         return rect(with: size, font: font).size
     }
     
-    public func rect(with size: CGSize, font: UIFont) -> CGRect {
+    func rect(with size: CGSize, font: UIFont) -> CGRect {
         return self.boundingRect(with: size,
                                  options: [.usesLineFragmentOrigin, .usesFontLeading],
                                  attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)], context: nil)
@@ -59,19 +59,14 @@ public extension String {
 /// 生成一个随机的UUID
 public extension String {
     
-    public static func newUUID() -> String {
-        
-        guard let uuidRef = CFUUIDCreate(nil) else { fatalError() }
-        
-        guard let uuidStr = CFUUIDCreateString(nil, uuidRef) else { fatalError() }
-        
-        return uuidStr as String
+    static func newUUID() -> String {
+        return UUID().uuidString
     }
 }
 
 public extension String {
     
-    public var md5: String {
+    var md5: String {
         
         let bytes = [UInt8](self.utf8)
         
@@ -81,4 +76,16 @@ public extension String {
     }
 }
 
-
+public extension String {
+    //将原始的url编码为合法的url
+    func urlEncoded() -> String {
+        let encodeUrlString = self.addingPercentEncoding(withAllowedCharacters:
+            .urlQueryAllowed)
+        return encodeUrlString ?? self
+    }
+    
+    //将编码后的url转换回原始的url
+    func urlDecoded() -> String {
+        return self.removingPercentEncoding ?? self
+    }
+}

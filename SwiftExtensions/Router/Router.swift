@@ -138,7 +138,7 @@ public extension Router {
             /// 根据 needdForceFirstPage 做处理, 退回相应界面
             if needdForceFirstPage {
                 let firstController = newControllers.first!
-                if let idx = rootController.viewControllers.reversed().index(where: { (c) -> Bool in
+                if let idx = rootController.viewControllers.reversed().firstIndex(where: { (c) -> Bool in
                     type(of: c) == type(of: firstController)
                 }) {
                     let backToController = rootController.viewControllers.reversed()[idx]
@@ -271,7 +271,7 @@ extension Router {
     private func _goback(controller:ControllerType?, with args: [String: Any]?, animated: Bool, reversed: Bool) {
         if let controllerType = controller{
             let viewControllers = reversed ? rootController.viewControllers.reversed() : rootController.viewControllers
-            if let idx = viewControllers.index(where: { match( .instance($0), controllerType) }) {
+            if let idx = viewControllers.firstIndex(where: { match( .instance($0), controllerType) }) {
                 rootController.popToViewController(viewControllers[idx], animated: animated)
             } else {
                 return
